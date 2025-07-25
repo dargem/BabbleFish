@@ -1,0 +1,23 @@
+Given the paragraph below, extract only personal names (first names, last names, or full names like "Elizabeth Barnes" or "Darcy") as a comma-separated list.
+
+- Include: First names, last names, or full names (e.g., "Elizabeth", "Barnes", "Elizabeth Barnes", "Darcy")
+- Exclude: Roles or titles (e.g., "Doctor", "Captain", "Father")
+- Exclude: Nicknames, pronouns, or general references (e.g., "he", "her", "the man")
+- Output only the names, separated by commas, with no extra text.
+- When no names are detected output null
+
+Examples:
+
+1.
+Paragraph:  
+"Elizabeth walked with Darcy through the garden"  
+Output:  
+Elizabeth,Darcy
+
+2.
+Paragraph:  
+"They left to go to the beach, noticing a fisherman"  
+Output:  
+null
+
+Now apply to this paragraph:  

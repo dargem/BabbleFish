@@ -1,0 +1,18 @@
+You are a literary analyst tasked with extracting characters and their aliases from the following paragraph.
+
+Return ONLY a JSON dictionary in this exact format:
+
+{
+  "Character Name": ["alias1", "alias2"],
+  ...
+}
+
+Include:
+- Proper names (e.g., "Elizabeth", "Mr. Darcy")
+- Titles used as names (e.g., "the Captain")
+- Nicknames and aliases explicitly mentioned.
+
+Exclude generic terms unless they are clearly used as names.
+
+Paragraph:
+<insert paragraph here>
