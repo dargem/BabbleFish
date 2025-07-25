@@ -1,10 +1,14 @@
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.gemini import Gemini # Import the Gemini LLM
+from llama_index.core import VectorStoreIndex, Document
+from llama_index.embedding import HuggingFaceEmbedding
+from llama_index.llms.gemini import Gemini
+from llama_index.core.ingestion import IngestionPipeline
+from llama_index.core.node_parser import SentenceSplitter
+from llama_index.core.extractors import TitleExtractor, MetadataExtractor
+
 import os
 
 def create_database():
-    file_path = "/Users/td/Documents/GitHub/FinetunedMTLBot/data/raw/austen_emma.txt"
+    file_path = "/Users/td/Documents/GitHub/FinetunedMTLBot/data/raw/raw_text_extract.txt"
 
     if os.path.exists(file_path):
         print(f"The path '{file_path}' exists.")
@@ -17,7 +21,6 @@ def create_database():
     )
 
     Settings.llm = Gemini(api_key="AIzaSyBnL7m5aIx8Jmu63jKdnvoDNY7x2nqxGLk", model="gemini-2.0-flash")
-
 
     documents = SimpleDirectoryReader(input_files=[file_path]).load_data()
 
@@ -32,5 +35,5 @@ def create_database():
         print(f"Chunk {i}:\n{doc.text}\n{'-'*40}")
     '''
 
-    response = query_engine.query("What is Emma's relationship with Knightley")
+    response = query_engine.query("What is the role of term [placeholder]")
     print(response)
