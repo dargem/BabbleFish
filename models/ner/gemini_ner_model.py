@@ -11,8 +11,9 @@ GEMINI_API_KEY = "AIzaSyBnL7m5aIx8Jmu63jKdnvoDNY7x2nqxGLk"
 FIND_NAMED_ENTITIES_PROMPT = "/Users/td/Documents/GitHub/FinetunedMTLBot/prompts/find_named_entities.txt"
 FIND_NAMES_PROMPT = "/Users/td/Documents/GitHub/FinetunedMTLBot/prompts/find_proper_names.txt"
 
-GENERATIVE_MODEL = "gemini-2.0-flash"
-
+GENERATIVE_MODEL = "gemini-2.5-pro"
+# "gemini-2.5-pro"
+# "gemini-2.0-flash"
 class Gemini_NER_Model(NER_Model_Interface):
     def __init__(self):
         genai.configure(api_key=GEMINI_API_KEY)
