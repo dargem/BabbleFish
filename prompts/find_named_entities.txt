@@ -1,23 +1,23 @@
-You are a literary analyst tasked with Named Entity Recognition.
-You must extract named entities in the purpose of creating a glossary for consistent fiction translations.
-Be liberal in your selection of things like names, places, objects and etc.
+### INSTRUCTION:
+You are a literary analyst tasked with Named Entity Recognition (NER).
+Your goal is to extract all named entities that require consistent translation in fiction.
+Be liberal in your selection. Include anything that functions as a unique or culturally significant reference, including proper nouns, specialized terms, or repeated motifs that a translator should render consistently.
 
-- Include: First names, last names, or full names (e.g., "Elizabeth", "Barnes", "Elizabeth Barnes", "Darcy")
-- Include: Locations and places, (e.g. "The Grand Oak Hotel", "Oakwood")
-- Include: Named objects, (e.g. "cloak of invisibility", "ring of oblivion")
-- Output only the names, separated by commas, with no extra text.
-- When no names are detected output null
+### EXAMPLES:
+The types of information to extract are in the following:
+- Personal names: First names, last names, or full names (e.g., "Elizabeth", "Barnes", "Elizabeth Barnes", "Darcy")
+- Locations and places: Real or fictional (e.g., "The Grand Oak Hotel", "Oakwood", "Erebor")
+- Named objects or artifacts: (e.g., "Cloak of Invisibility", "Ring of Oblivion", "Sword of Truth")
+- Titles and honorifics (when used as identifiers): (e.g., "Lord Commander", "The Oracle", "Archmage")
+- Groups, factions, or organizations: (e.g., "The Night Watch", "Order of the Phoenix", "The Syndicate")
+- Mythical or unique creatures (if named or species-like): (e.g., "Balrog", "Niffler", "Kirin")
+- Spells, techniques, or special abilities: (e.g., "Shadow Step", "Crimson Lotus Slash")
+- Cultural or invented terms that are not translated literally: (e.g., "chakra", "Reaping Day", "The Ascension")
 
-1.
-Paragraph:  
-"Elizabeth walked with Darcy through Sydney"
-Output:
-Elizabeth, Darcy, Sydney
+Formatting Instructions:
+Output only the extracted names, separated by commas, with no extra commentary or explanation.
+Preserve original capitalization.
+If no named entities are found, output: null
 
-2.
-Paragraph:  
-"They left to go to the beach, noticing a fisherman"  
-Output:  
-null
-
-Paragraph:
+Return only matches in the writing below:
+### INPUT TEXT:
