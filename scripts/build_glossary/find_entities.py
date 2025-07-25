@@ -12,7 +12,7 @@ OUTPUT_PATH = "/Users/td/Documents/GitHub/FinetunedMTLBot/glossary/character_dic
 
 def find_Entities():
     llm_model = Gemini_NER_Model()
-    ner_model = NERModel()
+    # ner_model = NERModel()
 
     # Can just feed the whole chapter into either NER models
     with open(INPUT_PATH, "r", encoding="utf-8") as f:
