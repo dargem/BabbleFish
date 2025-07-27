@@ -29,7 +29,7 @@ class RAG_Database:
         logger.debug(f"RAG_Database: Received individual_file_paths: {individual_file_paths}")
 
         # 1. API Key Validation
-        google_api_key = os.getenv("GOOGLE_API_KEY")
+        google_api_key = os.getenv("GOOGLE_API_KEY_1")
         if not google_api_key:
             logger.critical("RAG_Database: GOOGLE_API_KEY environment variable NOT SET! Cannot initialize models.")
             raise ValueError("GOOGLE_API_KEY environment variable not set. Please set it in your environment or .env file.")

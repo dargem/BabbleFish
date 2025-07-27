@@ -1,10 +1,7 @@
 import sys
 import os
-import json
-sys.path.append('/Users/td/Documents/GitHub/FinetunedMTLBot')
 
 from src.models.ner.gemini_ner_model import Gemini_NER_Model
-# from src.models.ner.ner_model import NERModel  # Unused here, optional can chuck in
 
 class Entity_Finder:
     def __init__(self, file_paths):
