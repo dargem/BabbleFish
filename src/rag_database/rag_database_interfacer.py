@@ -106,14 +106,22 @@ class RAG_Database:
         logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
 
     def build_term_entry(self, term, chapter=None):
-        Settings.llm = Gemini(model=Model_Utility_Class.RAG_RETRIEVER_MODEL, api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL))
+        Settings.llm = Gemini(
+            model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
+            api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
+            thinking_config = {"thinkingBudget": -1},
+        ) # dynamic thinking
         return self.termbase.build_entry(term, chapter=chapter)
 
-    def build_JSON_term_entries(self,term_list,chapter=None):
+    def build_JSON_term_entries(self,entity_list,chapter=None):
         data = []
-        for term in term_list:
-            Settings.llm = Gemini(model=Model_Utility_Class.RAG_RETRIEVER_MODEL, api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL))
-            data.append(self.termbase.build_entry(term, chapter=chapter))
+        for entity in entity_list:
+            Settings.llm = Gemini(
+                model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
+                api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
+                thinking_config = {"thinkingBudget": -1},
+            ) # dynamic thinking
+            data.append(self.termbase.build_entry(entity, chapter=chapter))
         return data # data is a list of hashmaps for named objects
 
         

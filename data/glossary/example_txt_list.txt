@@ -1,0 +1,14 @@
+[
+    {
+        "entity": "God of War",
+        "description": "The God of War is one of the seven orthodox deities worshipped in the Northern Continent. Its existence is tied to the seven-day week structure, indicating a significant role in the religious and cultural framework of this world. The mention of the God of War alongside other deities like the Eternal Blazing Sun and the Evernight Goddess suggests a pantheon of established religious figures.",
+        "term type": "Deity",
+        "english target translation": "God of War"
+    },
+    {
+        "entity": "Mother Earth",
+        "description": "Mother Earth is listed as one of the seven orthodox gods in the Northern Continent. This indicates that Mother Earth is a deity within the established religious framework of this world, alongside other gods like the Eternal Blazing Sun and the God of Steam and Machinery. The mention of these gods suggests a polytheistic system that influences the calendar and potentially societal structures. The context implies that these deities are recognized and perhaps worshipped, shaping the spiritual landscape of the Loen Kingdom and the wider Northern Continent.",
+        "term type": "Deity",
+        "english target translation": "Mother Earth"
+    }
+]

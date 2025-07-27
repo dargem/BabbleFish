@@ -5,44 +5,57 @@ class TermBaseBuilder:
     def __init__(self, retriever):
         self.retriever = retriever
 
-    def build_entry(self, term, chapter=None):
-        chunks = self.retriever.retrieve(f"Context for term: {term}", chapter=chapter)
+    def build_entry(self, entity, chapter=None):
+        chunks = self.retriever.retrieve(f"Context for term: {entity}", chapter=chapter)
         
         if not chunks:
-            print(f"No context found for term '{term}' with chapter filter below {chapter}.")
+            print(f"No context found for term '{entity}' with chapter filter below {chapter}.")
             return {
-                "english target translation": "N/A",
-                "brief definition": "No relevant context found.",
+                "long description": "No relevant context found.",
                 "term type": "N/A",
-                "reference chapter": "N/A"
+                "english target translation": "N/A",
             }
 
         context_text = "\n\n".join(chunks)
-        prompt = (
+        prompt = ( # maybe modify this prompt later
             f"Context:\n{context_text}\n\n"
-            f"Term: \"{term}\"\n\n"
-            "Generate:\n"
-            "- english target translation\n"
-            "- brief definition\n"
-            "- term type\n"
+            "Your task is to act as a highly knowledgeable linguist, summarising this entity for knowledge recall as part of a RAG system. "
+            "Analyze the provided 'Context' thoroughly to understand the usage, nuances, and specific implications of the 'Term'. "
+            "Then, for the given term, provide a detailed and comprehensive description. "
+            "Ensure the description includes its primary meaning, any specific connotations or cultural relevance within the provided context, and its functional role or significance. "
+            "After providing the description, give a precise and contextually appropriate English target translation. "
+            "The translation MUST meticulously fit the overall context, the author's unique style, and their specific authorial intent."
+            "\n\n"
+            f"Term: \"{entity}\"\n\n"
+            "Please output ONLY the following fields exactly as shown, nothing else. "
+            "Maintain the exact field names and order. Format the output as plain text, not JSON or any other markup.\n"
+            "description: [Provide a detailed, multi-sentence description based on the context. Focus on meaning, connotations, and functional role. Aim for 3-5 sentences minimum.]\n"
+            "term type: [Identify the grammatical or categorical type of the term, e.g., Title, Concept, Character Name, Item, Ability, Location, Event, etc. Only one type.]\n"
+            "english target translation: [Provide the most accurate and contextually appropriate English translation.]\n"
         )
-        
-        # Use Settings.llm directly
-        response = Settings.llm.complete(prompt) 
-        return self.parse_response(response.text) # Access .text from response object
 
-    def parse_response(self, resp):
-        # Basic parser stub — extend as needed.
-        # Ensure resp is a string
+        # Use Settings.llm directly to get the response
+        response = Settings.llm.complete(prompt)
+        return self.parse_response(response.text, entity)  # Access .text from the response object
+
+    def parse_response(self, resp, entity):
+        """
+        Parses the response text expected in the form:
+        key: value
+        and returns a dict {key: value}
+        """
         if not isinstance(resp, str):
             print(f"WARNING: parse_response received non-string input: {type(resp)}")
-            return {} # Or handle as error
-            
+            return {}
+
         result = {}
+        result["entity"] = entity
         for line in resp.split("\n"):
-            if ":" in line:
-                parts = line.split(":", 1) # Split only on the first colon
-                key = parts[0].strip()
-                value = parts[1].strip() if len(parts) > 1 else "" # Handle cases with no value after colon
-                result[key] = value
+            line = line.strip()
+            if not line or ":" not in line:
+                continue
+            key, value = line.split(":", 1)
+            key = key.strip().lower()  # normalize keys to lowercase for consistent access
+            value = value.strip()
+            result[key] = value
         return result
