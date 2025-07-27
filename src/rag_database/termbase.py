@@ -11,7 +11,7 @@ class TermBaseBuilder:
         if not chunks:
             print(f"No context found for term '{term}' with chapter filter below {chapter}.")
             return {
-                "target translation": "N/A",
+                "english target translation": "N/A",
                 "brief definition": "No relevant context found.",
                 "term type": "N/A",
                 "reference chapter": "N/A"
@@ -22,10 +22,9 @@ class TermBaseBuilder:
             f"Context:\n{context_text}\n\n"
             f"Term: \"{term}\"\n\n"
             "Generate:\n"
-            "- target translation\n"
+            "- english target translation\n"
             "- brief definition\n"
             "- term type\n"
-            "- reference chapter\n"
         )
         
         # Use Settings.llm directly

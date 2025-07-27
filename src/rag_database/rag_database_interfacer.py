@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import logging
 import glob 
+from src.utils.model_settings import Model_Utility_Class
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +40,7 @@ class RAG_Database:
         # 2. LLM and Embedding Model Setup
         try:
             logger.info("RAG_Database: Attempting to set Settings.llm (Gemini)...")
-            Settings.llm = Gemini(model="gemini-2.0-flash-lite", api_key=google_api_key)
+            Settings.llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
             logger.info(f"RAG_Database: Settings.llm set to {Settings.llm.model}.")
             
             logger.info("RAG_Database: Attempting to set Settings.embed_model (GeminiEmbedding)...")
@@ -88,8 +89,6 @@ class RAG_Database:
             self.termbase = TermBaseBuilder(retriever=self.retriever)
             return
 
-
-        # 4. Initialize Ingestion Pipeline
         logger.info("RAG_Database: Initializing Ingestion component with prepared file list.")
         self.ingestion = Ingestion(file_metadata_list=file_metadata_list)
         
@@ -98,7 +97,6 @@ class RAG_Database:
             logger.critical("RAG_Database: Ingestion did not return a valid index. Aborting.")
             raise RuntimeError("Ingestion pipeline failed to create a valid index.")
 
-        # 5. Initialize Retriever and Termbase
         logger.info("RAG_Database: Initializing Retriever component.")
         self.retriever = Retriever(self.index)
         
@@ -108,4 +106,14 @@ class RAG_Database:
         logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
 
     def build_term_entry(self, term, chapter=None):
+        Settings.llm = Gemini(model=Model_Utility_Class.RAG_RETRIEVER_MODEL, api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL))
         return self.termbase.build_entry(term, chapter=chapter)
+
+    def build_JSON_term_entries(self,term_list,chapter=None):
+        data = []
+        for term in term_list:
+            Settings.llm = Gemini(model=Model_Utility_Class.RAG_RETRIEVER_MODEL, api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL))
+            data.append(self.termbase.build_entry(term, chapter=chapter))
+        return data # data is a list of hashmaps for named objects
+
+        

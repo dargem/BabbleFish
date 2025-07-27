@@ -1,25 +1,25 @@
 import google.generativeai as genai
 import json
 import re
+from src.utils.model_settings import Model_Utility_Class
 
 try:
     from .ner_interface import NER_Model_Interface
 except ImportError:
     from ner_interface import NER_Model_Interface
 
-GEMINI_API_KEY = "AIzaSyBnL7m5aIx8Jmu63jKdnvoDNY7x2nqxGLk"
-FIND_NAMED_ENTITIES_PROMPT = "/Users/td/Documents/GitHub/FinetunedMTLBot/prompts/find_named_entities.txt"
-FIND_NAMES_PROMPT = "/Users/td/Documents/GitHub/FinetunedMTLBot/prompts/find_proper_names.txt"
+FIND_NAMED_ENTITIES_PROMPT = "/home/user/FinetunedMTLBot/prompts/find_named_entities.txt"
+FIND_NAMES_PROMPT = "/home/user/FinetunedMTLBot/prompts/find_proper_names.txt"
 
-GENERATIVE_MODEL = "gemini-2.5-pro"
 # "gemini-2.5-pro"
 # "gemini-2.0-flash"
 class Gemini_NER_Model(NER_Model_Interface):
     def __init__(self):
-        genai.configure(api_key=GEMINI_API_KEY)
-        self.model = genai.GenerativeModel(GENERATIVE_MODEL)
-    
+        pass
+
     def get_names(self, paragraph):
+        genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
+        self.model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
         with open(FIND_NAMES_PROMPT, "r", encoding="utf-8") as f:
             prompt = f.read()
             prompt += "\n" + paragraph
@@ -41,6 +41,8 @@ class Gemini_NER_Model(NER_Model_Interface):
         return names
     
     def get_entities(self, paragraph):
+        genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
+        self.model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
         with open(FIND_NAMED_ENTITIES_PROMPT, "r", encoding="utf-8") as f:
             prompt = f.read()
             prompt += "\n" + paragraph
@@ -60,7 +62,6 @@ class Gemini_NER_Model(NER_Model_Interface):
             objects = []
 
         return objects
-
     
 
 

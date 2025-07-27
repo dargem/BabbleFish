@@ -11,7 +11,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, '..')) # Correct: 'main.py' is in 'src', so '..' goes to 'FinetunedMTLBot'
+project_root = os.path.abspath(os.path.join(current_dir, '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
@@ -30,16 +30,17 @@ if __name__ == "__main__":
     rag_database = RAG_Database(file_paths)
     # Third stage get entities
     print("finding entities")
-    exit()
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()
     for entity in entities:
         print(entity)
     # Fourth stage use RAG to find good localisations for entry
     terms = []
-    entities = entities[0:20]
     for entity in entities:
         terms.append(rag_database.build_term_entry(entity,chapter=10))
+    
+    data = rag_database.build_JSON_term_entries(terms,chapter=10)
+    json_string = json.dumps(data, indent=4)
 
     for term in terms:
         print(term)

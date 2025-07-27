@@ -20,15 +20,15 @@ class Model_Utility_Class:
     # Embedding model
     #RAG_EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
-    env_vars = dotenv_values(".zhsrc")
+    env_vars = dotenv_values(".env")
     api_keys = []
     for key in env_vars:
         api_keys.append(env_vars[key])
 
     key_dic = {}
-    
+
     @staticmethod
-    def get_next_gemini_key(model):
+    def get_next_key(model):
         # Takes the name of the model for use
         # Cycles through a dic
         if model not in Model_Utility_Class.key_dic:
@@ -42,7 +42,7 @@ class Model_Utility_Class:
             return Model_Utility_Class.api_keys[Model_Utility_Class.key_dic[model]]
     
     # For quering the termbase on terms
-    RAG_RETRIEVER_MODEL = "gemini-2.0-flash"
+    RAG_RETRIEVER_MODEL = "gemini-2.5-flash-lite-preview-06-17"
 
     # For finding what terms to enter termbase
     GEMINI_NER_MODEL = "gemini-2.5-pro"
