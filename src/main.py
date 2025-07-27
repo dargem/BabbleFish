@@ -21,7 +21,7 @@ from src.folder_preprocessing.file_extractor import File_Extractor
 from src.create_glossary.find_entities import Entity_Finder
 from src.rag_database.rag_database_interfacer import RAG_Database
 
-FOLDER_SOURCE = "/home/user/FinetunedMTLBot/data/raw/example_txt_list"
+FOLDER_SOURCE = "/home/user/FinetunedMTLBot/data/raw/lotm_files"
 
 if __name__ == "__main__":
     # First stage gets files
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     # Second stage construct RAG database
     rag_database = RAG_Database(file_paths)
     # Third stage get entities
-    '''
+
     print("finding entities")
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()
@@ -40,8 +40,7 @@ if __name__ == "__main__":
     terms = []
     for entity in entities:
         terms.append(rag_database.build_term_entry(entity,chapter=10))
-    '''
-    entities = ["God of War","Mother Earth"]
+    
     data = rag_database.build_JSON_term_entries(entities,chapter=10)
 
     # regex

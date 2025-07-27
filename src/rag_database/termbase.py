@@ -7,7 +7,14 @@ class TermBaseBuilder:
 
     def build_entry(self, entity, chapter=None):
         chunks = self.retriever.retrieve(f"Context for term: {entity}", chapter=chapter)
-        
+
+        '''
+        # for checking chunks
+        if chunks:
+            print(chunks[0])
+            print("first chunk above")
+        '''
+            
         if not chunks:
             print(f"No context found for term '{entity}' with chapter filter below {chapter}.")
             return {
@@ -36,9 +43,9 @@ class TermBaseBuilder:
 
         # Use Settings.llm directly to get the response
         response = Settings.llm.complete(prompt)
-        return self.parse_response(response.text, entity)  # Access .text from the response object
+        return self.parse_response(response.text, entity, chapter)  # Access .text from the response object
 
-    def parse_response(self, resp, entity):
+    def parse_response(self, resp, entity, chapter=None):
         """
         Parses the response text expected in the form:
         key: value
@@ -50,6 +57,7 @@ class TermBaseBuilder:
 
         result = {}
         result["entity"] = entity
+        result["chapter cutoff"] = chapter
         for line in resp.split("\n"):
             line = line.strip()
             if not line or ":" not in line:
