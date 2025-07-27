@@ -1,32 +1,37 @@
-# This builds a glossary through extracting terms creating the dictionary for consistent translation, e.g. names
-
 import sys
 import os
 import json
 sys.path.append('/Users/td/Documents/GitHub/FinetunedMTLBot')
 
 from src.models.ner.gemini_ner_model import Gemini_NER_Model
-from src.models.ner.ner_model import NERModel
-
-INPUT_PATH = "/Users/td/Documents/GitHub/FinetunedMTLBot/data/raw/raw_text_extract.txt"
-OUTPUT_PATH = "/Users/td/Documents/GitHub/FinetunedMTLBot/glossary/character_dictionary.json"
+# from src.models.ner.ner_model import NERModel  # Unused here, optional can chuck in
 
 class Entity_Finder:
-    def find_Entities():
+    def __init__(self, file_paths):
+        self.file_paths = file_paths
+
+    def find_entities(self):
         llm_model = Gemini_NER_Model()
-        # ner_model = NERModel()
+        full_text = ""
 
-        # Can just feed the whole chapter into either NER models
-        with open(INPUT_PATH, "r", encoding="utf-8") as f:
-            chapter = f.read()
+        for path in self.file_paths:
+            if not os.path.exists(path):
+                print(f"Warning: {path} does not exist. Skipping.")
+                continue
+            with open(path, "r", encoding="utf-8") as f:
+                full_text += f.read() + "\n\n"
 
-        list_objects = llm_model.get_entities(chapter)
-        return list_objects
+        entities = llm_model.get_entities(full_text)
+        return entities
 
 if __name__ == "__main__":
-    entity_finder = Entity_Finder()
-    entities = (entity_finder.find_Entities())
-    print(entities)
-    
+    file_paths = [
+        "data/raw/raw_text_extract.txt",
+    ]
+
+    entity_finder = Entity_Finder(file_paths)
+    entities = entity_finder.find_entities()
+
+    print("Extracted Entities:")
     for entity in entities:
-        print("test")
+        print(entity)
