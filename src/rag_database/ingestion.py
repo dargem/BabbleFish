@@ -5,11 +5,21 @@ import logging
 
 # LlamaIndex core components
 # from llama_index.core.ingestion import IngestionPipeline # Still not using IngestionPipeline
-from llama_index.core.node_parser import SentenceSplitter # <-- UNCOMMENT THIS
+# from llama_index.core.node_parser import SentenceSplitter
 # from llama_index.core.extractors import TitleExtractor
 from llama_index.core import VectorStoreIndex
 from llama_index.core.schema import Document, TextNode 
 from llama_index.core.embeddings import BaseEmbedding 
+from llama_index.core.node_parser import SemanticSplitterNodeParser
+from src.utils.model_settings import Model_Utility_Class
+
+try:
+    from llama_index.llms.gemini import Gemini
+    from llama_index.embeddings.gemini import GeminiEmbedding
+except ImportError as e:
+    logger.critical(f"RAG_Database: FATAL ERROR - Missing LlamaIndex integration packages for Gemini. "
+                     f"Please install: pip install llama-index-llms-gemini llama-index-embeddings-gemini. Error: {e}")
+    raise
 
 logger = logging.getLogger(__name__)
 
@@ -55,13 +65,21 @@ class Ingestion:
         nodes = []
         try:
             # Initialize the SentenceSplitter
-            # Recommended chunk_size: 512, 1024, or 2048. Overlap helps maintain context.
-            # Using 1024 for demonstration. You can fine-tune this later.
-            node_parser = SentenceSplitter(chunk_size=1024, chunk_overlap=32)
-            logger.info(f"Ingestion: Initialized SentenceSplitter with chunk_size={node_parser.chunk_size}, chunk_overlap={node_parser.chunk_overlap}.")
+            # Good chunk size is few hundred with some overlap
+            #node_parser = SentenceSplitter(chunk_size=500, chunk_overlap=32)
+            # logger.info(f"Ingestion: Initialized SentenceSplitter with chunk_size={node_parser.chunk_size}, chunk_overlap={node_parser.chunk_overlap}.")
 
             logger.info("Ingestion: Applying SentenceSplitter to raw documents to create nodes.")
             for i, raw_doc in enumerate(raw_docs):
+                node_parser = SemanticSplitterNodeParser.from_defaults( # cycles api keys
+                    embed_model = GeminiEmbedding(
+                        model_name=Model_Utility_Class.RAG_EMBEDDING_MODEL,
+                        api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_EMBEDDING_MODEL),
+                        
+                    ),
+                    include_metadata=True,
+                    include_prev_next_rel=True,
+                )
                 # Apply the splitter to each raw document
                 split_nodes_from_doc = node_parser.get_nodes_from_documents([raw_doc])
                 nodes.extend(split_nodes_from_doc)

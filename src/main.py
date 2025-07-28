@@ -58,7 +58,12 @@ if __name__ == "__main__":
     glossary = file_manager.get_glossary()
     entities = file_manager.get_glossary_entities()
     print(entities)
+    tupled_entities = []
+    for entry in glossary:
+        tup = (entry["entity"],entry["description"])
+        tupled_entities.append(tup)
 
+    rag_database.check_term_relevance(entities, 1, 4)
     
 
 

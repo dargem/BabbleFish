@@ -41,6 +41,9 @@ class Model_Utility_Class:
                 Model_Utility_Class.key_dic[model] = 0
             return Model_Utility_Class.api_keys[Model_Utility_Class.key_dic[model]]
     
+    # For embedding
+    RAG_EMBEDDING_MODEL = "models/embedding-001"
+
     # For quering the termbase on terms
     RAG_RETRIEVER_MODEL = "gemini-2.5-flash-lite-preview-06-17"
 

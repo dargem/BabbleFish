@@ -3,8 +3,28 @@ class TermBaseBuilder:
     def __init__(self, retriever):
         self.retriever = retriever
 
+    def check_term_relevance(self, entity, chapter):
+        nodes = self.retriever.retrieve(
+            query = f"Context for term: {entity}", 
+            matchType = "EQ", 
+            similarity_top_k = 1, 
+            chapter = chapter
+        )
+        print(nodes[0].get_content())
+        if not nodes:
+            return False
+        match_strength = nodes[0].score
+        match_req = 0.7
+        return match_strength > match_req
+
     def build_entry(self, entity, llm, chapter=None):
-        chunks = self.retriever.retrieve(f"Context for term: {entity}", chapter=chapter)
+        nodes = self.retriever.retrieve(
+            query = f"Context for term: {entity}", 
+            matchType = "LTE", 
+            similarity_top_k = 10, 
+            chapter = chapter
+        )
+        chunks = [node.get_content for node in nodes]
 
         '''
         # for checking chunks
@@ -38,8 +58,7 @@ class TermBaseBuilder:
             "term type: [Identify the grammatical or categorical type of the term, e.g., Title, Concept, Character Name, Item, Ability, Location, Event, etc. Only one type.]\n"
             "english target translation: [Provide the most accurate and contextually appropriate English translation.]\n"
         )
-
-        # Use Settings.llm directly to get the response
+        
         response = llm.complete(prompt)
         return self.parse_response(response.text, entity, chapter)  # Access .text from the response object
 

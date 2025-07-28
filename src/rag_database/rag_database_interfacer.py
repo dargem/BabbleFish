@@ -43,7 +43,7 @@ class RAG_Database:
             logger.info(f"RAG_Database: self.llm set to {self.llm.model}.")
             
             logger.info("RAG_Database: Attempting to set self.embed_model (GeminiEmbedding)...")
-            self.embed_model = GeminiEmbedding(model_name="models/embedding-001", api_key=google_api_key)
+            self.embed_model = GeminiEmbedding(model_name=Model_Utility_Class.RAG_EMBEDDING_MODEL, api_key=google_api_key)
             logger.info(f"RAG_Database: self.embed_model set to {self.embed_model.model_name}.")
             
             test_embed_str = "This is a small test string to verify the embedding model is working correctly."
@@ -122,5 +122,26 @@ class RAG_Database:
             ) # dynamic thinking
             data.append(self.termbase.build_entry(entity, chapter=chapter))
         return data # data is a list of hashmaps for named objects
+    
+    def check_term_relevance(self, entities, chapter_min_inclusive, chapter_max_exclusive):
+        dic = {}
+        for entity in entities:
+            dic[entity] = []
+            for i in range(chapter_min_inclusive, chapter_max_exclusive):
+                if self.termbase.check_term_relevance(entity,chapter=i):
+                    dic[entity].append(i)
+            print(dic[entity])
+        print(dic)
 
-        
+    def check_tupled_term_relevance(self, tupled_entities, chapter_min_inclusive, chapter_max_exclusive):
+        dic = {}
+        for entity_tuple in tupled_entities:
+            entity = entity_tuple[0]
+            description = entity_tuple[1]
+            dic[entity]=[]
+            combined_term = "entity: " + entity + "description: " + description
+            for i in range(chapter_min_inclusive, chapter_max_exclusive):
+                if self.termbase.check_term_relevance(combined_term,chapter=i):
+                    dic[entity].append(i)
+            print(dic[entity])
+        print(dic)
