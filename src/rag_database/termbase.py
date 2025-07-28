@@ -1,11 +1,9 @@
-# from src.utils.model_settings import Model_Utility_Class # No longer strictly needed if llm is from Settings
-from llama_index.core import Settings
 
 class TermBaseBuilder:
     def __init__(self, retriever):
         self.retriever = retriever
 
-    def build_entry(self, entity, chapter=None):
+    def build_entry(self, entity, llm, chapter=None):
         chunks = self.retriever.retrieve(f"Context for term: {entity}", chapter=chapter)
 
         '''
@@ -42,7 +40,7 @@ class TermBaseBuilder:
         )
 
         # Use Settings.llm directly to get the response
-        response = Settings.llm.complete(prompt)
+        response = llm.complete(prompt)
         return self.parse_response(response.text, entity, chapter)  # Access .text from the response object
 
     def parse_response(self, resp, entity, chapter=None):

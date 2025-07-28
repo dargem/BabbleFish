@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 load_dotenv() 
 
-from llama_index.core import Settings
 try:
     from llama_index.llms.gemini import Gemini
     from llama_index.embeddings.gemini import GeminiEmbedding
@@ -39,17 +38,17 @@ class RAG_Database:
 
         # 2. LLM and Embedding Model Setup
         try:
-            logger.info("RAG_Database: Attempting to set Settings.llm (Gemini)...")
-            Settings.llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
-            logger.info(f"RAG_Database: Settings.llm set to {Settings.llm.model}.")
+            logger.info("RAG_Database: Attempting to set self.llm (Gemini)...")
+            self.llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
+            logger.info(f"RAG_Database: self.llm set to {self.llm.model}.")
             
-            logger.info("RAG_Database: Attempting to set Settings.embed_model (GeminiEmbedding)...")
-            Settings.embed_model = GeminiEmbedding(model_name="models/embedding-001", api_key=google_api_key)
-            logger.info(f"RAG_Database: Settings.embed_model set to {Settings.embed_model.model_name}.")
+            logger.info("RAG_Database: Attempting to set self.embed_model (GeminiEmbedding)...")
+            self.embed_model = GeminiEmbedding(model_name="models/embedding-001", api_key=google_api_key)
+            logger.info(f"RAG_Database: self.embed_model set to {self.embed_model.model_name}.")
             
             test_embed_str = "This is a small test string to verify the embedding model is working correctly."
             logger.info(f"RAG_Database: Performing a test embedding for: '{test_embed_str[:60]}...'")
-            test_embed_val = Settings.embed_model.get_text_embedding(test_embed_str)
+            test_embed_val = self.embed_model.get_text_embedding(test_embed_str)
 
             if test_embed_val is None or not isinstance(test_embed_val, list) or len(test_embed_val) == 0:
                 logger.critical(f"RAG_Database: Initial embedding model test FAILED! Returned: {test_embed_val}. "
@@ -83,14 +82,14 @@ class RAG_Database:
 
         if processed_files_count == 0:
             logger.warning("RAG_Database: No valid files were found from the provided list. Creating an empty index.")
-            self.ingestion = Ingestion([]) # Pass empty list to Ingestion
+            self.ingestion = Ingestion([],embed_model=self.embed_model) # Pass empty list to Ingestion
             self.index = self.ingestion.index
             self.retriever = Retriever(self.index)
             self.termbase = TermBaseBuilder(retriever=self.retriever)
             return
 
         logger.info("RAG_Database: Initializing Ingestion component with prepared file list.")
-        self.ingestion = Ingestion(file_metadata_list=file_metadata_list)
+        self.ingestion = Ingestion(file_metadata_list=file_metadata_list,embed_model=self.embed_model)
         
         self.index = self.ingestion.index
         if self.index is None:
@@ -106,7 +105,7 @@ class RAG_Database:
         logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
 
     def build_term_entry(self, term, chapter=None):
-        Settings.llm = Gemini(
+        self.llm = Gemini(
             model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
             api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
             thinking_config = {"thinkingBudget": -1},
@@ -116,7 +115,7 @@ class RAG_Database:
     def build_JSON_term_entries(self,entity_list,chapter=None):
         data = []
         for entity in entity_list:
-            Settings.llm = Gemini(
+            self.llm = Gemini(
                 model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
                 api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
                 thinking_config = {"thinkingBudget": -1},

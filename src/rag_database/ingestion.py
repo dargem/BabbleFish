@@ -7,7 +7,6 @@ import logging
 # from llama_index.core.ingestion import IngestionPipeline # Still not using IngestionPipeline
 from llama_index.core.node_parser import SentenceSplitter # <-- UNCOMMENT THIS
 # from llama_index.core.extractors import TitleExtractor
-from llama_index.core import Settings 
 from llama_index.core import VectorStoreIndex
 from llama_index.core.schema import Document, TextNode 
 from llama_index.core.embeddings import BaseEmbedding 
@@ -15,13 +14,13 @@ from llama_index.core.embeddings import BaseEmbedding
 logger = logging.getLogger(__name__)
 
 class Ingestion:
-    def __init__(self, file_metadata_list):
+    def __init__(self, file_metadata_list, embed_model):
         logger.info("Ingestion: Starting document loading and processing for splitting and embedding.")
         raw_docs = [] # Renamed to raw_docs for clarity
 
         if not file_metadata_list:
             logger.warning("Ingestion: file_metadata_list is empty. No documents to process. Creating an empty index.")
-            self.index = VectorStoreIndex([])
+            self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
             return
 
         # 1. Load Raw Documents
@@ -43,7 +42,7 @@ class Ingestion:
 
         if not raw_docs:
             logger.warning("Ingestion: No valid raw documents were loaded. Creating an empty index.")
-            self.index = VectorStoreIndex([])
+            self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
             return
 
         logger.info(f"Ingestion: Successfully loaded {len(raw_docs)} raw documents for splitting and embedding.")
@@ -76,16 +75,16 @@ class Ingestion:
 
             if not nodes:
                 logger.warning("Ingestion: SentenceSplitter created 0 nodes. This is unexpected.")
-                self.index = VectorStoreIndex([])
+                self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
                 return
 
             # --- Existing Manual Embedding Process (will now run on the split nodes) ---
-            embed_model: BaseEmbedding = Settings.embed_model 
+            embed_model: BaseEmbedding = embed_model 
 
             if embed_model is None:
-                logger.critical("Ingestion: Settings.embed_model is not set! Cannot generate embeddings for nodes.")
-                self.index = VectorStoreIndex([])
-                raise RuntimeError("Embedding model is not initialized. Ensure RAG_Database sets Settings.embed_model correctly.")
+                logger.critical("Ingestion: embed_model is not set! Cannot generate embeddings for nodes.")
+                self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
+                raise RuntimeError("Embedding model is not initialized. Ensure RAG_Database sets embed_model correctly.")
 
             logger.info(f"Ingestion: Manually generating embeddings for {len(nodes)} created nodes.")
             
@@ -107,10 +106,10 @@ class Ingestion:
             logger.info(f"Ingestion: Successfully embedded {len(nodes)} nodes.")
             
             logger.info("Ingestion: Creating VectorStoreIndex from manually created and embedded nodes.")
-            self.index = VectorStoreIndex(nodes=nodes) 
+            self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
             logger.info("Ingestion: VectorStoreIndex created successfully.")
 
         except Exception as e:
             logger.critical(f"Ingestion: FATAL ERROR during node splitting, embedding, or index creation: {e}", exc_info=True)
-            self.index = VectorStoreIndex([]) 
+            self.index = VectorStoreIndex(nodes=nodes, embed_model=embed_model)
             raise

@@ -1,0 +1,66 @@
+import os
+import json
+
+class File_Manager():
+    def __init__(self, directory_path):
+        self.DIRECTORY_PATH = directory_path
+        # constructs list of files
+        self.txt_files = []
+        try:
+            for filename in os.listdir(directory_path):
+                if filename.endswith(".txt"):
+                    self.txt_files.append(os.path.join(directory_path,filename))
+        except (FileNotFoundError, PermissionError) as e:
+            print(f"Critical error: {e}")
+    
+    def get_files(self, min_index_inclusive, max_index_exclusive):
+        if min_index_inclusive < 0 or max_index_exclusive > len(self.txt_files):
+            raise ValueError("Invalid range")
+        return self.txt_files[min_index_inclusive:max_index_exclusive]
+
+    def build_glossary(self, data):
+        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
+        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
+        try:
+            with open(file_name, 'x') as f:
+                json.dump(data,f,indent=4)
+            print(f"File '{file_name}' created successfully.")
+        except FileExistsError:
+            print(f"File '{file_name}' already exists. Writing over")
+            with open(file_name, 'w') as f:
+                json.dump(data,f,indent=4)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def get_glossary(self):
+        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
+        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
+        try:
+            with open(file_name, "r") as f:
+                data = json.load(f)
+            return data
+        except FileNotFoundError:
+            print(f"File '{file_name}' not found")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def get_glossary_entities(self):
+        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
+        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
+        try:
+            with open(file_name, "r") as f:
+                data = json.load(f)
+            entities = []
+            for entry in data:
+                entities.append(entry["entity"])
+            return entities
+        except FileNotFoundError:
+            print(f"File '{file_name}' not found")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def preprocess_text(self, entities, file_paths):
+        # reads txts, inserts entities inside
+        for file_path in file_paths:
+            with open(file_path,"r") as f:
+                txt = f.read()
