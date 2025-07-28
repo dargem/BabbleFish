@@ -1,34 +1,40 @@
-# src/rag_database/rag_database_interfacer.py
-
 import os
 from dotenv import load_dotenv
 import logging
-import glob 
+import glob
 from src.utils.model_settings import Model_Utility_Class
 
 logger = logging.getLogger(__name__)
 
-load_dotenv() 
+load_dotenv()
 
 try:
     from llama_index.llms.gemini import Gemini
     from llama_index.embeddings.gemini import GeminiEmbedding
 except ImportError as e:
     logger.critical(f"RAG_Database: FATAL ERROR - Missing LlamaIndex integration packages for Gemini. "
-                     f"Please install: pip install llama-index-llms-gemini llama-index-embeddings-gemini. Error: {e}")
+                    f"Please install: pip install llama-index-llms-gemini llama-index-embeddings-gemini. Error: {e}")
     raise
 
 from src.rag_database.ingestion import Ingestion
-from src.rag_database.retriever import Retriever 
+from src.rag_database.retriever import Retriever
 from src.rag_database.termbase import TermBaseBuilder
 
-class RAG_Database:
-    # --- CHANGE: Accept a list of individual file_paths directly ---
-    def __init__(self, individual_file_paths: list[str]): 
-        logger.info("RAG_Database: Initializing RAG_Database instance.")
-        logger.debug(f"RAG_Database: Received individual_file_paths: {individual_file_paths}")
 
-        # 1. API Key Validation
+class RAG_Database:
+    def __init__(self, ingestion, embed_model, llm):
+        self.ingestion = ingestion
+        self.embed_model = embed_model
+        self.llm = llm
+        self.index = ingestion.index
+        self.retriever = Retriever(self.index)
+        self.termbase = TermBaseBuilder(retriever=self.retriever)
+        logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
+
+    @classmethod
+    async def create(cls, individual_file_paths: list[str]):
+        logger.info("RAG_Database: Starting async create method.")
+
         google_api_key = os.getenv("GOOGLE_API_KEY_1")
         if not google_api_key:
             logger.critical("RAG_Database: GOOGLE_API_KEY environment variable NOT SET! Cannot initialize models.")
@@ -36,99 +42,75 @@ class RAG_Database:
         else:
             logger.info("RAG_Database: GOOGLE_API_KEY environment variable found.")
 
-        # 2. LLM and Embedding Model Setup
+        # Setup LLM and embedding model
         try:
-            logger.info("RAG_Database: Attempting to set self.llm (Gemini)...")
-            self.llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
-            logger.info(f"RAG_Database: self.llm set to {self.llm.model}.")
+            llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
+            embed_model = GeminiEmbedding(model_name=Model_Utility_Class.RAG_EMBEDDING_MODEL, api_key=google_api_key)
             
-            logger.info("RAG_Database: Attempting to set self.embed_model (GeminiEmbedding)...")
-            self.embed_model = GeminiEmbedding(model_name=Model_Utility_Class.RAG_EMBEDDING_MODEL, api_key=google_api_key)
-            logger.info(f"RAG_Database: self.embed_model set to {self.embed_model.model_name}.")
-            
+            # Test embedding sync call (if this is async, wrap accordingly)
             test_embed_str = "This is a small test string to verify the embedding model is working correctly."
-            logger.info(f"RAG_Database: Performing a test embedding for: '{test_embed_str[:60]}...'")
-            test_embed_val = self.embed_model.get_text_embedding(test_embed_str)
-
+            test_embed_val = embed_model.get_text_embedding(test_embed_str)
+            
             if test_embed_val is None or not isinstance(test_embed_val, list) or len(test_embed_val) == 0:
-                logger.critical(f"RAG_Database: Initial embedding model test FAILED! Returned: {test_embed_val}. "
-                                f"This indicates a problem with the embedding model setup or API key/rate limits.")
+                logger.critical("RAG_Database: Initial embedding model test FAILED!")
                 raise RuntimeError("Embedding model failed to return a valid embedding.")
             else:
                 logger.info(f"RAG_Database: Initial embedding model test SUCCESS. Embedding dimension: {len(test_embed_val)}.")
-
         except Exception as e:
-            logger.critical(f"RAG_Database: FATAL ERROR during LLM or Embedding model setup: {e}", exc_info=True)
-            raise 
+            logger.critical(f"RAG_Database: FATAL ERROR during model setup: {e}", exc_info=True)
+            raise
 
-        # 3. Prepare File Metadata List for Ingestion
+        # Prepare file metadata list
         file_metadata_list = []
-        # --- CHANGE: Iterate directly over the provided list of file paths ---
-        processed_files_count = 0
-        
-        if not individual_file_paths:
-            logger.warning("RAG_Database: No individual file paths provided. Creating an empty index.")
-        
-        chapter_counter = 1 # Simple chapter assignment for now
+        chapter_counter = 1
         for file_path in individual_file_paths:
             if not os.path.exists(file_path):
-                logger.warning(f"RAG_Database: Provided file path does not exist: {file_path}. Skipping.")
+                logger.warning(f"RAG_Database: File path does not exist: {file_path}. Skipping.")
                 continue
-
             file_metadata_list.append((file_path, {"chapter": chapter_counter}))
             chapter_counter += 1
-            processed_files_count += 1
-            logger.debug(f"RAG_Database: Prepared file {file_path} with metadata {{'chapter': {chapter_counter-1}}}")
 
-        if processed_files_count == 0:
-            logger.warning("RAG_Database: No valid files were found from the provided list. Creating an empty index.")
-            self.ingestion = Ingestion([],embed_model=self.embed_model) # Pass empty list to Ingestion
-            self.index = self.ingestion.index
-            self.retriever = Retriever(self.index)
-            self.termbase = TermBaseBuilder(retriever=self.retriever)
-            return
+        if not file_metadata_list:
+            logger.warning("RAG_Database: No valid files found. Creating empty ingestion.")
+            ingestion = await Ingestion.create([], embed_model=embed_model)
+            return cls(ingestion=ingestion, embed_model=embed_model, llm=llm)
 
-        logger.info("RAG_Database: Initializing Ingestion component with prepared file list.")
-        self.ingestion = Ingestion(file_metadata_list=file_metadata_list,embed_model=self.embed_model)
-        
-        self.index = self.ingestion.index
-        if self.index is None:
-            logger.critical("RAG_Database: Ingestion did not return a valid index. Aborting.")
+        # Await async ingestion creation
+        ingestion = await Ingestion.create(file_metadata_list=file_metadata_list, embed_model=embed_model)
+
+        if ingestion.index is None:
+            logger.critical("RAG_Database: Ingestion did not return a valid index.")
             raise RuntimeError("Ingestion pipeline failed to create a valid index.")
 
-        logger.info("RAG_Database: Initializing Retriever component.")
-        self.retriever = Retriever(self.index)
-        
-        logger.info("RAG_Database: Initializing Termbase component.")
-        self.termbase = TermBaseBuilder(retriever=self.retriever)
-        
-        logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
+        return cls(ingestion=ingestion, embed_model=embed_model, llm=llm)
+
+    # The rest of your methods remain synchronous:
 
     def build_term_entry(self, term, chapter=None):
         self.llm = Gemini(
-            model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
+            model=Model_Utility_Class.RAG_RETRIEVER_MODEL,
             api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
-            thinking_config = {"thinkingBudget": -1},
-        ) # dynamic thinking
-        return self.termbase.build_entry(term, chapter=chapter)
+            thinking_config={"thinkingBudget": -1},
+        )
+        return self.termbase.build_entry(term, self.llm, chapter=chapter)
 
-    def build_JSON_term_entries(self,entity_list,chapter=None):
+    def build_JSON_term_entries(self, entity_list, chapter=None):
         data = []
         for entity in entity_list:
             self.llm = Gemini(
-                model=Model_Utility_Class.RAG_RETRIEVER_MODEL, 
+                model=Model_Utility_Class.RAG_RETRIEVER_MODEL,
                 api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
-                thinking_config = {"thinkingBudget": -1},
-            ) # dynamic thinking
-            data.append(self.termbase.build_entry(entity, chapter=chapter))
-        return data # data is a list of hashmaps for named objects
-    
+                thinking_config={"thinkingBudget": -1},
+            )
+            data.append(self.termbase.build_entry(entity, self.llm, chapter=chapter))
+        return data
+
     def check_term_relevance(self, entities, chapter_min_inclusive, chapter_max_exclusive):
         dic = {}
         for entity in entities:
             dic[entity] = []
             for i in range(chapter_min_inclusive, chapter_max_exclusive):
-                if self.termbase.check_term_relevance(entity,chapter=i):
+                if self.termbase.check_term_relevance(entity, chapter=i):
                     dic[entity].append(i)
             print(dic[entity])
         print(dic)
@@ -138,10 +120,10 @@ class RAG_Database:
         for entity_tuple in tupled_entities:
             entity = entity_tuple[0]
             description = entity_tuple[1]
-            dic[entity]=[]
+            dic[entity] = []
             combined_term = "entity: " + entity + "description: " + description
             for i in range(chapter_min_inclusive, chapter_max_exclusive):
-                if self.termbase.check_term_relevance(combined_term,chapter=i):
+                if self.termbase.check_term_relevance(combined_term, chapter=i):
                     dic[entity].append(i)
             print(dic[entity])
         print(dic)

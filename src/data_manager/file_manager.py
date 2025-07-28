@@ -5,18 +5,23 @@ class File_Manager():
     def __init__(self, directory_path):
         self.DIRECTORY_PATH = directory_path
         # constructs list of files
-        self.txt_files = []
+        file_list=[]
         try:
             for filename in os.listdir(directory_path):
                 if filename.endswith(".txt"):
-                    self.txt_files.append(os.path.join(directory_path,filename))
+                    file_list.append(os.path.join(directory_path,filename))
         except (FileNotFoundError, PermissionError) as e:
             print(f"Critical error: {e}")
+        self.txt_files = sorted(file_list) 
+        # change this later, needs sorting by grabbing chapter num, keep note of possible numbers in the name screwing it up
     
-    def get_files(self, min_index_inclusive, max_index_exclusive):
-        if min_index_inclusive < 0 or max_index_exclusive > len(self.txt_files):
+    def get_files(self, file_min_inclusive, file_max_exclusive):
+        min_index = file_min_inclusive - 1
+        max_index = file_max_exclusive -1
+
+        if min_index < 0 or max_index >= len(self.txt_files):
             raise ValueError("Invalid range")
-        return self.txt_files[min_index_inclusive:max_index_exclusive]
+        return self.txt_files[min_index:max_index]
 
     def build_glossary(self, data):
         new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name

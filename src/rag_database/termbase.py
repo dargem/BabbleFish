@@ -24,7 +24,7 @@ class TermBaseBuilder:
             similarity_top_k = 10, 
             chapter = chapter
         )
-        chunks = [node.get_content for node in nodes]
+        chunks = [node.get_content() for node in nodes]
 
         '''
         # for checking chunks
