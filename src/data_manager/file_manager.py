@@ -20,7 +20,6 @@ class File_Manager():
             raise ValueError("Invalid range")
         return self.txt_files[start_idx:end_idx]
 
-
     def build_glossary(self, data):
         new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
         file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
@@ -47,23 +46,22 @@ class File_Manager():
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def get_glossary_entities(self):
-        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
-        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
-        try:
-            with open(file_name, "r") as f:
-                data = json.load(f)
-            entities = []
-            for entry in data:
-                entities.append(entry["entity"])
-            return entities
-        except FileNotFoundError:
-            print(f"File '{file_name}' not found")
-        except Exception as e:
-            print(f"An error occurred: {e}")
-
     def preprocess_text(self, entities, file_paths):
         # reads txts, inserts entities inside
         for file_path in file_paths:
             with open(file_path,"r") as f:
                 txt = f.read()
+
+    def get_entity_chapter_presence(self, entities, start_idx, end_idx):
+        file_paths = self.get_files(start_idx, end_idx)
+        entity_chapter_presence = {}
+        for i, file_path in enumerate(file_paths):
+            try:
+                with open(file_path,'r', encoding="utf-8") as f:
+                    txt = f.read()
+                    for entity in entities:
+                        if entity in txt:
+                            entity_chapter_presence[entity].append(start_idx+i)
+            except(FileNotFoundError, PermissionError) as e:
+                print(f"Critical error: {e}")
+        return entity_chapter_presence

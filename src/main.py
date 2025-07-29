@@ -18,8 +18,7 @@ if project_root not in sys.path:
 
 from src.data_manager.file_manager import File_Manager
 from src.create_glossary.find_entities import Entity_Finder
-from src.rag_database.rag_database_interfacer import RAG_Database
-
+from src.rag_database.base_rag import RAG_Database
 
 async def main():
     FOLDER_SOURCE = "/home/user/FinetunedMTLBot/data/raw/lotm_files"
@@ -29,15 +28,13 @@ async def main():
     start_idx = 0
     end_idx = 7
     file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
+
     # Second stage construct RAG database (await async create)
-    rag_database = await RAG_Database.create(file_paths)
+    rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     
     # Third stage get entities
-    print("finding entities")
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()
-    for entity in entities:
-        print(entity)
 
     # Fourth stage use RAG to find good localisations for entry
     data = rag_database.build_JSON_term_entries(entities, chapter_idx=10)
@@ -47,24 +44,20 @@ async def main():
     
     # Sixth stage replace/put markers in OG text with translated names
     glossary = file_manager.get_glossary()
-    entities = file_manager.get_glossary_entities()
-    
-    # 6.1 Do an exact match through the files
 
+    entities = [entry["entity"] for entry in glossary]
+    tupled_entities = [(entry["entity"],entry["description"]) for entry in glossary]
+
+    entity_chapter_presence = { entity: [] for entity in entities } # marks chapters an entity has been found in
+    # 6.1 Do an exact match through the files
+    entity_chapter_presence_temp = file_manager.get_entity_chapter_presence(entities, start_idx, end_idx)
+    for entity in entity_chapter_presence_temp:
+        entity_chapter_presence[entity] = entity_chapter_presence_temp[entity] # merges lists together
     # 6.2 Do a lemmatised match through the files, can use Spacy
 
+
     # 6.3 Do a semantic match through the files using RAG
-
-
-    print(entities)
-
-    tupled_entities = []
-    for entry in glossary:
-        tup = (entry["entity"], entry["description"])
-        tupled_entities.append(tup)
-
     rag_database.check_tupled_term_relevance(tupled_entities, start_idx = start_idx, end_idx = end_idx)
-
 
     # Further stages here...
 

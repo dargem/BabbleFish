@@ -32,7 +32,7 @@ class RAG_Database:
         logger.info("RAG_Database: Initialization complete. Index and Retriever ready.")
 
     @classmethod
-    async def create(cls, individual_file_paths: list[str]):
+    async def create(cls, individual_file_paths: list[str], start_idx):
         logger.info("RAG_Database: Starting async create method.")
 
         google_api_key = os.getenv("GOOGLE_API_KEY_1")
@@ -62,7 +62,7 @@ class RAG_Database:
 
         # Prepare file metadata list
         file_metadata_list = []
-        chapter_idx = 0 # index starts at 0
+        chapter_idx = start_idx # index starts at start of what paths are
         for file_path in individual_file_paths:
             if not os.path.exists(file_path):
                 logger.warning(f"RAG_Database: File path does not exist: {file_path}. Skipping.")
@@ -125,7 +125,7 @@ class RAG_Database:
             dic[entity] = []
             combined_term = "entity: " + entity + ", description: " + description
             for i in range(start_idx, end_idx):
-                if self.termbase.check_term_relevance(combined_term, chapter_idx=i):
-                    dic[entity].append(i)
+                if self.termbase.check_term_relevance(combined_term, chapter_idx=start_idx+i):
+                    dic[entity].append(start_idx+i)
             print(dic[entity])
         print(dic)
