@@ -3,26 +3,31 @@ class TermBaseBuilder:
     def __init__(self, retriever):
         self.retriever = retriever
 
-    def check_term_relevance(self, entity, chapter):
+    def check_term_relevance(self, entity, chapter_idx):
         nodes = self.retriever.retrieve(
             query = f"Context for term: {entity}", 
             matchType = "EQ", 
             similarity_top_k = 1, 
-            chapter = chapter
+            chapter_idx = chapter_idx
         )
-        print(nodes[0].get_content())
+        #print("node 1")
+        #print(nodes[0].get_content())
+        #print("node 2")
+        #print(nodes[1].get_content())
         if not nodes:
             return False
         match_strength = nodes[0].score
-        match_req = 0.7
+        match_req = 0.75
+        if (match_strength > match_req):
+            print(nodes[0].get_content())
         return match_strength > match_req
 
-    def build_entry(self, entity, llm, chapter=None):
+    def build_entry(self, entity, llm, chapter_idx=None):
         nodes = self.retriever.retrieve(
             query = f"Context for term: {entity}", 
             matchType = "LTE", 
             similarity_top_k = 10, 
-            chapter = chapter
+            chapter_idx = chapter_idx
         )
         chunks = [node.get_content() for node in nodes]
 
@@ -34,7 +39,7 @@ class TermBaseBuilder:
         '''
             
         if not chunks:
-            print(f"No context found for term '{entity}' with chapter filter below {chapter}.")
+            print(f"No context found for term '{entity}' with chapter filter below {chapter_idx}.")
             return {
                 "long description": "No relevant context found.",
                 "term type": "N/A",
@@ -60,9 +65,9 @@ class TermBaseBuilder:
         )
         
         response = llm.complete(prompt)
-        return self.parse_response(response.text, entity, chapter)  # Access .text from the response object
+        return self.parse_response(response.text, entity, chapter_idx)  # Access .text from the response object
 
-    def parse_response(self, resp, entity, chapter=None):
+    def parse_response(self, resp, entity, chapter_idx=None):
         """
         Parses the response text expected in the form:
         key: value
@@ -74,7 +79,7 @@ class TermBaseBuilder:
 
         result = {}
         result["entity"] = entity
-        result["chapter cutoff"] = chapter
+        result["chapter cutoff"] = chapter_idx
         for line in resp.split("\n"):
             line = line.strip()
             if not line or ":" not in line:

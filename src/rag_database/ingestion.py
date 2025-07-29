@@ -3,6 +3,7 @@
 import os
 import aiofiles
 import asyncio
+import logging
 
 from llama_index.core import VectorStoreIndex
 from llama_index.core.schema import Document
@@ -13,6 +14,8 @@ from llama_index.llms.gemini import Gemini
 from llama_index.embeddings.gemini import GeminiEmbedding
 
 from src.utils.model_settings import Model_Utility_Class
+
+logger = logging.getLogger(__name__)
 
 
 class Ingestion:
@@ -56,14 +59,21 @@ class Ingestion:
         if not nodes:
             return cls(VectorStoreIndex(nodes=[], embed_model=embed_model))
 
+        api_call_count = 0  # <-- counter for embedding calls
+
         # Generate embeddings in parallel
         async def embed_node(node):
+            nonlocal api_call_count
             embedding = await asyncio.to_thread(
                 embed_model.get_text_embedding,
                 node.get_content(metadata_mode="all")
             )
             node.embedding = embedding
+            api_call_count += 1
             return node
 
         embedded_nodes = await asyncio.gather(*(embed_node(node) for node in nodes))
+
+        logger.info(f"Ingestion: Sent {api_call_count} embedding API calls.")
+        print(f"Ingestion: Sent {api_call_count} embedding API calls.")
         return cls(VectorStoreIndex(nodes=embedded_nodes, embed_model=embed_model))

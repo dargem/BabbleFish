@@ -62,13 +62,13 @@ class RAG_Database:
 
         # Prepare file metadata list
         file_metadata_list = []
-        chapter_counter = 1
+        chapter_idx = 0 # index starts at 0
         for file_path in individual_file_paths:
             if not os.path.exists(file_path):
                 logger.warning(f"RAG_Database: File path does not exist: {file_path}. Skipping.")
                 continue
-            file_metadata_list.append((file_path, {"chapter": chapter_counter}))
-            chapter_counter += 1
+            file_metadata_list.append((file_path, {"chapter_idx": chapter_idx}))
+            chapter_idx += 1
 
         if not file_metadata_list:
             logger.warning("RAG_Database: No valid files found. Creating empty ingestion.")
@@ -86,15 +86,15 @@ class RAG_Database:
 
     # The rest of your methods remain synchronous:
 
-    def build_term_entry(self, term, chapter=None):
+    def build_term_entry(self, term, chapter_idx=None):
         self.llm = Gemini(
             model=Model_Utility_Class.RAG_RETRIEVER_MODEL,
             api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
             thinking_config={"thinkingBudget": -1},
         )
-        return self.termbase.build_entry(term, self.llm, chapter=chapter)
+        return self.termbase.build_entry(term, self.llm, chapter_idx=chapter_idx)
 
-    def build_JSON_term_entries(self, entity_list, chapter=None):
+    def build_JSON_term_entries(self, entity_list, chapter_idx=None):
         data = []
         for entity in entity_list:
             self.llm = Gemini(
@@ -102,9 +102,10 @@ class RAG_Database:
                 api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_RETRIEVER_MODEL),
                 thinking_config={"thinkingBudget": -1},
             )
-            data.append(self.termbase.build_entry(entity, self.llm, chapter=chapter))
+            data.append(self.termbase.build_entry(entity, self.llm, chapter_idx=chapter_idx))
         return data
 
+    '''
     def check_term_relevance(self, entities, chapter_min_inclusive, chapter_max_exclusive):
         dic = {}
         for entity in entities:
@@ -114,16 +115,17 @@ class RAG_Database:
                     dic[entity].append(i)
             print(dic[entity])
         print(dic)
+    '''
 
-    def check_tupled_term_relevance(self, tupled_entities, chapter_min_inclusive, chapter_max_exclusive):
+    def check_tupled_term_relevance(self, tupled_entities, start_idx, end_idx):
         dic = {}
         for entity_tuple in tupled_entities:
             entity = entity_tuple[0]
             description = entity_tuple[1]
             dic[entity] = []
-            combined_term = "entity: " + entity + "description: " + description
-            for i in range(chapter_min_inclusive, chapter_max_exclusive):
-                if self.termbase.check_term_relevance(combined_term, chapter=i):
+            combined_term = "entity: " + entity + ", description: " + description
+            for i in range(start_idx, end_idx):
+                if self.termbase.check_term_relevance(combined_term, chapter_idx=i):
                     dic[entity].append(i)
             print(dic[entity])
         print(dic)

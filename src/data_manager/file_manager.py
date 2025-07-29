@@ -15,13 +15,11 @@ class File_Manager():
         self.txt_files = sorted(file_list) 
         # change this later, needs sorting by grabbing chapter num, keep note of possible numbers in the name screwing it up
     
-    def get_files(self, file_min_inclusive, file_max_exclusive):
-        min_index = file_min_inclusive - 1
-        max_index = file_max_exclusive -1
-
-        if min_index < 0 or max_index >= len(self.txt_files):
+    def get_files(self, start_idx, end_idx):
+        if start_idx < 0 or end_idx > len(self.txt_files):
             raise ValueError("Invalid range")
-        return self.txt_files[min_index:max_index]
+        return self.txt_files[start_idx:end_idx]
+
 
     def build_glossary(self, data):
         new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name

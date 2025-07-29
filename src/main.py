@@ -2,7 +2,7 @@ import logging
 import sys
 import os
 import json
-import asyncio  # <--- import asyncio
+import asyncio
 
 logging.basicConfig(
     stream=sys.stdout,
@@ -26,9 +26,9 @@ async def main():
 
     # First stage gets files
     file_manager = File_Manager(FOLDER_SOURCE)
-
-    file_paths = file_manager.get_files(file_min_inclusive=1, file_max_exclusive=4)
-
+    start_idx = 0
+    end_idx = 7
+    file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
     # Second stage construct RAG database (await async create)
     rag_database = await RAG_Database.create(file_paths)
     
@@ -40,11 +40,7 @@ async def main():
         print(entity)
 
     # Fourth stage use RAG to find good localisations for entry
-    terms = []
-    for entity in entities:
-        terms.append(rag_database.build_term_entry(entity, chapter=10))
-
-    data = rag_database.build_JSON_term_entries(entities, chapter=10)
+    data = rag_database.build_JSON_term_entries(entities, chapter_idx=10)
 
     # Fifth stage build database
     file_manager.build_glossary(data)
@@ -52,13 +48,23 @@ async def main():
     # Sixth stage replace/put markers in OG text with translated names
     glossary = file_manager.get_glossary()
     entities = file_manager.get_glossary_entities()
+    
+    # 6.1 Do an exact match through the files
+
+    # 6.2 Do a lemmatised match through the files, can use Spacy
+
+    # 6.3 Do a semantic match through the files using RAG
+
+
     print(entities)
+
     tupled_entities = []
     for entry in glossary:
         tup = (entry["entity"], entry["description"])
         tupled_entities.append(tup)
 
-    rag_database.check_term_relevance(entities, chapter_min_inclusive = 1, chapter_max_exclusive= 4)
+    rag_database.check_tupled_term_relevance(tupled_entities, start_idx = start_idx, end_idx = end_idx)
+
 
     # Further stages here...
 
