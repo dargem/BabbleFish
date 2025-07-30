@@ -1,8 +1,15 @@
 import google.generativeai as genai
 import json
 import re
+import os
+
 GEMINI_API_KEY = "AIzaSyBnL7m5aIx8Jmu63jKdnvoDNY7x2nqxGLk"
-FIND_SPEAKER_PROMPT = "/Users/td/Documents/GitHub/FinetunedMTLBot/prompts/find_speakers.txt"
+
+# Get project root dynamically
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+
+FIND_SPEAKER_PROMPT = os.path.join(project_root, "prompts", "find_speakers.txt")
 GENERATIVE_MODEL = "gemini-2.5-flash-lite-preview-06-17"
 
 class Gemini_Model:
@@ -61,7 +68,8 @@ def analyze_paragraphs(model, paragraphs, limit=10):
 if __name__ == "__main__":
     genai.configure(api_key=GEMINI_API_KEY)
 
-    paragraphs = load_paragraphs("/Users/td/Documents/GitHub/FinetunedMTLBot/data/raw/the_loss_of_the_swansea_extract.txt")
+    test_file_path = os.path.join(project_root, "data", "raw", "the_loss_of_the_swansea_extract.txt")
+    paragraphs = load_paragraphs(test_file_path)
 
     model = genai.GenerativeModel("gemini-1.5-flash")  # "gemini-pro" or "gemini-1.5-pro" for stronger results
 

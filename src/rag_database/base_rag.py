@@ -2,23 +2,34 @@ import os
 from dotenv import load_dotenv
 import logging
 import glob
-from src.utils.model_settings import Model_Utility_Class
+
+try:
+    from ..utils.model_settings import Model_Utility_Class
+except ImportError:
+    from src.utils.model_settings import Model_Utility_Class
 
 logger = logging.getLogger(__name__)
 
 load_dotenv()
 
+from llama_index.embeddings.google_genai import GoogleGenAIEmbedding
+from google.genai.types import EmbedContentConfig
+
 try:
     from llama_index.llms.gemini import Gemini
-    from llama_index.embeddings.gemini import GeminiEmbedding
 except ImportError as e:
     logger.critical(f"RAG_Database: FATAL ERROR - Missing LlamaIndex integration packages for Gemini. "
                     f"Please install: pip install llama-index-llms-gemini llama-index-embeddings-gemini. Error: {e}")
     raise
 
-from src.rag_database.ingestion import Ingestion
-from src.rag_database.retriever import Retriever
-from src.rag_database.termbase import TermBaseBuilder
+try:
+    from .ingestion import Ingestion
+    from .retriever import Retriever
+    from .termbase import TermBaseBuilder
+except ImportError:
+    from src.rag_database.ingestion import Ingestion
+    from src.rag_database.retriever import Retriever
+    from src.rag_database.termbase import TermBaseBuilder
 
 
 class RAG_Database:
@@ -45,8 +56,17 @@ class RAG_Database:
         # Setup LLM and embedding model
         try:
             llm = Gemini(model="gemini-2.5-flash-lite", api_key=google_api_key)
-            embed_model = GeminiEmbedding(model_name=Model_Utility_Class.RAG_EMBEDDING_MODEL, api_key=google_api_key)
-            
+
+            embed_model = GoogleGenAIEmbedding(
+                model_name = Model_Utility_Class.RAG_EMBEDDING_MODEL, 
+                api_key=google_api_key,
+                embedding_config=EmbedContentConfig(
+                    # think about task type later
+                    # embedding for semantic similarity and retrieval should be different (potentially embeddings take a while though)
+                    output_dimensionality=768 ## can decrease later
+                )
+            )
+
             # Test embedding sync call (if this is async, wrap accordingly)
             test_embed_str = "This is a small test string to verify the embedding model is working correctly."
             test_embed_val = embed_model.get_text_embedding(test_embed_str)

@@ -4,6 +4,10 @@ import json
 class File_Manager():
     def __init__(self, directory_path):
         self.DIRECTORY_PATH = directory_path
+        # Get project root dynamically
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+        
         # constructs list of files
         file_list=[]
         try:
@@ -22,7 +26,7 @@ class File_Manager():
 
     def build_glossary(self, data):
         new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
-        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
+        file_name = os.path.join(self.project_root, "data", "glossary", f"{new_folder}.json")
         try:
             with open(file_name, 'x') as f:
                 json.dump(data,f,indent=4)
@@ -36,7 +40,7 @@ class File_Manager():
 
     def get_glossary(self):
         new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
-        file_name = "/home/user/FinetunedMTLBot/data/glossary/" + new_folder + ".json"
+        file_name = os.path.join(self.project_root, "data", "glossary", f"{new_folder}.json")
         try:
             with open(file_name, "r") as f:
                 data = json.load(f)
@@ -55,6 +59,11 @@ class File_Manager():
     def get_entity_chapter_presence(self, entities, start_idx, end_idx):
         file_paths = self.get_files(start_idx, end_idx)
         entity_chapter_presence = {}
+        
+        # Create empty lists for all entity's
+        for entity in entities:
+            entity_chapter_presence[entity] = []
+        
         for i, file_path in enumerate(file_paths):
             try:
                 with open(file_path,'r', encoding="utf-8") as f:

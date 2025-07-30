@@ -1,6 +1,7 @@
 # availablemodel s
 from dotenv import dotenv_values
 import random
+import os
 '''
 model list
 
@@ -20,10 +21,16 @@ class Model_Utility_Class:
     # Embedding model
     #RAG_EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
-    env_vars = dotenv_values(".env")
+    # Get project root dynamically to find .env file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+    env_file_path = os.path.join(project_root, '.env')
+    
+    env_vars = dotenv_values(env_file_path)
     api_keys = []
     for key in env_vars:
-        api_keys.append(env_vars[key])
+        if env_vars[key]:  # Only add non-empty values
+            api_keys.append(env_vars[key])
 
     key_dic = {}
 
@@ -31,6 +38,9 @@ class Model_Utility_Class:
     def get_next_key(model):
         # Takes the name of the model for use
         # Cycles through a dic
+        if not Model_Utility_Class.api_keys:
+            raise ValueError(f"No API keys found in .env file at {Model_Utility_Class.env_file_path}. Please add your API keys to the .env file.")
+        
         if model not in Model_Utility_Class.key_dic:
             Model_Utility_Class.key_dic[model] = random.randint(0,len(Model_Utility_Class.api_keys)-1)
             return Model_Utility_Class.api_keys[Model_Utility_Class.key_dic[model]]

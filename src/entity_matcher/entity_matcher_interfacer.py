@@ -1,7 +1,6 @@
 import os
 
 class Entity_Matcher(self):
-
     def __init__(self, glossary, file_paths, start_idx, semantic_matcher):
         self.glossary = glossary
         self.file_paths = file_paths
@@ -34,7 +33,6 @@ class Entity_Matcher(self):
                     txt = f.read()
 
                     # lemmatize txt
-                    lemmatize
 
                     for lemmatized_entity in lemmatized_entities:
                         if lemmatized_entity in txt:

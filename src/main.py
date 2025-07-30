@@ -16,22 +16,32 @@ project_root = os.path.abspath(os.path.join(current_dir, '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from src.data_manager.file_manager import File_Manager
-from src.create_glossary.find_entities import Entity_Finder
-from src.rag_database.base_rag import RAG_Database
+try:
+    from .data_manager.file_manager import File_Manager
+    from .create_glossary.find_entities import Entity_Finder
+    from .rag_database.base_rag import RAG_Database
+except ImportError:
+    from src.data_manager.file_manager import File_Manager
+    from src.create_glossary.find_entities import Entity_Finder
+    from src.rag_database.base_rag import RAG_Database
 
 async def main():
-    FOLDER_SOURCE = "/home/user/FinetunedMTLBot/data/raw/lotm_files"
-
+    # Get project root dynamically
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, '..'))
+    FOLDER_SOURCE = os.path.join(project_root, "data", "raw", "lotm_files")
+    print("start")
     # First stage gets files
     file_manager = File_Manager(FOLDER_SOURCE)
     start_idx = 0
-    end_idx = 7
+    end_idx = 1
     file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
 
     # Second stage construct RAG database (await async create)
+    print("starting")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
-    
+    print("done")
+    exit()
     # Third stage get entities
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()

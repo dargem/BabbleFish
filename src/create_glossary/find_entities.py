@@ -1,7 +1,7 @@
 import sys
 import os
 
-from src.models.ner.gemini_ner_model import Gemini_NER_Model
+from ..models.ner.gemini_ner_model import Gemini_NER_Model
 
 class Entity_Finder:
     def __init__(self, file_paths):
@@ -22,8 +22,13 @@ class Entity_Finder:
         return entities
 
 if __name__ == "__main__":
+    import os
+    # Get project root dynamically
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+    
     file_paths = [
-        "data/raw/raw_text_extract.txt",
+        os.path.join(project_root, "data", "raw", "raw_text_extract.txt"),
     ]
 
     entity_finder = Entity_Finder(file_paths)

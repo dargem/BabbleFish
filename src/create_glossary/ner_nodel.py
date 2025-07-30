@@ -1,31 +1,18 @@
 import google.generativeai as genai
-import json
 import re
 import os
-
-try:
-    from ...utils.model_settings import Model_Utility_Class
-except ImportError:
-    from src.utils.model_settings import Model_Utility_Class
-
-try:
-    from .ner_interface import NER_Model_Interface
-except ImportError:
-    from ner_interface import NER_Model_Interface
+from ..utils.model_settings import Model_Utility_Class
 
 # Get project root dynamically
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
 
 FIND_NAMED_ENTITIES_PROMPT = os.path.join(project_root, "prompts", "find_named_entities.txt")
 FIND_NAMES_PROMPT = os.path.join(project_root, "prompts", "find_proper_names.txt")
 
 # "gemini-2.5-pro"
 # "gemini-2.0-flash"
-class Gemini_NER_Model(NER_Model_Interface):
-    def __init__(self):
-        pass
-
+class Gemini_NER_Model():
     def get_names(self, paragraph):
         genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
         self.model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
@@ -71,6 +58,3 @@ class Gemini_NER_Model(NER_Model_Interface):
             objects = []
 
         return objects
-    
-
-
