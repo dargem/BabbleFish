@@ -34,14 +34,13 @@ async def main():
     # First stage gets files
     file_manager = File_Manager(FOLDER_SOURCE)
     start_idx = 0
-    end_idx = 1
+    end_idx = 7
     file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
 
     # Second stage construct RAG database (await async create)
     print("starting")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     print("done")
-    exit()
     # Third stage get entities
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()

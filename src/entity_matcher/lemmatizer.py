@@ -2,21 +2,13 @@
 import re
 from typing import Optional, Dict, List
 
-try:
-    import spacy
-    from spacy.lang.en import English
-    from spacy.lang.zh import Chinese
-    from spacy.lang.ja import Japanese
-    from spacy.lang.ko import Korean
-    from spacy.lang.es import Spanish
-    from spacy.lang.fr import French
-    SPACY_AVAILABLE = True
-except ImportError:
-    print("spaCy not available. Install with: pip install spacy")
-    SPACY_AVAILABLE = False
-    # Define dummy classes for fallback
-    spacy = None
-    English = Chinese = Japanese = Korean = Spanish = French = None
+import spacy
+from spacy.lang.en import English
+from spacy.lang.zh import Chinese
+from spacy.lang.ja import Japanese
+from spacy.lang.ko import Korean
+from spacy.lang.es import Spanish
+from spacy.lang.fr import French
 
 class SpacyLemmatizer:
     """
@@ -35,26 +27,11 @@ class SpacyLemmatizer:
         }
         
         # Only initialize if spaCy is available
-        if SPACY_AVAILABLE:
-            # Fallback language classes if models aren't available
-            self.fallback_classes = {
-                'english': English,
-                'chinese': Chinese,
-                'japanese': Japanese,
-                'korean': Korean,
-                'spanish': Spanish,
-                'french': French
-            }
-            self._load_models()
-        else:
-            print("spaCy not available. Lemmatization will use basic fallback methods.")
-            self.fallback_classes = {}
+        self._load_models()
     
     def _load_models(self):
         """Load spaCy models, with fallbacks if models aren't installed"""
-        if not SPACY_AVAILABLE:
-            return
-            
+
         for language, model_name in self.model_names.items():
             try:
                 # Try to load the full model

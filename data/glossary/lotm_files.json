@@ -2,602 +2,742 @@
     {
         "entity": "Lord of the Mysteries",
         "chapter cutoff": 10,
-        "description": "The \"Lord of the Mysteries\" is a title or designation that appears to be of significant importance within the narrative. While not explicitly defined in the provided snippets, its context suggests it is a powerful or influential entity, possibly a deity or a high-ranking Beyonder. The mention of churches dedicated to other deities like the Evernight Goddess, Lord of Storms, and God of Steam and Machinery implies a religious or spiritual framework where such titles hold sway. The term's presence, juxtaposed with discussions of Beyonders and tarot cards, hints at a connection to the supernatural or arcane aspects of this world.",
+        "description": "\"Lord of the Mysteries\" is a title or designation that appears to be of significant importance within the narrative. It is associated with the concept of becoming a \"Beyonder,\" suggesting a supernatural or extraordinary status. The context implies that joining specific churches, such as those of the Evernight Goddess, the Lord of Storms, or the God of Steam and Machinery, is a path to becoming a Beyonder, and this title might be related to such a path or a higher echelon within it. The term carries a sense of mystery and power, hinting at a central figure or entity within the world's lore.",
         "term type": "Title",
         "english target translation": "Lord of the Mysteries"
     },
     {
-        "entity": "Crimson",
-        "chapter cutoff": 10,
-        "description": "In this context, \"crimson\" is used to describe the color of the moonlight, which is depicted as a \"crimson veil-like moonlight\" and a \"crimson moon.\" This suggests a specific, unusual quality to the moonlight, imbuing it with a reddish hue. This crimson quality serves as the primary, albeit insufficient, source of illumination in the dimly lit environment, contributing to the eerie and tense atmosphere. The color also carries a potentially ominous or supernatural connotation, aligning with the mysterious and unsettling events unfolding.",
-        "term type": "Adjective",
-        "english target translation": "Crimson"
-    },
-    {
         "entity": "Zhou Mingrui",
         "chapter cutoff": 10,
-        "description": "Zhou Mingrui is the primary protagonist of the narrative. He appears to be a recent university graduate with a history background, possessing knowledge of ancient languages like Feysac and Hermes. The context suggests he is experiencing a form of memory transference or possession, as he finds himself in an unfamiliar environment and his own memories are interspersed with those of someone named Klein. He is shown to be disoriented, experiencing physical pain, and grappling with the implications of his new reality, including the presence of a revolver and a \"sanguine moon.\" His immediate concerns include an upcoming university interview and the stark contrast between his current surroundings and his own room.",
+        "description": "Zhou Mingrui is the original name of the protagonist in the provided context. He is depicted as a modern-day individual who experiences a profound and disorienting shift, seemingly transitioning into a different reality or persona. The context highlights his intellectual capabilities, noting his familiarity with various card games and his potential struggles in a contemporary academic setting. He is also shown to be the recipient of a significant title, \"Mr. Fool,\" which is bestowed upon him by others who perceive him as mysterious, powerful, and bizarre. This suggests a dual identity or a transformation where his original self is now associated with a more significant and perhaps supernatural role.",
         "term type": "Character Name",
         "english target translation": "Zhou Mingrui"
     },
     {
-        "entity": "Hermes language",
-        "chapter cutoff": 10,
-        "description": "The Hermes language is presented as an ancient and significant language, originating from the Northern Continent and frequently appearing in historical texts related to ancient mausoleums and ritualistic practices. Its mention suggests a connection to arcane knowledge, history, and potentially mystical or religious traditions. The protagonist, Klein, possesses knowledge of this language, indicating its relevance to his background and potential future endeavors, particularly in deciphering ancient texts or understanding forgotten rituals. Its association with sacrificial and praying rituals implies a deep historical and possibly spiritual significance.",
-        "term type": "Concept",
-        "english target translation": "Hermes language"
-    },
-    {
-        "entity": "Earth",
-        "chapter cutoff": 10,
-        "description": "In this context, \"Earth\" refers to the planet on which the characters reside, a world where the existence of \"Beyonders\" is a known but rare phenomenon. It is a place with established societal structures, including churches and public service roles, and technological advancements like gas lamps and mechanical devices. The narrative suggests a historical and linguistic richness, with mentions of ancient languages like Feysac and Hermes, implying a world with a deep past. The presence of street vendors selling food like roasted fish and oysters further grounds \"Earth\" as a recognizable, albeit perhaps slightly anachronistic, setting.",
-        "term type": "Location",
-        "english target translation": "Earth"
-    },
-    {
         "entity": "Klein Moretti",
         "chapter cutoff": 10,
-        "description": "Klein Moretti is the name of the individual whose body and memories the protagonist, Zhou Mingrui, has seemingly transmigrated into. He is a recent history graduate from Khoy University in the Northern Continent's Loen Kingdom, City of Tingen. His family background is modest, with a deceased father who was an Imperial Army sergeant and a mother devoted to the Evernight Goddess who also passed away. He has an elder brother, Benson, and a younger sister. Klein's life appears to be one of diligent study and limited opportunities, reflecting his family's financial situation.",
+        "description": "Klein Moretti is the original inhabitant of the body that Zhou Mingrui has transmigrated into. He is a recent history graduate from Khoy University in the City of Tingen, Loen Kingdom, Northern Continent. His family background is one of modest means, with a deceased father who was an Imperial Army sergeant and a mother who was a devotee of the Evernight Goddess. Despite his academic background, his current circumstances are dire, indicated by the lack of basic amenities like gas lamps and the presence of urban decay in his living environment. The context suggests Klein may have met a tragic end, possibly suicide or murder, as his memories are fragmented and his head was apparently penetrated by a bullet.",
         "term type": "Character Name",
         "english target translation": "Klein Moretti"
     },
     {
         "entity": "Northern Continent",
         "chapter cutoff": 10,
-        "description": "The Northern Continent is a geographical region mentioned in the context of language studies. It is presented as the origin of the ancient Feysac language, which is considered the root of all languages in that area. This implies a historical and linguistic significance for the Northern Continent within the narrative's world-building.",
+        "description": "The Northern Continent is a geographical and political entity within the narrative's world. It is characterized by a unique climate, with Tingen experiencing temperatures below 30\u00b0C and cooler mornings. This continent is divided into twelve months, with a seven-day week, influenced by astronomical observations and religious beliefs, specifically the worship of seven orthodox gods. The continent also has a distinct linguistic history, with Feysac being the origin of all languages, and a developed system of paper-based cards and playstyles, alongside a history of exploration and colonialism.",
         "term type": "Location",
         "english target translation": "Northern Continent"
     },
     {
         "entity": "Loen Kingdom",
         "chapter cutoff": 10,
-        "description": "The Loen Kingdom is a sovereign nation within the narrative, serving as the primary setting for the protagonist's experiences. It is characterized by its own language, societal norms, and institutions, such as universities and churches. The kingdom's capital is Backlund, and its citizens, like Zhou Mingrui, face challenges related to career prospects and social mobility, particularly for those with history degrees. The kingdom's political and social structure appears to influence the opportunities available to its inhabitants.",
+        "description": "The Loen Kingdom is a sovereign nation within the narrative, characterized by its unique currency system, including copper pennies, soli, and gold pounds, and its distinct climate in regions like Tingen. It has a structured education system, with public primary schools established under a 'Basic Education Law' that aims for religious neutrality, contrasting with older Sunday school models. The kingdom's history includes territorial expansion and the subjugation of other nations. Its capital city is Backlund, and its language is the Loen language, shared with other inhabitants.",
         "term type": "Location",
         "english target translation": "Loen Kingdom"
     },
     {
         "entity": "Awwa County",
         "chapter cutoff": 10,
-        "description": "The term \"Awwa County\" is not present in the provided context. Therefore, no description or translation can be generated.",
-        "term type": "Not Applicable",
-        "english target translation": "Not Applicable"
+        "description": "Awwa County appears to be a geographical or administrative region mentioned within the context of a historical narrative, likely related to military or political expansion. The mention of invading other nations and placing them under protection suggests that Awwa County might have been a territory that was conquered or brought under the dominion of a powerful entity, possibly a kingdom or empire. Its inclusion in the narrative serves to establish a historical backdrop and illustrate the scope of a particular ruler's influence or actions.",
+        "term type": "Location",
+        "english target translation": "Awwa County"
     },
     {
         "entity": "City of Tingen",
         "chapter cutoff": 10,
-        "description": "The City of Tingen is a significant location within the narrative, serving as the current setting for the protagonist, Klein, who has inherited the memories of a woman named Klein. It is a place where Klein sells bread and pastries, and where the Tingen biscuits and lemon cakes she bakes are noted for their deliciousness. The city is also where Klein needs to participate in the Tingen University's History department interview, indicating it is a place with educational institutions and a certain level of societal structure. The presence of street vendors selling roasted fish, oyster soup, and muffins suggests a bustling urban environment.",
+        "description": "Tingen is a city located north of the Loen Kingdom, characterized by a unique, cooler climate with highest annual temperatures below 30\u00b0C and cool mornings. It serves as a significant educational hub, housing Tingen Technical School, which offers secondary education, and Tingen University, which offers higher education. The city's economy appears to be influenced by broader national or continental events, as seen with Benson's company being affected by the situation in the Southern Continent. Tingen is also a place where individuals like Melissa pursue vocational training in fields like steam mechanics, and where academic aspirations, such as attending Tingen University, are pursued.",
         "term type": "Location",
-        "english target translation": "City of Tingen"
+        "english target translation": "Tingen"
+    },
+    {
+        "entity": "Department of History",
+        "chapter cutoff": 10,
+        "description": "The Department of History at Tingen University is an academic institution that offers specialized education in the field of history. Graduates from this department, like Zhou Mingrui, face limited job opportunities in the Loen Kingdom, often requiring connections for public service roles. Despite these challenges, a position as a lecturer within the department offers a substantial salary, significantly higher than that of ordinary workers or even experienced individuals like Benson. The department's interview process is a crucial step for aspiring academics, as highlighted by Zhou Mingrui's upcoming interview.",
+        "term type": "Academic Department",
+        "english target translation": "History department"
     },
     {
         "entity": "Khoy University",
         "chapter cutoff": 10,
-        "description": "Khoy University is an institution of higher learning that the protagonist, Zhou Mingrui (later known as Klein Moretti), attended. His admission into this university was a significant event, considered crucial for his family's future, to the extent that his elder brother, Benson, incurred debt to provide him with adequate study conditions, including a gas lamp. This suggests that Khoy University is a prestigious or at least a highly valued educational establishment within the narrative's setting, implying a certain level of academic rigor and societal importance.",
+        "description": "Khoy University is an institution of higher learning that the character Klein (also referred to as Zhou Mingrui) attended. His admission to this university was a significant event, requiring his elder brother Benson to incur debt to ensure conducive studying conditions. Klein is a recent graduate of Khoy University, holding a history degree. The university's graduates do not traditionally remain at their alma mater after graduation, as indicated by Klein's upcoming interview at Tingen University.",
         "term type": "Location",
         "english target translation": "Khoy University"
     },
     {
+        "entity": "Imperial Army",
+        "chapter cutoff": 10,
+        "description": "The Imperial Army refers to the military forces of an empire, implied to be a powerful and expansive one given the context of invading other nations and placing them under protection. Its function is clearly one of conquest and maintaining control over subjugated territories. The mention of its actions suggests a significant military might capable of projecting power beyond its borders and enforcing its will upon other states.",
+        "term type": "Military Unit",
+        "english target translation": "Imperial Army"
+    },
+    {
         "entity": "Southern Continent",
         "chapter cutoff": 10,
-        "description": "The Southern Continent is a geographical location mentioned in the context of language studies. It is presented as a place where the ancient Feysac language, considered the origin of all languages in the Northern Continent, is spoken. This implies a historical and linguistic connection between the two continents, with the Southern Continent holding significance as a source or early origin point of linguistic development.",
+        "description": "The Southern Continent is a geographical location that became accessible through maritime exploration. Its discovery initiated an era of colonialism, implying it was a new frontier for expansion and resource acquisition by the nations mentioned. The economic activities and political situations of characters like Benson are directly impacted by events occurring in this region, suggesting it is a significant area for trade and potential conflict.",
         "term type": "Location",
         "english target translation": "Southern Continent"
     },
     {
         "entity": "Evernight Goddess",
         "chapter cutoff": 10,
-        "description": "The Evernight Goddess is presented as one of the primary deities whose churches individuals can join to become a Beyonder. This implies she is a significant religious figure within the world, with established churches and likely a following that believes in her power or influence. The mention of her alongside the Lord of Storms and the God of Steam and Machinery suggests a pantheon of powerful beings, each associated with different domains or aspects of existence. Her existence and the existence of her church are presented as a known and accepted reality within the narrative, even if the majority of people never encounter a Beyonder.",
+        "description": "The Evernight Goddess is a deity worshipped in the world described. The text indicates that joining her church is a way to become a \"Beyonder,\" suggesting she is a divine entity associated with supernatural powers or abilities. The Church of the Evernight Goddess is one of the major religious institutions, alongside the Lord of Storms and the God of Steam and Machinery, and plays a role in the educational landscape, with its Sunday school classes being an option for rudimentary education, though public schools are now religiously neutral.",
         "term type": "Character Name",
         "english target translation": "Evernight Goddess"
     },
     {
         "entity": "Feysac language",
         "chapter cutoff": 10,
-        "description": "The Feysac language is presented as an ancient and foundational language, considered the origin of all languages on the Northern Continent. Its study is associated with nobility and the wealthy class, who learn it from a young age. For individuals like Klein, who come from a more common background, it represents a significant academic challenge, as they only encounter it later in university, highlighting a disparity in educational opportunities and cultural capital.",
+        "description": "The Feysac language is presented as the foundational language of the Northern Continent, holding significant cultural and historical weight. It is associated with nobility and wealth, as children from these classes learn it from a young age. In contrast, Klein, a commoner, only encountered it in university, highlighting a social and educational disparity. Klein's academic background as a history graduate includes knowledge of this ancient language, suggesting its importance in historical studies and potentially in understanding ancient texts or rituals.",
         "term type": "Concept",
         "english target translation": "Feysac language"
     },
     {
+        "entity": "Hermes language",
+        "chapter cutoff": 10,
+        "description": "The Hermes language is an ancient language with significant historical and mystical connotations within the provided context. It is described as appearing in ancient mausoleums and texts related to sacrificial and praying rituals, suggesting a connection to the sacred and the arcane. For Klein, a history graduate, it represents a challenging but ultimately decipherable form of ancient script, indicating its importance in understanding historical and potentially supernatural phenomena. Its presence on a notebook that induces fear and a sense of unease highlights its association with unsettling or powerful knowledge. The language also plays a role in the lineage of Beyonder potion names, undergoing translations through various ancient tongues, underscoring its foundational linguistic significance.",
+        "term type": "Concept",
+        "english target translation": "Hermes language"
+    },
+    {
+        "entity": "Earth",
+        "chapter cutoff": 10,
+        "description": "In the provided context, \"Earth\" refers to the planet of origin for the character Zhou Mingrui, who has transmigrated into the body of Klein Moretti. It is presented as a point of comparison for the climate of Tingen, highlighting that Tingen's highest annual temperature is significantly lower than Earth's. This usage implies that \"Earth\" is a known and understood concept within the narrative, serving as a benchmark for understanding the unfamiliar environment of the Northern Continent.",
+        "term type": "Location",
+        "english target translation": "Earth"
+    },
+    {
+        "entity": "Klein",
+        "chapter cutoff": 10,
+        "description": "Klein, also referred to as Klein Moretti, is the central character in the provided context. He is depicted as a university student, or at least someone who has attended university, though his academic capabilities are questioned in the current situation. His family is of low socio-economic standing, struggling with basic necessities like adequate lighting, with his elder brother, Benson, working to support the family. Klein's background as a commoner and his late exposure to subjects like the ancient language of Feysac highlight his disadvantaged upbringing and the challenges he faced in pursuing higher education. The context also suggests a significant event has occurred, leading to his current predicament and a desire to return to his previous life, including the internet and familiar people.",
+        "term type": "Character Name",
+        "english target translation": "Klein"
+    },
+    {
         "entity": "Benson",
         "chapter cutoff": 10,
-        "description": "Benson is the elder brother of the protagonist, Klein Moretti. He is portrayed as a responsible and caring individual who prioritized Klein's education, even going into debt to provide him with better study conditions, such as a kerosene lamp. This action highlights Benson's dedication to his family and his belief in the importance of education for their future. His literacy and work experience suggest he is a practical and thoughtful person.",
+        "description": "Benson is a character in the provided text, identified as the elder brother of Klein (whose memories Zhou Mingrui now possesses). He is portrayed as a responsible and supportive individual who worked for several years and was literate. Benson prioritized his family's future, investing in Klein's education and supporting his sister Melissa's ambition to become a steam mechanic. Despite facing financial difficulties due to his company's struggles, Benson worked diligently, even taking on arduous tasks and overtime, to provide for his family. His weekly salary is noted as one pound and ten soli, which is significantly less than that of a university lecturer.",
         "term type": "Character Name",
         "english target translation": "Benson"
     },
     {
         "entity": "King George III",
         "chapter cutoff": 10,
-        "description": "King George III is mentioned in the context of a discussion about tarot cards and their potential origins or variations. The speaker refers to Emperor Roselle having created \"another set of cards, secret and mysterious ones,\" which are described as paper cards symbolizing \"a particular unknown power.\" This implies that King George III might be associated with or have knowledge of these secret tarot cards, possibly as a historical figure who interacted with Emperor Roselle or was involved in the esoteric practices of the time. His mention suggests a connection to historical events or figures relevant to the development or understanding of these mysterious cards.",
+        "description": "King George III is a historical figure mentioned in the context of a coin's minting and circulation. The coin was minted and circulated specifically after his ascension to the throne, indicating his reign as a significant temporal marker. His existence is tied to the currency of the time, suggesting a period in British history where his rule defined the era of the coin's use.",
         "term type": "Character Name",
         "english target translation": "King George III"
     },
     {
-        "entity": "Mr. Franky",
-        "chapter cutoff": 10,
-        "description": "\"Mr. Franky\" is a name mentioned in the context, likely referring to a character or individual. The context suggests a conversation or interaction where this name is used, possibly in a formal or respectful manner given the \"Mr.\" prefix. Without further information, its specific role or significance within the narrative remains unclear, but it is presented as a recognizable entity within the story's world.",
-        "term type": "Character Name",
-        "english target translation": "Mr. Franky"
-    },
-    {
         "entity": "Melissa",
         "chapter cutoff": 10,
-        "description": "Melissa is a young woman who is the younger sister of Benson and, through Klein's memories, perceived as such by Zhou Mingrui. She is characterized by her punctuality and her passion for mechanics, specifically gears, springs, and bearings, with an ambition to become a steam mechanic. Unlike many girls of her time, her education was not solely through Sunday school but also through the public primary school system established by the 'Basic Education Law,' which emphasized religious neutrality. She successfully pursued her dream by enrolling in the Tingen Technical School's Steam and Machinery department, incurring higher weekly school fees. Her baking skills are also noted, with her Tingen biscuits and lemon cakes being described as delicious.",
+        "description": "Melissa is a young girl, likely a teenager, who is highly intelligent and mechanically inclined, enjoying gears, springs, and bearings. She attends the Tingen Technical School in the Steam and Machinery department, indicating a focus on practical, technical education. Despite her academic pursuits and the family's financial struggles, she is portrayed as responsible and caring, managing household affairs and looking out for her brother, Klein. Her punctuality and diligence are highlighted, suggesting a disciplined nature.",
         "term type": "Character Name",
         "english target translation": "Melissa"
     },
     {
-        "entity": "Tingen University",
+        "entity": "Tingen City",
         "chapter cutoff": 10,
-        "description": "Tingen University is an academic institution within the Loen Kingdom where the protagonist, Zhou Mingrui (also known as Klein), is scheduled to have a job interview in the History department. The context suggests that graduating from a university like Tingen is a traditional path for Loen Kingdom citizens, but job opportunities for history graduates are limited, especially for those without connections. The university represents a potential career path for Klein, but also highlights the societal limitations and competition he faces.",
+        "description": "Tingen City is a significant urban center within the Loen Kingdom, characterized by a unique climate with cool mornings and highest annual temperatures below 30\u00b0C. It serves as the location for important educational institutions, including Tingen Technical School, which offers secondary education in fields like Steam and Machinery, and Tingen University, which has a History department. The city's economy is influenced by external factors, such as events on the Southern Continent, impacting businesses and employment. Tingen City is also a place where individuals like Melissa and Benson reside and pursue their educational and professional aspirations, with the cost of living and education being a notable factor.",
         "term type": "Location",
-        "english target translation": "Tingen University"
+        "english target translation": "Tingen City"
     },
     {
-        "entity": "Backlund University",
+        "entity": "Mr. Franky",
         "chapter cutoff": 10,
-        "description": "Backlund University is an institution of higher learning within the Loen Kingdom. It is presented as a potential academic path for graduates, as indicated by the protagonist's mentor providing a recommendation letter for it, alongside Tingen University. This suggests it is a recognized and reputable university within the narrative's setting, offering opportunities for those seeking further education and career prospects, particularly for history graduates.",
-        "term type": "Location",
-        "english target translation": "Backlund University"
+        "description": "Mr. Franky is the landlord of the apartment building where the protagonist, Zhou Mingrui (who has seemingly transmigrated into the body of Klein), resides. He is characterized as a short, thin gentleman who wears a top hat, vest, and black suit. Mr. Franky is depicted as being very particular about water usage, frequently inspecting the communal bathroom to monitor water flow and admonishing tenants for any perceived waste with aggressive and colorful language. His presence highlights the protagonist's precarious living situation and the landlord's strict, almost tyrannical, control over the tenants' lives.",
+        "term type": "Character Name",
+        "english target translation": "Mr. Franky"
     },
     {
         "entity": "Church of the Evernight Goddess",
         "chapter cutoff": 10,
-        "description": "This refers to a religious organization dedicated to the Evernight Goddess, presented as one of the primary avenues for individuals seeking to become Beyonders. Its existence implies a structured religious system within the narrative's world, offering a path to supernatural abilities. The mention of it alongside other churches suggests a pantheon of deities and established religious institutions that play a role in the societal framework and the acquisition of extraordinary powers.",
-        "term type": "Organization Name",
+        "description": "The Church of the Evernight Goddess is one of the major religious organizations in the world described in the context. It is presented as a path for individuals seeking to become \"Beyonders,\" individuals with supernatural abilities. The church, along with others like the Church of the Lord of Storms and the Church of Steam and Machinery, plays a significant role in society, influencing education and offering a structured way to gain power. The context also implies that the church, like other major institutions, has faced internal scrutiny and suspicion regarding the existence of Beyonders.",
+        "term type": "Organization",
         "english target translation": "Church of the Evernight Goddess"
     },
     {
         "entity": "Basic Education Law",
         "chapter cutoff": 10,
-        "description": "The \"Basic Education Law\" was a significant piece of legislation enacted in the Loen Kingdom that mandated and funded the establishment of public primary schools. This law aimed to increase the kingdom's investment in education and ensure religious neutrality in schooling by incorporating existing church schools. It provided a more accessible and comprehensive education compared to traditional Sunday school, offering six days of classes a week at a low cost, thereby expanding educational opportunities for the populace.",
+        "description": "The \"Basic Education Law\" was a legislative act enacted by the Loen Kingdom that mandated and funded the establishment of public primary schools. Its primary purpose was to increase the kingdom's investment in education and ensure religious neutrality in schooling by incorporating existing church schools. This law aimed to prevent religious conflicts, such as those between the Lord of Storms, the Evernight Goddess, and the God of Steam and Machinery, from influencing the curriculum. The law led to the creation of a Primary and Secondary Education Committee, signifying a significant shift towards state-controlled education.",
         "term type": "Concept",
         "english target translation": "Basic Education Law"
     },
     {
         "entity": "Primary and Secondary Education Committee",
         "chapter cutoff": 10,
-        "description": "The \"Primary and Secondary Education Committee\" is a governmental or administrative body responsible for overseeing and regulating educational institutions at the primary and secondary levels. Its existence implies a structured system of schooling and a governing authority that sets standards, curricula, and policies for these educational stages. The context suggests that membership or influence within such a committee could be a pathway to becoming a public servant, indicating its role in the bureaucracy and the importance of connections for career advancement in that era.",
-        "term type": "Concept",
+        "description": "The Primary and Secondary Education Committee was an official body established by the Loen Kingdom following the enactment of the \u2018Basic Education Law.\u2019 Its purpose was to oversee and implement the kingdom's increased investment in education, specifically by establishing numerous public primary schools. This committee was crucial in ensuring that education adhered to the principle of religious neutrality, thereby preventing conflicts arising from differing religious beliefs within the kingdom.",
+        "term type": "Organization",
         "english target translation": "Primary and Secondary Education Committee"
     },
     {
         "entity": "Lord of Storms",
         "chapter cutoff": 10,
-        "description": "The \"Lord of Storms\" is presented as one of the divine entities whose Church individuals can join to become a Beyonder. This implies it is a deity or a powerful supernatural being with a dedicated following and a structured religious organization. Its inclusion alongside the Evernight Goddess and the God of Steam and Machinery suggests it is a significant religious figure within the world's established pantheon, likely associated with powers related to storms, weather, or perhaps even chaos and change.",
-        "term type": "Title",
+        "description": "The \"Lord of Storms\" is one of the major deities worshipped in the world of Lord of the Mysteries. The context indicates that the Church of the Lord of Storms is a significant religious institution, offering pathways for individuals to become Beyonders. Specifically, the \"Keepers of the Seas\" are mentioned as a past designation associated with this deity, implying a connection to maritime or aquatic abilities. The churches, including this one, are also involved in the educational landscape, though public schools aim for religious neutrality to avoid conflicts between different deities like the Lord of Storms, the Evernight Goddess, and the God of Steam and Machinery.",
+        "term type": "Deity",
         "english target translation": "Lord of Storms"
     },
     {
         "entity": "God of Steam and Machinery",
         "chapter cutoff": 10,
-        "description": "The God of Steam and Machinery is a deity whose worship was publicly revealed during the rule of Emperor Caesar, formerly known as Roselle. This deity's worship signifies a shift from the previous \"God of Craftsmanship,\" indicating a technological and industrial advancement within the society. The name itself reflects a focus on mechanical innovation, industrial processes, and the power derived from steam and machinery, likely influencing societal development and potentially the lives of Beyonders.",
-        "term type": "Title",
+        "description": "The God of Steam and Machinery is a deity worshipped in the world described, having evolved from the God of Craftsmanship during Roselle's era. This change signifies a shift in religious focus towards technological advancement and industrialization. The Church of Steam and Machinery is one of the major religious organizations, offering pathways for individuals to become Beyonders, and its teachings are considered in the context of public education, which aims for religious neutrality amidst the influence of various gods, including this one.",
+        "term type": "Deity Name",
         "english target translation": "God of Steam and Machinery"
     },
     {
         "entity": "Tingen Technical School",
         "chapter cutoff": 10,
-        "description": "Tingen Technical School is an educational institution within the Loen Kingdom, specifically mentioned in relation to the character Melissa. It represents a secondary education path, distinct from university-level studies. Melissa's enrollment in its Steam and Machinery department signifies her ambition and the family's support for her vocational aspirations, highlighting the societal value placed on technical skills. The school's existence also implies a structured educational system in the kingdom, with specific departments catering to different career paths.",
+        "description": "Tingen Technical School is an educational institution in the Loen Kingdom, specifically located in the northern city of Tingen. It offers secondary education, with a notable Steam and Machinery department that Melissa, the protagonist's sister, attends. The school's fees are a significant expense, with Melissa's weekly fees being nine pence. The context highlights that attending this school is a step towards achieving a dream, but it is still considered secondary education compared to a university.",
         "term type": "Location",
         "english target translation": "Tingen Technical School"
     },
     {
+        "entity": "Steam and Machinery department",
+        "chapter cutoff": 10,
+        "description": "This refers to a specific academic division within the Tingen Technical School, dedicated to the study and practical application of steam power and mechanical engineering. It signifies a focus on vocational and technical education, preparing students for careers in industries reliant on these technologies. Melissa's enrollment in this department highlights her ambition and the school's role in providing specialized, post-secondary education in a burgeoning industrial era.",
+        "term type": "Location",
+        "english target translation": "Steam and Machinery department"
+    },
+    {
         "entity": "Royal Army",
         "chapter cutoff": 10,
-        "description": "The term \"Royal Army\" is not explicitly present in the provided context. However, the context does mention the difficulty of becoming a public servant without connections, implying a structured societal hierarchy and likely a governing body that would employ such individuals. The mention of \"Emperor Roselle\" suggests a monarchy or an empire, which would typically have a military force, potentially referred to as the Royal Army. The general atmosphere of \"grim and tense vibes\" and the mention of \"Churches\" and \"clergy\" point towards a society with established institutions, including those that would maintain order and defense, which a Royal Army would fulfill.",
-        "term type": "Concept",
+        "description": "The \"Royal Army\" refers to the military forces of the Loen Kingdom. While not explicitly detailed in the provided snippets, its mention in the context of a luxurious villa in the royal district suggests it is a powerful and established institution. Its presence implies a structured military that upholds the kingdom's authority and likely plays a role in national defense and potentially internal order, as suggested by the mention of invading other nations and placing them under protection.",
+        "term type": "Organization",
         "english target translation": "Royal Army"
     },
     {
-        "entity": "Sunday",
+        "entity": "Tingen University",
         "chapter cutoff": 10,
-        "description": "The term \"Sunday\" is used in the context of a street vendor's call, advertising their wares. It is presented as a time when one might feel invigorated, suggesting a day of rest or a special occasion where such food would be particularly appealing. The vendor is likely trying to entice customers by associating their food with a positive feeling or a specific day of the week.",
-        "term type": "Event",
-        "english target translation": "Sunday"
+        "description": "Tingen University is an institution of higher learning located in the city of Tingen, north of the Loen Kingdom. It is a prestigious university that offers a History department, and its lecturers, even those on probation, receive a substantial weekly salary, significantly higher than ordinary workers or even those in skilled trades. The university plays a crucial role in the protagonist's immediate future, as he is scheduled for an interview there in two days, and passing this interview is a prerequisite for improving his family's socioeconomic status. The university also represents a potential path to a better life, contrasting with the struggles faced by his brother Benson and sister Melissa.",
+        "term type": "Location",
+        "english target translation": "Tingen University"
+    },
+    {
+        "entity": "Backlund University",
+        "chapter cutoff": 10,
+        "description": "Backlund University is a prestigious institution of higher learning located in the capital city of the Loen Kingdom. It represents a significant academic goal for Zhou Mingrui, who is seeking admission after recently leaving campus. The university, along with Tingen University, is a potential pathway for him to secure a better future, with the implication that graduating from such an institution is a marker of success and a departure from the tradition of staying at one's alma mater. The context suggests it is a highly regarded university, as evidenced by the recommendation letters Zhou Mingrui received.",
+        "term type": "Location",
+        "english target translation": "Backlund University"
     },
     {
         "entity": "Quintessential Divination and Arcane Arts of the Qin and Han Dynasty",
         "chapter cutoff": 10,
-        "description": "This is the title of a thread-bound book discovered by Zhou Mingrui in an old bookstore. The book pertains to Chinese divination and arcane arts, specifically from the Qin and Han Dynasty periods. Zhou Mingrui acquired it for the purpose of enhancing his knowledge for online discussions and later referenced its contents to create a set of twenty-two Major Arcana tarot cards for use as a gaming tool. The book also contains a luck enhancement ritual that Zhou Mingrui attempted.",
+        "description": "This is the title of a thread-bound book discovered by Zhou Mingrui in an old bookstore in his hometown. The book is described as looking interesting and potentially useful for \"posturing on the Internet.\" Its content pertains to Chinese Divination and Arcane Arts, specifically referencing the Qin and Han Dynasty periods. The book's existence suggests a historical basis for divination practices that Zhou Mingrui, as a \"keyboard folklorist,\" would find valuable for his online persona and knowledge base.",
         "term type": "Title",
         "english target translation": "Quintessential Divination and Arcane Arts of the Qin and Han Dynasty"
     },
     {
+        "entity": "Chinese Divination",
+        "chapter cutoff": 10,
+        "description": "Chinese Divination refers to a practice that Zhou Mingrui, a self-proclaimed \"keyboard folklorist,\" encountered and studied. He acquired a book titled \u2018Quintessential Divination and Arcane Arts of the Qin and Han Dynasty,\u2019 indicating that this practice has historical roots in ancient China. Zhou Mingrui's interest in it stems from its potential utility for \"posturing on the Internet,\" suggesting a modern, perhaps superficial, engagement with the subject. It is presented as a form of knowledge that can be acquired and utilized, even if primarily for intellectual posturing.",
+        "term type": "Concept",
+        "english target translation": "Chinese Divination"
+    },
+    {
         "entity": "Immortal Lord of Heaven and Earth",
         "chapter cutoff": 10,
-        "description": "This is a divine invocation used in a luck enhancement ritual. It is one of four phrases chanted during a specific counter-clockwise walking sequence. The phrase implies a connection to a powerful, possibly celestial, entity or entities associated with the entirety of existence, suggesting a belief system where such beings can bestow blessings and influence fortune. Its inclusion in the ritual highlights the mystical and spiritual nature of the practices described.",
+        "description": "\"Immortal Lord of Heaven and Earth\" is a phrase chanted by Zhou Mingrui during a luck enhancement ritual. It appears to be a divine invocation or title used in a prayer or incantation. The context suggests it is part of a ritualistic sequence, with variations like \"Sky Lord of Heaven and Earth,\" \"Exalted Thearch of Heaven and Earth,\" and \"Celestial Worthy of Heaven and Earth\" being used in subsequent steps, indicating a potential hierarchy or different aspects of a divine entity being addressed. Its functional role is to activate or empower the ritual, seeking blessings or luck.",
         "term type": "Title",
         "english target translation": "Immortal Lord of Heaven and Earth"
     },
     {
         "entity": "Sky Lord of Heaven and Earth",
         "chapter cutoff": 10,
-        "description": "This phrase is part of a luck enhancement ritual described in the text. It is one of four incantations that must be chanted while taking steps in a counter-clockwise direction to form a square. The ritual aims to invoke blessings from celestial entities associated with the \"Heaven and Earth.\" The specific phrasing suggests a hierarchical or multifaceted divine power structure.",
-        "term type": "Incantation",
+        "description": "\"Sky Lord of Heaven and Earth\" is one of four specific incantations used in a ritualistic square formation. It is chanted during the second step of this ritual, which involves taking four counter-clockwise steps. The phrase appears to be a divine or spiritual title, likely referring to a celestial being or deity associated with the heavens and the earth, and is part of a sequence of invocations intended to bring about some form of blessing or effect. Its inclusion in a ritual suggests a religious or mystical context within the narrative.",
+        "term type": "Title",
         "english target translation": "Blessings Stem From The Sky Lord of Heaven and Earth"
     },
     {
         "entity": "Exalted Thearch of Heaven and Earth",
         "chapter cutoff": 10,
-        "description": "This phrase is part of a ritualistic chant intended to invoke blessings. It is one of four invocations, each directed towards a different aspect of a celestial authority, suggesting a hierarchical or multifaceted divine power. The term implies a supreme, elevated ruler or governing entity associated with both the heavens and the earth, likely a deity or a powerful spiritual being within the context of the described arcane arts. Its inclusion in the ritual highlights a belief in the efficacy of specific incantations for personal benefit, such as luck enhancement.",
+        "description": "This phrase is part of a ritualistic incantation performed by Zhou Mingrui, who is attempting to replicate a ritual described in a book. It represents one of the four steps in a counter-clockwise square formation, each step accompanied by a specific chant. The phrase itself suggests a divine or supreme being associated with the entirety of existence, \"Heaven and Earth,\" and the term \"Thearch\" implies a ruler or sovereign, further emphasizing its elevated and powerful nature within the context of the ritual. Its inclusion in the ritual, alongside similar phrases, indicates a belief in the power of specific invocations to bring about change or achieve a desired outcome.",
         "term type": "Title",
-        "english target translation": "Exalted Thearch of Heaven and Earth"
+        "english target translation": "Blessings Stem From The Exalted Thearch of Heaven and Earth"
     },
     {
         "entity": "Celestial Worthy of Heaven and Earth",
         "chapter cutoff": 10,
-        "description": "This term refers to a highly revered and powerful being, likely a deity or a supreme entity, within the narrative's established cosmology. The phrase \"Celestial Worthy of Heaven and Earth\" suggests a being of immense authority and influence, encompassing all of existence. Its mention in the context of \"twenty-two paths of the divine\" implies a connection to a structured system of spiritual or mystical powers, possibly a pantheon or a hierarchy of supernatural beings. The term carries a connotation of ultimate power and cosmic significance, indicating a figure of profound respect and perhaps even worship.",
+        "description": "This phrase is the final incantation in a four-step ritual performed by Zhou Mingrui. It is one of four distinct invocations, each associated with a specific step and a counter-clockwise movement to form a square. The ritual appears to be an attempt to gain blessings or enhance luck, as indicated by Zhou Mingrui's intention to perform a \"luck enhancement ritual.\" The phrase itself suggests a divine or celestial entity associated with the entirety of existence, \"Heaven and Earth,\" implying a powerful and encompassing spiritual or cosmic significance within the narrative's framework.",
         "term type": "Title",
         "english target translation": "Celestial Worthy of Heaven and Earth"
     },
     {
-        "entity": "Chinese Divination",
+        "entity": "luck enhancement ritual",
         "chapter cutoff": 10,
-        "description": "The context does not contain any direct mention or discussion of \"Chinese Divination.\" The provided text focuses on Western-style divination methods, specifically Tarot cards, and references a historical figure named Emperor Roselle. There is no information within this context that would allow for a description or translation of \"Chinese Divination.\"",
+        "description": "A ritual performed by Zhou Mingrui, also known as Klein, to counteract a period of bad luck. It involves placing four portions of staple food in the corners of his room and reciting specific incantations in a counter-clockwise direction. The ritual is presented as a simple, accessible practice from an ancient divination text, but its effectiveness and potential side effects become a point of contemplation for Klein after his transmigration and exposure to the mystical world. He initially attempts it in his native language and considers translating it into local languages or ancient ritualistic languages, highlighting his cautious approach to mysticism.",
         "term type": "Concept",
-        "english target translation": "Chinese Divination"
-    },
-    {
-        "entity": "Victorian era",
-        "chapter cutoff": 10,
-        "description": "The context describes a period characterized by specific technological advancements like gas lamps and mechanical devices with exposed gears, as well as social conditions such as limited job opportunities for those without connections and a particular emphasis on public service. The mention of Emperor Roselle and the \"Loen language\" further anchors this era to a specific historical and cultural setting, implying a time of distinct social structures, technological development, and perhaps even unique forms of esoteric knowledge or belief systems, as suggested by the reference to tarot cards and unknown powers. The overall atmosphere is one of grimness and tension, hinting at societal challenges or a period of significant upheaval.",
-        "term type": "Concept",
-        "english target translation": "Victorian era"
+        "english target translation": "luck enhancement ritual"
     },
     {
         "entity": "soli",
         "chapter cutoff": 10,
-        "description": "Soli is a unit of currency within the Loen Kingdom, ranking second in its monetary system. It originated from ancient silver coins and is equivalent to twelve copper pence. The denominations mentioned are one and five soli. The context highlights its tangible nature, with paper notes possessing a distinct ink smell and intricate designs, including watermarks and anti-counterfeit labels, which the character finds appealing.",
-        "term type": "Item",
+        "description": "Soli is a unit of currency in the Loen Kingdom, ranking second in their monetary system, below the gold pound and above copper pence. It originated from ancient silver coins and has denominations of one and five soli. One soli is equivalent to twelve copper pence, and twenty soli make up one gold pound. The term is used to denote monetary values for everyday transactions, rent, and salaries, highlighting its commonality and importance in the economic structure of the Loen Kingdom.",
+        "term type": "Currency Unit",
         "english target translation": "soli"
+    },
+    {
+        "entity": "pence",
+        "chapter cutoff": 10,
+        "description": "Pence is a unit of currency in the Loen Kingdom, specifically a subdivision of a larger monetary unit. It is described as the most basic currency, with denominations including a single penny, five pence, a halfpence, and a quarterpence. The purchasing power of a single penny is compared to three to four yuan before the protagonist's transmigration, indicating its value. The context shows pence being used for everyday transactions, such as buying bread, and its price can fluctuate due to economic factors like the repeal of the Grain Act.",
+        "term type": "Item",
+        "english target translation": "pence"
+    },
+    {
+        "entity": "penny",
+        "chapter cutoff": 10,
+        "description": "In the Loen Kingdom's currency system, a penny is the most basic unit of currency, made of dark yellow, bronze-shimmering metal. It is engraved with a portrait of a crowned man on the front and a '1' on a clump of wheat on the back. Pennies have denominations such as five pence, halfpence, and quarterpence, though these are not considered small enough units for all transactions. A penny's purchasing power is comparable to three to four yuan in the protagonist's previous world, and it is used for everyday purchases and to operate devices like gas meters.",
+        "term type": "Item",
+        "english target translation": "penny"
+    },
+    {
+        "entity": "pound",
+        "chapter cutoff": 10,
+        "description": "In the context of the Loen Kingdom's currency system, a \"pound\" refers to the highest denomination, a gold pound. These are paper-based but are backed by gold and directly pegged to its value. A gold pound is equivalent to twenty soli, and Zhou Mingrui estimates its weight to be roughly half a kilogram of what he was accustomed to. The salary of a lecturer at Tingen University is given in gold pounds, highlighting its significant value as a unit of high-value currency.",
+        "term type": "Item",
+        "english target translation": "pound"
     },
     {
         "entity": "gold pound",
         "chapter cutoff": 10,
-        "description": "The term \"gold pound\" is not explicitly present in the provided text. However, the text does mention \"copper penny\" as the most basic currency of the Loen Kingdom, with denominations like \"five pence,\" \"halfpence,\" and \"quarterpence.\" The purchasing power of a copper penny is compared to three to four yuan before the character's transmigration. The context implies a monetary system with various denominations, but a \"gold pound\" is not detailed.",
+        "description": "The gold pound is the highest denomination currency in the Loen Kingdom's system. It is paper-based but is backed by gold and pegged directly to it. One gold pound is equivalent to twenty soli. This currency is used for significant transactions, as evidenced by the weekly salary of university lecturers being measured in gold pounds. The denominations available are one, five, and ten gold pounds.",
         "term type": "Item",
         "english target translation": "gold pound"
     },
     {
-        "entity": "Feynapotter",
+        "entity": "George III",
         "chapter cutoff": 10,
-        "description": "The term \"Feynapotter\" is not present in the provided context. Therefore, a description and translation cannot be generated.",
-        "term type": "Not Applicable",
-        "english target translation": "Not Applicable"
+        "description": "George III is identified as a historical figure, specifically a king, whose reign marked a significant period for the circulation of currency. The context mentions that a coin was minted and circulated only after his ascension to the throne, indicating his importance in the economic and political landscape of the time. His existence is tied to a specific historical era, influencing the types of coins used and potentially the economic conditions described.",
+        "term type": "Character Name",
+        "english target translation": "George III"
     },
     {
-        "entity": "Masin",
+        "entity": "Tingen",
         "chapter cutoff": 10,
-        "description": "The term \"Masin\" appears to be a proper noun, likely a name or a title, used in a context that suggests a formal or perhaps even a divine address. The speaker, who identifies himself as \"The Fool,\" pauses before uttering this name, implying it holds significance or is a chosen moniker. The surrounding dialogue about joining churches and becoming a \"Beyonder\" suggests a world with supernatural elements and organized religious or mystical factions. The specific context of \"Masin\" is not fully elaborated, but its introduction implies a role or identity within this established world.",
-        "term type": "Title",
-        "english target translation": "Masin"
-    },
-    {
-        "entity": "Lenburg",
-        "chapter cutoff": 10,
-        "description": "Lenburg is a place name mentioned in the context, specifically in relation to the origin of a character named Klein. The text states that Klein has been selling bread and pastries in a location since the beginning of her memories, and then mentions that Klein's mentor had given her a recommendation letter for Tingen University and Backlund University, implying these are significant locations within the narrative's world. The mention of Lenburg in conjunction with these universities suggests it is likely a city or region where these institutions are located or from which Klein originates.",
+        "description": "Tingen is a city located north of the Loen Kingdom, characterized by a unique climate with mild temperatures, rarely exceeding 30\u00b0C and featuring cooler mornings. It is home to Tingen Technical School, which offers secondary education in fields like Steam and Machinery, and Tingen University, which provides higher education. The city's economy is influenced by external factors, such as events in the Southern Continent, impacting businesses and employment. Tingen also has a public transportation system with horse carriages, and housing costs, like bungalows, are mentioned in terms of soli and pounds.",
         "term type": "Location",
-        "english target translation": "Lenburg"
-    },
-    {
-        "entity": "Grain Act",
-        "chapter cutoff": 10,
-        "description": "The Grain Act was a piece of legislation designed to protect the prices of domestic agricultural products. Its core tenet involved halting grain imports from Southern nations when domestic prices reached a certain threshold. The act was controversial, as evidenced by public protests advocating for its repeal, suggesting it negatively impacted consumers or certain economic interests by artificially inflating grain prices.",
-        "term type": "Concept",
-        "english target translation": "Grain Act"
+        "english target translation": "Tingen"
     },
     {
         "entity": "Smyrin Bakery",
         "chapter cutoff": 10,
-        "description": "Smyrin Bakery is a specific establishment mentioned in the context, identified as the place where the character Zhou Mingrui purchases bread. It is owned by a seventy-plus year old woman named Wendy Smyrin, who is described as having grayish-white hair and a genial smile. The bakery's products, specifically rye bread, are discussed in relation to their price and the impact of the repeal of the Grain Act on their cost. The bakery serves as a point of interaction between the characters and a place where economic and social conditions are subtly revealed.",
+        "description": "Smyrin Bakery is a local establishment where the protagonist, Zhou Mingrui (in the persona of Klein), purchases bread and other groceries. It is owned by an elderly woman named Wendy Smyrin, who has been a consistent presence in Klein's memories, baking delicious Tingen biscuits and lemon cakes. The bakery's pricing is influenced by recent political events, specifically the repeal of the Grain Act, which has led to a decrease in the cost of rye bread. The bakery serves as a familiar and reliable source of sustenance for Klein and his family, and its owner, Mrs. Smyrin, appears to have a friendly and somewhat expectant relationship with him.",
         "term type": "Location",
         "english target translation": "Smyrin Bakery"
     },
     {
         "entity": "Wendy Smyrin",
         "chapter cutoff": 10,
-        "description": "Wendy Smyrin is the owner of Smyrin Bakery, a seventy-plus-year-old woman with completely grayish-white hair and a genial smile. She has been selling bread and pastries at this location since the beginning of Klein's memories, baking delicious Tingen biscuits and lemon cakes. She is portrayed as a kind and perhaps slightly humorous figure, engaging in a brief, lighthearted exchange with Zhou Mingrui about his age and the price of rye bread, which has recently decreased due to the repeal of the Grain Act.",
+        "description": "Wendy Smyrin is the owner of the Smyrin Bakery, a seventy-plus-year-old woman with grayish-white hair and a perpetually genial smile. She is a kind and somewhat playful figure who interacts with Zhou Mingrui (inhabiting Klein's body) during his daily errands. Her bakery is a local establishment, and she is aware of Klein's personal circumstances, including his family and his aspirations for a better life. She also comments on the recent repeal of the Grain Act, indicating her awareness of broader societal changes.",
         "term type": "Character Name",
         "english target translation": "Wendy Smyrin"
     },
     {
         "entity": "Mrs. Smyrin",
         "chapter cutoff": 10,
-        "description": "Mrs. Smyrin is the owner of Smyrin Bakery, a business located on Smyrin Street. She is described as a seventy-plus-year-old granny with completely grayish-white hair and a perpetually genial smile. Her bakery appears to be a place of business where Klein, the protagonist, visits. She is presented as a kindly and established figure within the community.",
+        "description": "Mrs. Smyrin is the owner of the Smyrin Bakery, a seventy-plus-year-old woman with grayish-white hair and a genial smile. She is portrayed as a kind and humorous individual, engaging in lighthearted banter with Zhou Mingrui about his perceived youth. Her bakery is a place where rye bread is sold, and she is aware of the recent price changes due to the repeal of the Grain Act, indicating a connection to the broader economic and political landscape of the setting. She serves as a customer and a source of information for Zhou Mingrui.",
         "term type": "Character Name",
         "english target translation": "Mrs. Smyrin"
     },
     {
         "entity": "Tingen biscuits",
         "chapter cutoff": 10,
-        "description": "Tingen biscuits are a specific type of baked good mentioned in the context, known for their deliciousness. They are baked by Klein, who also bakes lemon cakes. The mention of these biscuits, alongside the general descriptions of other food items being sold, suggests they are a popular or notable item in the setting, contributing to the atmosphere of a bustling marketplace or food stall. Their inclusion highlights Klein's skills and the sensory details of the environment.",
+        "description": "Tingen biscuits are a type of baked good mentioned in the context as being delicious and made by Klein. They are associated with the town of Tingen, which is located north of the Loen Kingdom and has a cooler climate. The biscuits are part of the food items Klein sells, contributing to the family's livelihood and the overall setting of the narrative. Their mention highlights the simple, everyday aspects of the characters' lives and the economic activities within their community.",
         "term type": "Item",
         "english target translation": "Tingen biscuits"
     },
     {
-        "entity": "lemon cakes",
+        "entity": "Grain Act",
         "chapter cutoff": 10,
-        "description": "Lemon cakes are presented as a specific baked good that Klein, the character, is known for baking. They are described as \"very delicious,\" suggesting they are a popular or well-regarded item. Their mention serves to highlight Klein's established role and skills as a baker, contributing to the character's background and the setting's atmosphere of everyday life and commerce. The specific mention of \"lemon cakes\" alongside \"Tingen biscuits\" further grounds the character in a particular place and time, emphasizing the mundane yet important aspects of her livelihood.",
+        "description": "The Grain Act was a piece of legislation designed to protect domestic agricultural prices. Its core tenet involved restricting grain imports from Southern nations when domestic prices reached a certain threshold. The act's repeal was a result of public protests, indicating that it likely led to higher grain prices for consumers, making basic foodstuffs like rye bread more expensive.",
+        "term type": "Concept",
+        "english target translation": "Grain Act"
+    },
+    {
+        "entity": "Feynapotter",
+        "chapter cutoff": 10,
+        "description": "Feynapotter appears to be a specific type of item or object within the narrative, possibly a decorative or functional piece that can be placed on furniture like tables and cupboards. The context suggests it might have a somewhat unsettling or potentially frightening quality, as indicated by the phrase \"It will scare children!\" This implies it could be an object with a peculiar or even slightly menacing appearance or effect. Its mention alongside \"eight pounds of rye bread\" and a character named Klein suggests it's part of the everyday or domestic setting of the story, even if it carries an unusual characteristic.",
         "term type": "Item",
-        "english target translation": "lemon cakes"
+        "english target translation": "Feynapotter"
+    },
+    {
+        "entity": "Masin",
+        "chapter cutoff": 10,
+        "description": "The term \"Masin\" appears to be a proper noun, likely a surname, as it is used in conjunction with \"Mrs.\" to address a woman. The context suggests she is a neighbor or acquaintance of the main characters, as she is described as speaking to Zhou Mingrui and commenting on his appearance. Her interaction implies a degree of familiarity, and her comment about him being \"young and energetic\" suggests a social observation.",
+        "term type": "Character Name",
+        "english target translation": "Mrs. Masin"
+    },
+    {
+        "entity": "Lenburg",
+        "chapter cutoff": 10,
+        "description": "Lenburg is identified as a nation that was invaded and subsequently placed under the protection of an unnamed entity. This implies a subjugation or a form of vassalage, where Lenburg lost its autonomy and became dependent on the invading power for its security or governance. The context suggests a historical or geopolitical setting where military conquest leads to the establishment of protectorates.",
+        "term type": "Location",
+        "english target translation": "Lenburg"
     },
     {
         "entity": "Lettuce and Meat",
         "chapter cutoff": 10,
-        "description": "\"Lettuce and Meat\" appears to be the name of a market or vendor where one can purchase food items. The context suggests it's a place where goods are sold, as the character Zhou Mingrui spends money there to buy mutton and other vegetables. The name itself implies a place that sells produce and possibly meat, indicating a common or perhaps humble establishment for daily necessities. Its functional role is that of a marketplace for procuring food supplies.",
+        "description": "\"Lettuce and Meat\" appears to be the name of a market or shop. The context suggests it is a place where one can purchase groceries, specifically mentioning the buying of mutton and other vegetables like broad beans, cabbage, onions, and potatoes. The name itself is straightforward, indicating the types of goods likely sold there, and it functions as a specific location within the narrative where the protagonist procures food items. The author uses it to establish a setting for the character's errands.",
         "term type": "Location",
         "english target translation": "Lettuce and Meat"
     },
     {
         "entity": "Iron Cross Street",
         "chapter cutoff": 10,
-        "description": "Iron Cross Street is a location within the narrative, implied to be a street or area where the character Zhou Mingrui finds himself. The mention of \"Tingen biscuits and lemon cakes\" being sold there suggests it is a place with commercial activity, likely a market or a street with shops. The context also hints at a \"grim and tense vibe\" shared with the Loen language, suggesting Iron Cross Street might be situated in a less affluent or more troubled part of the city.",
+        "description": "Iron Cross Street is a street name mentioned in the context, situated at an intersection with Daffodil Street, forming a municipal square. The name itself, \"Iron Cross,\" carries significant historical and symbolic weight, often associated with German military honors and national identity, particularly from the World Wars. Its inclusion in a description of a low-income community, alongside details of filth and junk, suggests a potential juxtaposition or irony, perhaps hinting at a past or aspirational element that contrasts with the present reality of the area. The street name serves as a specific geographical marker within the narrative, grounding the setting and contributing to the overall atmosphere.",
         "term type": "Location",
         "english target translation": "Iron Cross Street"
     },
     {
         "entity": "Daffodil Street",
         "chapter cutoff": 10,
-        "description": "Daffodil Street is a location within the narrative, specifically a street where a bakery named Smyrin Bakery is situated. The context describes it as a place where mobile hawkers sell goods and where pedestrians, including those who have lost their jobs and exploited children, are present. The street also features a busking accordionist and children dancing to the music, as well as a woman with a dull gaze who shows a faint glow when observing the children. This suggests Daffodil Street is a bustling, albeit somewhat grim, urban environment reflecting the socio-economic conditions of the time.",
+        "description": "Daffodil Street is a street name mentioned in the context, situated at an intersection with Iron Cross Street. Its inclusion alongside a more militaristic-sounding street name, Iron Cross Street, creates a juxtaposition. The name \"Daffodil Street\" itself evokes a sense of nature, perhaps even a touch of gentleness or beauty, which contrasts with the description of the surrounding low-income community's squalor. Functionally, it serves as a geographical marker within the narrative, helping to establish the setting of the municipal square.",
         "term type": "Location",
         "english target translation": "Daffodil Street"
     },
     {
+        "entity": "tarot divination",
+        "chapter cutoff": 10,
+        "description": "Tarot divination is presented as a method of interpreting signs and gaining insight into the past, present, and future, utilizing a deck of cards with symbolic graphics. Within this context, it is noted to have originated not from divine sources or ancient legacies, but from Roselle Gusta, the first Consul of the Intis Republic, who invented it over 170 years prior. The practice is described as stemming from an individual's inherent spirituality, allowing them to connect with the spiritual world and receive information, with tarot cards serving as a tool to conveniently and accurately interpret these signs. It is also humorously suggested by Audrey that tarot cards were invented by Emperor Roselle as a game, yet possess the power to divine the future.",
+        "term type": "Concept",
+        "english target translation": "tarot divination"
+    },
+    {
         "entity": "tarot",
         "chapter cutoff": 10,
-        "description": "Tarot cards are presented as a divination tool, used to interpret signs through symbolism and logical elements. They are specifically mentioned as being created by Emperor Roselle, who developed twenty-two cards that later became the Major Arcana. The cards are seen as a means of accessing information and are capable of revealing particular unknown powers, with examples of their use including dreams and dream interpreters. Zhou Mingrui expresses interest in them as a potential tool for understanding or as a gaming tool.",
-        "term type": "Item",
-        "english target translation": "tarot cards"
+        "description": "In this context, \"tarot\" refers to a system of divination using a deck of cards, characterized by symbolism and logical elements for interpreting signs. It is presented as a tool for understanding omens and the future, with its origins in this world attributed to Emperor Roselle, who initially created it as a gaming tool before its divinatory power was recognized. The term is also used to denote specific cards within this system, such as the Major Arcana cards \"Fool\" and \"Justice,\" which are adopted as designations by characters. The act of \"tarot divination\" is offered as a service, with the accuracy and process of shuffling and reading the cards being central to its function.",
+        "term type": "Concept",
+        "english target translation": "tarot"
     },
     {
         "entity": "Intis Republic",
         "chapter cutoff": 10,
-        "description": "The Intis Republic was a powerful nation on the Northern Continent that, under the leadership of Emperor Caesar, conquered and subjugated other nations, including Lenburg. It eventually transitioned into an Empire, with Caesar declaring himself Emperor. The Republic's expansionist policies, particularly its discovery of a sea route to the Southern Continent, initiated the era of colonialism.",
+        "description": "The Intis Republic was a powerful nation on the Northern Continent, established after overthrowing the previous imperial rule of the Intis Kingdom. It was founded by Roselle Gusta, who became its first Consul and later its self-proclaimed Emperor Caesar after expanding its influence and forcing other nations, including the Loen Kingdom and Feynapotter, to submit. Under Roselle's leadership, the Republic experienced significant advancements, including the invention of the steam engine and the redefinition of the God of Craftsmanship to the God of Steam and Machinery. The Republic's dominance was eventually challenged and Roselle himself was assassinated, leading to his death and the end of his direct rule.",
         "term type": "Location",
         "english target translation": "Intis Republic"
     },
     {
         "entity": "Roselle Gusta",
         "chapter cutoff": 10,
-        "description": "Roselle Gusta was a pivotal historical figure in the world described, credited with numerous significant inventions and societal changes. He is recognized as the creator of tarot divination and the contemporary system of paper-based cards and their playstyles, including games familiar to the protagonist. Furthermore, Roselle was instrumental in technological advancements like the steam engine and improved sailing boats, which led to the era of colonialism. He overthrew the Intis Kingdom's imperial rule, becoming the first Consul of the Intis Republic, which he later transformed into an Empire, proclaiming himself 'Emperor Caesar.' His reign also saw the Church of Craftsmanship's first public holy revelation, leading to the God of Craftsmanship being redefined as the God of Steam and Machinery.",
+        "description": "Roselle Gusta was a pivotal historical figure in the Intis Republic, credited with numerous significant inventions and political achievements. He is recognized as the inventor of the steam engine, a key figure in improving sailing technology, and the leader who overthrew the Intis Kingdom to establish the Intis Republic, becoming its first Consul. His influence extended to international relations, forcing other Northern Continent nations to acknowledge Intis's power, and he later transitioned the Republic into an Empire, proclaiming himself Emperor Caesar. Furthermore, Roselle is directly linked to the creation of tarot divination and played a role in the religious shift of the Church of Craftsmanship, which subsequently recognized the God of Steam and Machinery.",
         "term type": "Character Name",
         "english target translation": "Roselle Gusta"
     },
     {
-        "entity": "God of Craftsmanship",
-        "chapter cutoff": 10,
-        "description": "The God of Craftsmanship was the original deity worshipped by the Church of Craftsmanship. During the rule of Roselle, this deity underwent a significant transformation, being renamed the God of Steam and Machinery. This change reflects a shift in societal focus and technological advancement, moving from general craftsmanship to a more specific veneration of steam power and mechanical engineering. The new designation signifies the deity's association with the industrial and technological innovations of that era.",
-        "term type": "Deity Name",
-        "english target translation": "God of Craftsmanship"
-    },
-    {
         "entity": "Intis Kingdom",
         "chapter cutoff": 10,
-        "description": "The Intis Kingdom is a powerful nation mentioned in the context of historical events and political dominance. It is described as having bowed down to the Intis Republic, indicating a significant shift in power dynamics. This subjugation occurred after the Republic expanded its influence, suggesting the Intis Kingdom was once a prominent entity that lost its sovereignty. Its mention highlights a period of significant geopolitical change and the rise of the Intis Republic as a dominant force.",
+        "description": "The Intis Kingdom was a former ruling power on the Northern Continent that was overthrown by Roselle Gusta. Roselle established the Intis Republic in its place, marking a significant political shift. The former Intis royal family, the Sauron family, later allied with other forces to assassinate Roselle in his old age, indicating lingering opposition to the new order.",
         "term type": "Location",
         "english target translation": "Intis Kingdom"
     },
     {
+        "entity": "God of Craftsmanship",
+        "chapter cutoff": 10,
+        "description": "The God of Craftsmanship was the original deity worshipped by the Church of Craftsmanship. During the rule of Emperor Caesar (Roselle), this deity underwent a significant transformation, being publicly revealed as the God of Steam and Machinery through a holy revelation. This change signifies a shift in religious focus from general craftsmanship to a more specific veneration of steam and mechanical power, reflecting the technological advancements and societal changes occurring during that era. The God of Steam and Machinery is one of the seven orthodox gods of the Northern Continent, indicating its widespread influence and importance in the religious landscape.",
+        "term type": "Deity Name",
+        "english target translation": "God of Craftsmanship"
+    },
+    {
+        "entity": "Feysac Empire",
+        "chapter cutoff": 10,
+        "description": "The Feysac Empire was a powerful nation on the Northern Continent, established by Emperor Caesar (formerly Roselle) after he conquered and subjugated other nations like the Loen Kingdom and Feynapotter. It represented a significant political entity that influenced the continent's trajectory, particularly through its military and colonial expansion. The empire's existence is linked to the rise of the Church of Steam and Machinery and the development of new cultural practices like tarot divination, all under Roselle's rule. The ancient language of Feysac, considered the origin of all languages on the Northern Continent, was a key element of its cultural and educational landscape, learned by the elite.",
+        "term type": "Location",
+        "english target translation": "Feysac Empire"
+    },
+    {
         "entity": "Emperor Caesar",
         "chapter cutoff": 10,
-        "description": "\"Emperor Caesar\" is a self-proclaimed title adopted by a powerful historical figure, implied to be Roselle, who rose to prominence by invading and dominating other nations on the Northern Continent. This title signifies his absolute authority and the transformation of the Intis Republic into an Empire under his rule. The name \"Caesar\" itself carries strong historical connotations of imperial power and autocratic leadership, suggesting a deliberate emulation of ancient Roman emperors. This title marks the apex of his political and military achievements, establishing him as the supreme ruler of a vast dominion.",
+        "description": "\"Emperor Caesar\" is a self-proclaimed title adopted by Roselle after he transformed the Intis Republic into an Empire. This title signifies his absolute authority and imperial power, drawing a direct parallel to the historical Roman Emperor Caesar, implying a similar ambition for conquest and dominion. By adopting this name, Roselle positions himself as a supreme ruler who has brought numerous nations, including the Loen Kingdom and Feynapotter, under his control, establishing a new era of imperial rule and technological advancement through the Church of Steam and Machinery.",
         "term type": "Title",
         "english target translation": "Emperor Caesar"
     },
     {
         "entity": "Church of Craftsmanship",
         "chapter cutoff": 10,
-        "description": "The Church of Craftsmanship was a religious organization that underwent a significant transformation during the rule of Emperor Caesar. Previously dedicated to a deity associated with craftsmanship, it received a public holy revelation that led to its renaming and reorientation as the Church of Steam and Machinery. This change reflects a shift in religious focus, likely influenced by technological advancements and the new imperial ideology.",
-        "term type": "Organization Name",
+        "description": "The Church of Craftsmanship was a religious institution that underwent a significant transformation during the rule of Emperor Caesar. It was during this period that the church received its first public holy revelation since the Fifth Epoch, leading to a rebranding of its deity. The God of Craftsmanship was subsequently changed to the God of Steam and Machinery, indicating a shift in focus from general craftsmanship to a more industrialized and mechanical form of creation. This change reflects the evolving technological and societal landscape of the era, as well as the growing influence of steam and machinery.",
+        "term type": "Organization",
         "english target translation": "Church of Craftsmanship"
     },
     {
         "entity": "Fifth Epoch",
         "chapter cutoff": 10,
-        "description": "The \"Fifth Epoch\" refers to a specific historical period within the narrative's world-building, distinct from other epochs. It is presented as a significant era characterized by major political and religious shifts, including the rise of the Intis Republic and its transformation into an Empire under Emperor Caesar. This epoch also saw the invention of tarot divination and the establishment of new religious doctrines, such as the God of Steam and Machinery, and the beginning of colonialism. The context implies a cyclical or sequential understanding of history, with the Fifth Epoch being a foundational period for many of the current societal structures and beliefs.",
+        "description": "The Fifth Epoch refers to the current historical period, which began 1349 years prior to the events described in the text. It is characterized by the existence of Beyonders, albeit in diminished numbers compared to earlier times like the \"early days of the Iron Age.\" This epoch has seen significant historical developments, including the rise of colonialism, the establishment of the Intis Republic and later Empire under Emperor Caesar, and the transformation of the Church of Craftsmanship to the God of Steam and Machinery. The term \"Iron Age\" is used synonymously with the Fifth Epoch, highlighting its current and ongoing nature.",
         "term type": "Historical Period",
         "english target translation": "Fifth Epoch"
     },
     {
-        "entity": "Upgrade",
-        "chapter cutoff": 10,
-        "description": "The term \"Upgrade\" in this context refers to the process of acquiring or enhancing supernatural abilities or powers, often associated with becoming a \"Beyonder.\" It implies a progression or advancement in one's capabilities beyond ordinary human limits, typically achieved through specific methods or affiliations, such as joining certain churches or obtaining mystical items. This advancement is presented as a significant and often difficult path, with limited opportunities and potential dangers.",
-        "term type": "Concept",
-        "english target translation": "Upgrade"
-    },
-    {
-        "entity": "Fighting the Landlord",
-        "chapter cutoff": 10,
-        "description": "\"Fighting the Landlord\" is a popular Chinese card game that involves three players. The game's objective is for one player, the \"landlord,\" to defeat the other two players, who form a temporary alliance. The game is characterized by its strategic depth, bluffing, and fast-paced gameplay. It is often played for entertainment and can be found in various social settings.",
-        "term type": "Game",
-        "english target translation": "Fighting the Landlord"
-    },
-    {
-        "entity": "Texas Poker",
-        "chapter cutoff": 10,
-        "description": "The term \"Texas Poker\" is not present in the provided context. The text discusses a character named Zhou Mingrui, his injuries, his surroundings, and a conversation about tarot cards and divination. There is no mention of any card games, including Texas Poker.",
-        "term type": "Not Applicable",
-        "english target translation": "Not Applicable"
-    },
-    {
-        "entity": "Quint",
-        "chapter cutoff": 10,
-        "description": "The term \"Quint\" is used in the context of a currency or monetary unit. It is presented as a very small denomination, as indicated by the phrase \"five pence apiece\" when referring to fresh fish. This suggests that a \"quint\" is a fraction of a larger currency unit, likely pence, and is used for very low-cost items. Its specific value is not explicitly stated, but its usage implies it's a common and small unit of exchange.",
-        "term type": "Item",
-        "english target translation": "Quint"
-    },
-    {
         "entity": "Church of the Eternal Blazing Sun",
         "chapter cutoff": 10,
-        "description": "This is a religious organization mentioned in the context, specifically identified as one of the major churches that people can join to become a Beyonder. It is also implicated as one of the entities that conspired to assassinate Emperor Roselle in the year 1198 of the Fifth Epoch, alongside the former Intis royal family and other aristocrats. Its existence suggests a structured religious landscape within the world, with specific doctrines and potentially political influence.",
-        "term type": "Organization Name",
+        "description": "The Church of the Eternal Blazing Sun is a significant religious organization mentioned in the context as one of the entities responsible for the assassination of a prominent historical figure in 1198 of the Fifth Epoch. It is implied to be a powerful and influential institution, capable of forming alliances with other major powers like the former Intis royal family and aristocrats. Its involvement in such a high-profile assassination suggests it holds considerable political and military sway, and potentially a more aggressive or interventionist stance compared to other religious bodies.",
+        "term type": "Organization",
         "english target translation": "Church of the Eternal Blazing Sun"
     },
     {
         "entity": "Sauron family",
         "chapter cutoff": 10,
-        "description": "The Sauron family was a prominent aristocratic lineage in Intis during the Fifth Epoch. They were instrumental in the assassination of a significant historical figure, collaborating with the Church of the Eternal Blazing Sun and other nobles. Their involvement in this event highlights their power and influence within the political landscape of the time.",
+        "description": "The Sauron family is identified as the former Intis royal family. They are mentioned as being involved in the assassination of a significant historical figure in the year 1198 of the Fifth Epoch, alongside the Church of the Eternal Blazing Sun and other aristocrats. Their involvement suggests a powerful and influential lineage with a history of political intrigue and potentially ruthless actions.",
         "term type": "Character Name",
         "english target translation": "Sauron family"
     },
     {
         "entity": "White Maple Palace",
         "chapter cutoff": 10,
-        "description": "The White Maple Palace is identified as the location where a significant historical figure, betrayed in his old age, met his demise. This assassination was a collaborative effort involving powerful entities such as the Church of the Eternal Blazing Sun, the Sauron family (former Intis royal family), and other aristocrats. The palace serves as a specific historical site tied to a violent political event and the death of a prominent individual in the year 1198 of the Fifth Epoch.",
+        "description": "The White Maple Palace is the location where a significant historical figure, betrayed and assassinated in 1198 of the Fifth Epoch, ultimately met his demise. Its mention serves as a point of historical recall for the character Zhou Mingrui, highlighting a past event of betrayal and death. The palace represents a place of historical importance and a site of a pivotal, tragic event within the narrative's lore.",
         "term type": "Location",
         "english target translation": "White Maple Palace"
     },
     {
-        "entity": "tarot cards",
+        "entity": "Upgrade",
         "chapter cutoff": 10,
-        "description": "Tarot cards are presented as divination tools that utilize symbolism and logical elements to interpret signs, aiding in understanding unknown powers. They are specifically linked to Emperor Roselle, who is credited with creating a set of twenty-two Major Arcana tarot cards, initially as a gaming tool, but which also hold a deeper, mysterious significance. The cards are seen as a means of communication with a higher or unknown entity, as exemplified by Zhou Mingrui's interaction with Audrey.",
+        "description": "In this context, \"upgrade\" refers to the act of improving the apartment by installing gas pipes. This action is presented as a strategic move to enhance the property's appeal and future rental prospects, implying a modernization or enhancement of its facilities. The term carries a connotation of investment and foresight, as the landlord is convinced to provide funds for these improvements with the expectation of future benefits. It signifies a betterment of the apartment's infrastructure, moving beyond its current state to a more desirable and functional condition.",
+        "term type": "Concept",
+        "english target translation": "Improve"
+    },
+    {
+        "entity": "Fighting the Landlord",
+        "chapter cutoff": 10,
+        "description": "\"Fighting the Landlord\" refers to a specific instance where the protagonist, Klein Moretti, uses a clever tactic to persuade his landlord. He frames the installation of gas pipes not as a personal benefit, but as an improvement to the apartment's overall standards that would increase future rental prospects. This implies a strategic negotiation where Klein manipulates the landlord's financial interests to achieve his own goal of obtaining a gas lamp. The phrase highlights Klein's resourcefulness and his ability to leverage situations to his advantage, even with limited resources.",
+        "term type": "Event",
+        "english target translation": "Persuading the Landlord"
+    },
+    {
+        "entity": "Texas Poker",
+        "chapter cutoff": 10,
+        "description": "Texas Poker is presented as a familiar card game style that Zhou Mingrui was acquainted with. Its inclusion alongside other popular card games like Upgrade, Fighting the Landlord, and Quint suggests it is a well-established and recognized form of entertainment or strategic engagement within the narrative's world. The mention of these games implies a shared cultural understanding of their rules and playstyles, contributing to the sense of familiarity and grounding the character's experiences.",
         "term type": "Item",
-        "english target translation": "tarot cards"
+        "english target translation": "Texas Poker"
+    },
+    {
+        "entity": "Quint",
+        "chapter cutoff": 10,
+        "description": "The term \"Quint\" is not explicitly present in the provided context. However, the context repeatedly mentions \"Klein\" and \"Zhou Mingrui,\" suggesting a potential misunderstanding or a missing piece of information where \"Quint\" might have been intended to refer to one of these individuals or a related concept. Without further clarification or the presence of the term itself, it is impossible to provide a definitive description or translation. The context focuses on Klein's academic struggles, his aspirations, and his family's socioeconomic status, as well as Zhou Mingrui's observations and internal thoughts.",
+        "term type": "Term Not Found",
+        "english target translation": "Not Applicable"
     },
     {
         "entity": "The Magician",
         "chapter cutoff": 10,
-        "description": "\"The Magician\" is identified as one of the familiar tarot cards on a table, alongside others like \"The Emperor\" and \"The Hanged Man.\" Its presence suggests a connection to divination and potentially to the mysterious powers associated with Emperor Roselle's secret card set. Within the context of the narrative, it represents a specific card within a tarot deck, likely holding symbolic meaning related to the unknown powers or the concept of a \"Beyonder.\"",
+        "description": "\"The Magician\" is one of the Major Arcana tarot cards, specifically mentioned as a familiar card within the context of a tarot reading. Its presence on the table alongside other Major Arcana cards like \"The Emperor\" and \"The Hanged Man\" suggests it represents a significant aspect or archetype within the divination system being used. The character Zhou Mingrui recognizes it, implying a pre-existing familiarity with tarot symbolism, and its inclusion in the reading signifies its importance in understanding his past, present, or future.",
         "term type": "Item",
         "english target translation": "The Magician"
     },
     {
         "entity": "The Emperor",
         "chapter cutoff": 10,
-        "description": "\"The Emperor\" refers to a historical figure named Caesar, who rose to power after invading other nations and establishing the Intis Republic as a dominant force on the Northern Continent. He later transformed the Republic into an Empire, crowning himself Emperor. This figure is also credited with significant inventions and societal changes, including the invention of tarot divination, the establishment of paper-based card systems, and the shift in religious focus from Craftsmanship to Steam and Machinery. His reign marked an era of colonialism through naval exploration.",
-        "term type": "Character Name",
-        "english target translation": "Emperor Caesar"
+        "description": "\"The Emperor\" refers to Caesar, the self-proclaimed ruler who transformed the Intis Republic into an Empire. His reign was marked by significant expansion, subjugating powerful Northern Continent nations like the Loen Kingdom, Feynapotter, and Feysac Empire. He is also credited with the invention of tarot divination and the redefinition of the God of Craftsmanship to the God of Steam and Machinery during his rule. Despite his achievements, he met a tragic end, assassinated in his old age by a coalition of powerful entities.",
+        "term type": "Title",
+        "english target translation": "The Emperor"
     },
     {
         "entity": "The Hanged Man",
         "chapter cutoff": 10,
-        "description": "The Hanged Man is a figure Zhou Mingrui is testing, implying a character or entity within the narrative. Zhou Mingrui's gaze towards The Hanged Man suggests a dynamic of observation and evaluation, possibly indicating a test of knowledge or a challenge. The context hints that The Hanged Man might be a subject of divination or a participant in a game, as Zhou Mingrui's thoughts turn to a recent divination. This suggests The Hanged Man holds a significant, perhaps even pivotal, role in the unfolding events or the character's understanding of them.",
-        "term type": "Character Name",
+        "description": "\"The Hanged Man\" is a designation chosen by one of the characters, Alger, within the context of a secretive \"Gathering\" known as the Tarot Club. This designation is derived from one of the twenty-two Major Arcana tarot cards, indicating a specific symbolic meaning or archetype that the character aligns with. The choice of such designations suggests a structured and perhaps ritualistic nature to their meetings, with the tarot cards serving as a thematic and symbolic framework for their identities and interactions. Alger's selection of this card implies a personal connection to its traditional meanings, which often relate to sacrifice, perspective, or a period of suspension.",
+        "term type": "Title",
         "english target translation": "The Hanged Man"
     },
     {
         "entity": "Temperance",
         "chapter cutoff": 10,
-        "description": "In this context, \"Temperance\" refers to a specific Sequence 9 Beyonder pathway, likely a potion or a set of abilities associated with it. The description of the \"Sailor\" potion, which grants excellent balancing capabilities, immense strength, and illusory scales for enhanced swimming, suggests that \"Temperance\" might embody control, balance, and perhaps a connection to the sea or water. It represents a stage in becoming a Beyonder, achieved through consuming a potion derived from the \"Blasphemy Slate\" and undergoing a process of transformation. The mention of different languages in the translation of potion names highlights the historical and linguistic evolution of these powers.",
-        "term type": "Concept",
+        "description": "\"Temperance\" is presented as a designation chosen by Audrey, one of the founding members of the Tarot Club. This designation is derived from the Major Arcana tarot cards, indicating a significant and symbolic choice within the group's established framework. The selection of \"Temperance\" suggests a personal alignment with the qualities represented by this card, which often relates to balance, moderation, and self-control, aligning with Audrey's generally composed and thoughtful demeanor in the provided snippets.",
+        "term type": "Designation",
         "english target translation": "Temperance"
+    },
+    {
+        "entity": "Roselle",
+        "chapter cutoff": 10,
+        "description": "Roselle, also known as Emperor Caesar, was a pivotal historical figure in the Intis Republic. He was instrumental in its transformation into an Empire, having conquered and subjugated powerful Northern Continent nations like the Loen Kingdom and Feynapotter. Beyond his military and political achievements, Roselle was a significant inventor and cultural innovator. He is credited with inventing tarot divination, which became a method for foretelling the future, and his influence extended to religious changes, with the God of Craftsmanship being renamed the God of Steam and Machinery during his rule. He also made advancements in technology, such as inventing the steam engine and improving sailing boats.",
+        "term type": "Character Name",
+        "english target translation": "Roselle"
     },
     {
         "entity": "The Fool",
         "chapter cutoff": 10,
-        "description": "\"The Fool\" is a title adopted by a mysterious individual who appears to be a central figure in the narrative. This title is also the name of a specific tarot card, numbered \"0,\" which depicts a colorfully dressed character with a stick and bindle, accompanied by a puppy. The character Zhou Mingrui encounters identifies himself as \"The Fool\" and later, through a tarot reading, the card representing his present is revealed to be \"The Fool.\" This suggests a symbolic connection between the individual and the archetype of \"The Fool\" in tarot, often representing new beginnings, innocence, and a journey into the unknown. The individual's calm demeanor and enigmatic smile, coupled with the revelation of a severe head wound, hint at a complex and possibly dangerous nature.",
+        "description": "\"The Fool\" is a designation adopted by Zhou Mingrui, a central character. It is derived from the Major Arcana tarot cards, specifically card number 0, which depicts a colorful character with a stick and a bindle, accompanied by a puppy. This title signifies mystery, power, and a bizarre nature, and it serves as a call sign for Zhou Mingrui within a secretive gathering known as the Tarot Club. The adoption of this title reflects a desire for uniformity and secrecy among the members, with Zhou Mingrui himself choosing it to embody his persona and role in controlling the group's activities.",
         "term type": "Title",
         "english target translation": "The Fool"
     },
     {
-        "entity": "Ghost Shark",
+        "entity": "Blessings Stem From The Immortal Lord of Heaven and Earth",
         "chapter cutoff": 10,
-        "description": "The \"Ghost Shark\" is a creature whose blood is a valuable commodity within the narrative. It is specifically sought after as a trade item for a potion formula, indicating its rarity and importance in the mystical or alchemical systems of this world. The requirement of 100 milliliters suggests a significant quantity is needed, implying the creature itself might be substantial or its blood is difficult to extract in large amounts. Its name evokes a sense of the supernatural or elusive, fitting the mysterious and dangerous nature of the world.",
-        "term type": "Item",
-        "english target translation": "Ghost Shark"
+        "description": "This phrase is a key incantation used in a luck enhancement ritual performed by Zhou Mingrui. It is one of four variations of a prayer that he recites while walking in a counter-clockwise square formation. The ritual is intended to improve his luck, and he is experimenting with different languages and variations of the incantation to ensure its effectiveness across worlds. The specific wording suggests a belief in a supreme celestial being or entity that bestows blessings.",
+        "term type": "Incantation",
+        "english target translation": "Blessings Stem From The Immortal Lord of Heaven and Earth"
+    },
+    {
+        "entity": "Blessings Stem From The Sky Lord of Heaven and Earth",
+        "chapter cutoff": 10,
+        "description": "This phrase is a specific incantation used in a luck enhancement ritual. It is one of four variations of a prayer that Zhou Mingrui recites while performing a ritualistic walk. The variations in the phrasing, such as \"Sky Lord\" instead of \"Immortal Lord,\" suggest a potential adaptation or a nuanced understanding of the divine entities involved in the ritual, possibly reflecting the differences between worlds or religious interpretations. Its functional role is to be spoken during a specific step of the ritual to invoke blessings or enhance luck.",
+        "term type": "Incantation",
+        "english target translation": "Blessings Stem From The Sky Lord of Heaven and Earth"
+    },
+    {
+        "entity": "Blessings Stem From The Exalted Thearch of Heaven and Earth",
+        "chapter cutoff": 10,
+        "description": "This phrase is a specific incantation used in a ritualistic practice. It is one of four variations of a prayer or chant that Zhou Mingrui recites while performing a luck enhancement ritual. The repetition and slight alteration of the phrase across four steps suggest a structured and deliberate process, possibly intended to invoke or channel a specific power or entity. The variations in the title (\"Immortal Lord,\" \"Sky Lord,\" \"Exalted Thearch,\" \"Celestial Worthy\") imply different aspects or manifestations of a divine or powerful being associated with \"Heaven and Earth.\"",
+        "term type": "Incantation",
+        "english target translation": "Blessings Stem From The Exalted Thearch of Heaven and Earth"
+    },
+    {
+        "entity": "Blessings Stem From The Celestial Worthy of Heaven and Earth",
+        "chapter cutoff": 10,
+        "description": "This phrase is a specific incantation used in a luck enhancement ritual. It is one of four variations of a prayer, each spoken during a distinct step of a ritualistic movement. The repetition and variation of the phrase, along with the placement of staple foods and specific directional movements, are all integral components of the ritual's execution, suggesting a belief in its efficacy for influencing luck or fortune. The context implies that the precise wording and performance are crucial for the ritual to potentially take effect.",
+        "term type": "Incantation",
+        "english target translation": "Blessings Stem From The Celestial Worthy of Heaven and Earth"
+    },
+    {
+        "entity": "Feysac",
+        "chapter cutoff": 10,
+        "description": "Feysac is an ancient language originating from the Northern Continent, considered the root of all languages within that region. It is a subject typically learned from a young age by children of noble and wealthy families, indicating its association with privilege and established social strata. For Klein, a commoner, encountering Feysac only in university highlights a significant educational disadvantage and a sense of inadequacy compared to his more privileged peers. His academic pursuit of Feysac, alongside the Hermes language, suggests a scholarly interest in ancient linguistics and historical texts.",
+        "term type": "Language",
+        "english target translation": "Feysac"
+    },
+    {
+        "entity": "Loen language",
+        "chapter cutoff": 10,
+        "description": "The Loen language is the primary language spoken within the Loen Kingdom. It is shared by individuals from different social strata, as indicated by the mention of both five-soli and one-soli notes being used. The language is associated with a \"grim and tense vibe,\" suggesting it is spoken in serious or potentially dangerous situations. Its usage implies a shared cultural and national identity within the kingdom.",
+        "term type": "Concept",
+        "english target translation": "Loen language"
+    },
+    {
+        "entity": "Hermes",
+        "chapter cutoff": 10,
+        "description": "Hermes is presented as an ancient language, significant for its historical depth and connection to foundational linguistic origins on the Northern Continent, being considered the source of the Feysac language. Its usage is specifically linked to ancient mausoleums and texts concerning sacrificial and praying rituals, imbuing it with an aura of mystery, antiquity, and potentially sacred or arcane knowledge. The text written in Hermes on the yellowed paper evokes a profound sense of horror and unease in Zhou Mingrui, suggesting a powerful, perhaps supernatural, or deeply unsettling quality associated with the language itself or the messages it conveys.",
+        "term type": "Language",
+        "english target translation": "Hermes"
     },
     {
         "entity": "Backlund",
         "chapter cutoff": 10,
-        "description": "Backlund is identified as the capital city of the Loen Kingdom. The context describes a specific room within this city, detailing its furnishings and layout, suggesting it's a place of residence or lodging. The mention of Backlund establishes a geographical setting for the narrative, grounding the events in a specific, albeit fictional, location within the story's world.",
+        "description": "Backlund is identified as the capital city of the Loen Kingdom. It is a significant location within the narrative, serving as a center of political and potentially economic activity, as evidenced by the mention of its capital status and the presence of universities like Backlund University. The city is also characterized by a \"grim and tense vibe,\" suggesting a potentially oppressive or challenging environment for its inhabitants. The context implies that passing interviews for Backlund University is a crucial step for the protagonist's future.",
         "term type": "Location",
         "english target translation": "Backlund"
     },
     {
         "entity": "Audrey Hall",
         "chapter cutoff": 10,
-        "description": "Audrey Hall is a character introduced in the context. She is depicted as a young woman residing in a luxurious villa within the royal district. She possesses an antique dresser with a cracked bronze mirror, which she attempts to activate with specific incantations. Her actions suggest a desire or belief in the existence of extraordinary items and possibly a connection to the supernatural or mystical. She is later shown to be a \"Beyonder\" alongside other characters, indicating a significant role in the narrative.",
+        "description": "Audrey Hall is a character who finds herself inexplicably transported into a world shrouded in gray fog. Initially disoriented and horrified, she attempts to interact with an antique dresser and its cracked bronze mirror, seeking a way to understand or escape her predicament. She displays a mix of confusion, fear, and a growing curiosity, particularly regarding the mysterious figure who also appears to be present. Audrey is later identified as a \"young lady of lofty stature\" and is shown to be intelligent and observant, engaging in conversation with another individual and demonstrating an interest in tarot cards and their potential for divination.",
         "term type": "Character Name",
         "english target translation": "Audrey Hall"
     },
     {
+        "entity": "Hall family",
+        "chapter cutoff": 10,
+        "description": "The \"Hall family\" refers to a lineage or ancestral group to which Audrey Hall belongs. The context implies that this family possesses a significant history or tradition, as Audrey invokes its name in a ritualistic manner to command the mirror. The phrase suggests a sense of inherited status or power, which Audrey believes should be recognized by the magical artifact. The family's name is presented as a source of authority or a key to unlocking the mirror's capabilities.",
+        "term type": "Family Name",
+        "english target translation": "Hall family"
+    },
+    {
         "entity": "Roman Empire",
         "chapter cutoff": 10,
-        "description": "The Roman Empire refers to a historical period and political entity that emerged from the Roman Republic. In this context, it signifies a powerful, expansionist state that dominated the Northern Continent, subjugating nations like Lenburg and Feynapotter. The rise of the Roman Empire is directly linked to the figure of Emperor Caesar, who transformed the Republic into an Empire, marking a significant shift in political power and territorial control. This historical entity serves as a backdrop for understanding the geopolitical landscape and the origins of certain historical developments mentioned in the text.",
+        "description": "The \"Roman Empire\" in this context refers to a historical empire, specifically invoked as a point of reference for a powerful, ancient entity. It is associated with a \"Dark Emperor,\" suggesting a period of significant, perhaps even tyrannical, rule. The mention of its \"treasure\" implies a connection to historical artifacts and a legacy of power and wealth. Its inclusion serves to lend gravitas and historical depth to the narrative, contrasting with or providing a benchmark for the current political landscape.",
         "term type": "Historical Entity",
         "english target translation": "Roman Empire"
     },
     {
         "entity": "Dark Emperor",
         "chapter cutoff": 10,
-        "description": "The \"Dark Emperor\" is a title associated with Emperor Roselle, a historical figure who significantly impacted the Loen Kingdom and its surrounding nations. His reign marked a period of expansion, the establishment of the Empire, and the transformation of the Church of Craftsmanship into the Church of Steam and Machinery. Roselle is also credited with inventing tarot divination and popularizing paper-based card games. The term \"Dark Emperor\" likely refers to a specific, perhaps more obscure or powerful, aspect of his persona or influence, possibly related to his secret endeavors or the \"secret and mysterious\" set of tarot cards he is said to have created.",
+        "description": "The \"Dark Emperor\" is a historical figure referenced in the context, specifically associated with a bronze mirror described as a treasure of the Roman Empire. This title carries a connotation of mystery and potentially power, as the mirror is presented as an \"extraordinary item.\" The term implies a ruler from a past era, possibly linked to a period of darkness or a specific, albeit undefined, historical empire. Its functional role in the context is to imbue the mirror with historical significance and an aura of ancient power, influencing the perception of the item and the narrative surrounding it.",
         "term type": "Title",
         "english target translation": "Dark Emperor"
     },
     {
-        "entity": "Hall family",
-        "chapter cutoff": 10,
-        "description": "The \"Hall family\" is a specific familial lineage mentioned in the context, implying a group of individuals related by blood or marriage. The context suggests that membership or association with this family might be relevant to the character's circumstances or the broader narrative, potentially indicating social standing, historical significance, or a connection to specific events or powers within the story's world. The mention of \"people without any connections\" and limitations for those studying history hints that family ties, like those of the Hall family, could be a crucial factor in securing opportunities or navigating society.",
-        "term type": "Character Name",
-        "english target translation": "Hall family"
-    },
-    {
         "entity": "Sonia Sea",
         "chapter cutoff": 10,
-        "description": "The Sonia Sea is a geographical location mentioned in the context. It is implied to be a source of fresh fish, as indicated by the phrase \"Fresh fish from the port for just five pence apiece!\" This suggests it is a port or a body of water where fishing activities take place, contributing to the local economy and food supply. The mention of fish from this location highlights its role in providing sustenance and potentially economic opportunities within the setting.",
+        "description": "The Sonia Sea is a geographical location mentioned in the context, characterized by a storm and the presence of a three-masted sailboat. It serves as a setting for the character Alger Wilson, indicating it is a body of water where maritime activities, even in adverse conditions, take place. The mention of it being a \"Sonia Sea\" suggests a specific, named ocean or sea within the narrative's world.",
         "term type": "Location",
         "english target translation": "Sonia Sea"
     },
     {
         "entity": "Alger Wilson",
         "chapter cutoff": 10,
-        "description": "Alger Wilson is a character introduced in the provided text. He is depicted as someone who engages in discussions about divination tools, specifically mentioning Tarot cards and their symbolic and logical elements for interpretation. He also references Emperor Roselle and the \"twenty-two paths of the divine,\" suggesting a connection to mystical or esoteric knowledge. Alger appears to be a participant in a conversation, possibly with other characters like Audrey and Zhou Mingrui, and his dialogue indicates a certain level of authority or knowledge in the subject matter being discussed.",
+        "description": "Alger Wilson is a character introduced as a seafarer navigating a storm on a three-masted sailboat. He is depicted as experienced and statelier, maintaining his balance easily despite the turbulent conditions. He wears a robe with lightning patterns and holds a peculiar glass bottle, suggesting a connection to mystical or supernatural elements. Alger demonstrates a cautious and observant nature, choosing to be a silent onlooker rather than immediately probing others. He is also aware of Beyonder organizations and the sacrifices required to become one, indicating a level of knowledge about the supernatural world.",
         "term type": "Character Name",
         "english target translation": "Alger Wilson"
     },
     {
+        "entity": "Ghost Shark",
+        "chapter cutoff": 10,
+        "description": "The \"Ghost Shark\" is a creature whose blood is a valuable and rare ingredient, specifically required in a quantity of at least 100 milliliters for a particular potion formula. Its blood is described as crimson and is a key component in a transaction between Alger and Audrey. The creature itself is not fully described, but its blood's rarity and the need for it suggest it is a dangerous or elusive entity within this mystical world.",
+        "term type": "Item",
+        "english target translation": "Ghost Shark"
+    },
+    {
+        "entity": "Sunday",
+        "chapter cutoff": 10,
+        "description": "Sunday refers to a specific day of the week, distinct from the other six days which are dedicated to regular schooling. In this context, it is presented as a day when classes are not held at the technical school, implying it might be a day of rest or a day for different activities, such as attending Sunday school classes offered by the Church of the Evernight Goddess. The mention of \"Sunday\" also carries a connotation of potential return or a significant event, as indicated by Melissa's instruction to Klein about Benson possibly returning on Sunday.",
+        "term type": "Event",
+        "english target translation": "Sunday"
+    },
+    {
+        "entity": "Loen",
+        "chapter cutoff": 10,
+        "description": "Loen refers to a kingdom within the narrative's setting. It possesses its own distinct currency system, with \"soli\" and \"copper pence\" being mentioned denominations, and a capital city named Backlund. The kingdom also has a specific climate, described as having a cool climate with temperatures not exceeding 30\u00b0C annually. Furthermore, the Loen Kingdom has implemented educational policies, such as the 'Basic Education Law,' and has a history of military expansion, having invaded and placed other nations under its protection. The Loen language is spoken by its inhabitants.",
+        "term type": "Location",
+        "english target translation": "Loen"
+    },
+    {
         "entity": "Beyonder",
         "chapter cutoff": 10,
-        "description": "A Beyonder is an individual who has gained supernatural abilities through the consumption of specific potions, the formulas for which are derived from the \"Blasphemy Slate.\" These abilities are often tied to mystical or esoteric concepts, allowing individuals to transcend normal human limitations. While the existence of Beyonders is not widely known or acknowledged by the general populace, they are known to exist within certain official organizations like courts, tribunals, and execution agencies, where they combat hidden dangers. Becoming a Beyonder typically involves joining established churches or seeking out clandestine organizations, often requiring sacrifices and adherence to specific challenges.",
+        "description": "A Beyonder is an individual who has gained supernatural abilities, typically through the consumption of specific potions derived from ancient formulas. These abilities are often referred to as \"miracles\" or \"mysteries.\" Becoming a Beyonder requires significant sacrifices and often involves joining religious organizations like the Churches of the Evernight Goddess, the Lord of Storms, or the God of Steam and Machinery, or seeking out ancient noble families. Beyonders are rare, and their existence is often a subject of suspicion and mystery, even among clergy. They are involved in combating dark forces, though their numbers have dwindled over time.",
         "term type": "Concept",
         "english target translation": "Beyonder"
     },
     {
+        "entity": "Church of the Lord of Storms",
+        "chapter cutoff": 10,
+        "description": "The Church of the Lord of Storms is one of the major religious organizations in the world described in the context. It is presented as a significant institution that offers pathways to becoming a \"Beyonder,\" individuals with supernatural abilities. The church, along with others like the Evernight Goddess and the God of Steam and Machinery, plays a role in the societal structure, influencing education and potentially holding significant power. The context also hints at a historical connection to a group called \"Keepers of the Seas\" associated with the Lord of Storms, suggesting a long-standing presence and influence.",
+        "term type": "Organization",
+        "english target translation": "Church of the Lord of Storms"
+    },
+    {
+        "entity": "Church of the God of Steam and Machinery",
+        "chapter cutoff": 10,
+        "description": "This is a religious organization that worships the God of Steam and Machinery. It was formerly known as the Church of Craftsmanship, but its name and focus were changed during the rule of Emperor Caesar, who also introduced tarot divination. The church's public holy revelation marked a significant shift in its doctrine. The church plays a role in the educational landscape, with its Sunday school classes being an alternative to public schooling, though the latter is religiously neutral to avoid conflicts between different deities.",
+        "term type": "Organization",
+        "english target translation": "Church of the God of Steam and Machinery"
+    },
+    {
+        "entity": "Iron Age",
+        "chapter cutoff": 10,
+        "description": "The \"Iron Age\" refers to the current epoch, identified as the Fifth Epoch, which commenced 1349 years prior to the events described. It signifies a historical period characterized by the presence and activities of entities known as Beyonders, who continue to combat dark dangers, albeit with significantly reduced numbers compared to earlier times. The term establishes a historical framework within the narrative, contrasting the present with a more active and numerous past for these supernatural beings.",
+        "term type": "Concept",
+        "english target translation": "Iron Age"
+    },
+    {
         "entity": "Nighthawks",
         "chapter cutoff": 10,
-        "description": "The term \"Nighthawks\" refers to individuals who are active or present during the night, particularly in urban or public settings. In this context, it evokes a sense of late-night activity and potentially a shared experience of being awake when most others are asleep. The phrase is associated with the sounds of street vendors and the general atmosphere of a city at night, suggesting a specific time and place where such individuals might be found. It implies a certain shared characteristic or condition among those who are awake and about during these hours.",
-        "term type": "Concept",
+        "description": "\"Nighthawks\" appears to be a designation for a group or entity within the provided context, likely associated with clandestine or powerful organizations. Its mention alongside \"the Mandated Punisher\" and \"the Machinery Hivemind\" suggests it is part of a hierarchy or network of significant, possibly dangerous, forces. The speaker's fear of losing freedom implies that association with or knowledge of the Nighthawks carries substantial risks, possibly involving control or subjugation. The term evokes imagery of nocturnal activity and perhaps predatory or watchful behavior, fitting within a narrative that hints at hidden powers and societal structures.",
+        "term type": "Character Name",
         "english target translation": "Nighthawks"
     },
     {
         "entity": "Mandated Punisher",
         "chapter cutoff": 10,
-        "description": "The term \"Mandated Punisher\" is not explicitly present in the provided context. However, based on the surrounding information about the difficulties of becoming a public servant and the limited job opportunities for history scholars, it can be inferred that such a role would likely be a highly sought-after and perhaps exclusive position within the government or a similar authoritative body. The \"mandate\" suggests a formal authorization or decree, implying a position of power and responsibility, while \"punisher\" clearly indicates a role involving the enforcement of laws or the administration of penalties. The context implies that such positions are not easily accessible, especially for those without connections, hinting at a hierarchical and potentially meritocratic, yet also nepotistic, system.",
-        "term type": "Title",
+        "description": "The \"Mandated Punisher\" appears to be a powerful, potentially dangerous entity or concept within the narrative's lore. Its mention alongside \"Nighthawks\" and the \"Machinery Hivemind\" suggests it is part of a complex, possibly antagonistic, system or organization. The context implies that knowledge of such entities is significant and potentially risky, as the speaker fears losing their freedom by revealing what they know. This entity likely holds a position of authority or enforcement, tasked with dispensing punishment as dictated by some higher power or mandate.",
+        "term type": "Concept",
         "english target translation": "Mandated Punisher"
     },
     {
         "entity": "Machinery Hivemind",
         "chapter cutoff": 10,
-        "description": "The term \"Machinery Hivemind\" is not present in the provided text. The text mentions the \"God of Steam and Machinery\" as one of the churches Beyonders can join, and describes a \"strange mechanical device with exposed gears and bearings.\" However, there is no mention or implication of a \"Machinery Hivemind.\"",
+        "description": "The Machinery Hivemind appears to be a significant, possibly antagonistic, entity or organization within the narrative's world. Its mention alongside the Nighthawks and Mandated Punisher suggests it is a powerful faction, likely involved in the supernatural or a parallel power structure. The term implies a collective consciousness or coordinated network of mechanical or technologically advanced beings or systems, operating with a unified purpose. Its existence is known to individuals who possess specialized knowledge, indicating it is not a common or publicly acknowledged entity.",
         "term type": "Concept",
-        "english target translation": "N/A"
-    },
-    {
-        "entity": "Iron Age",
-        "chapter cutoff": 10,
-        "description": "The term \"Iron Age\" refers to a historical period characterized by the widespread use of iron for tools and weapons. Within the provided context, it signifies a specific era in the world's history, likely a precursor to or a distinct period from the \"Fifth Epoch\" mentioned. Its mention in relation to historical knowledge suggests it's a recognized period within the established timeline of this fictional world, relevant to understanding societal development and technological advancement.",
-        "term type": "Historical Period",
-        "english target translation": "Iron Age"
+        "english target translation": "Machinery Hivemind"
     },
     {
         "entity": "Sequence 9 Potion",
         "chapter cutoff": 10,
-        "description": "A \"Sequence 9 Potion\" refers to a specific tier or level within a system of magical or supernatural advancement. These potions are the primary means by which individuals in this world can become \"Beyonders,\" gaining extraordinary abilities. The names of these potions, like \"Sailor,\" are derived from ancient texts and are significant not for their literal meaning but for representing the \"core characteristics\" of the powers they grant. Obtaining these potion formulas, such as the two sets mentioned, is a crucial step for those seeking to ascend through the Beyonder pathways.",
+        "description": "A Sequence 9 Potion is a foundational item within the Beyonder system, representing the initial stage of becoming a supernatural being. These potions are derived from ancient formulas, with their names evolving through various languages but retaining their core characteristics. Obtaining a Sequence 9 Potion formula is a significant goal for individuals seeking to gain supernatural abilities, as demonstrated by Audrey's eagerness to acquire the \"Spectator\" formula. The acquisition and exchange of these formulas are often conducted through clandestine means, with trust and verification being crucial elements in the transaction.",
         "term type": "Concept",
         "english target translation": "Sequence 9 Potion"
     },
     {
         "entity": "Sequence 9",
         "chapter cutoff": 10,
-        "description": "In this context, \"Sequence 9\" refers to the lowest or initial level within a hierarchical system of supernatural abilities or powers. These sequences are tied to specific potion formulas that individuals consume to gain extraordinary capabilities. Each sequence represents a distinct stage of progression, with higher sequences presumably granting more potent or specialized powers. The term implies a structured and organized method of ascending in power, where understanding and obtaining the correct potion formulas is crucial for advancement.",
+        "description": "Sequence 9 refers to the lowest or initial tier of power within the Beyonder system described in the text. It represents the first step in a progression of abilities gained through consuming specific potions. The term signifies a foundational level of supernatural power, with specific potion names like \"Sailor\" and \"Spectator\" indicating the distinct abilities granted at this rank. These sequences are derived from ancient \"Blasphemy Slate\" translations, highlighting a historical and mystical origin for these power classifications.",
         "term type": "Concept",
         "english target translation": "Sequence 9"
     },
     {
         "entity": "Blasphemy Slate",
         "chapter cutoff": 10,
-        "description": "The Blasphemy Slate is an artifact of profound significance, believed to contain the deep mysteries of the twenty-two paths of the divine. Emperor Roselle is said to have personally viewed this slate, implying its ancient and powerful nature. Its connection to the \"twenty-two paths of the divine\" suggests it is a foundational text or object related to a spiritual or mystical system within this world. The mention of it alongside a set of paper cards further hints at its role in disseminating or embodying these divine principles.",
+        "description": "The Blasphemy Slate is an ancient artifact of immense significance, believed to contain the profound mysteries of the twenty-two paths of the divine. It serves as the origin for the names of Beyonder potion formulas, which are crucial for individuals to become Beyonders. The Slate's original text has undergone numerous translations across various languages, including Jotun, Elvish, ancient and modern Hermes, and ancient Feysac, with the essence of the potion names lying in their portrayal of the \"core characteristics\" rather than the literal words. Its existence is linked to Emperor Roselle, who is said to have seen it.",
         "term type": "Item",
         "english target translation": "Blasphemy Slate"
     },
@@ -611,169 +751,134 @@
     {
         "entity": "Elvish",
         "chapter cutoff": 10,
-        "description": "The term \"Elvish\" is not explicitly present in the provided context. However, the context does mention the \"Feysac language\" as being \"deemed the origin of all languages in the Northern Continent\" and the \"Hermes language\" which appears in ancient texts related to rituals. If \"Elvish\" were to be inferred or related to these, it would likely represent an ancient, possibly mystical or foundational language within this world, similar to how Elvish languages are often depicted in fantasy literature as ancient and possessing a unique cultural significance. The mention of the Hermes language, used in sacrificial and praying rituals, suggests a connection to the sacred or arcane.",
-        "term type": "Language",
-        "english target translation": "Elvish"
+        "description": "The term \"Elvish\" is not present in the provided context. The text mentions the \"Loen language\" and discusses the \"Loen Kingdom,\" its currency system (soli and gold pounds), its capital (Backlund), and a city within it (Tingen). It also references Beyonders and various Churches. There is no mention or implication of Elvish language or beings.",
+        "term type": "Concept",
+        "english target translation": "N/A"
     },
     {
         "entity": "Sailor",
         "chapter cutoff": 10,
-        "description": "The term \"Sailor\" refers to a specific Sequence 9 Potion within the Beyonder system. This potion grants the user enhanced balancing capabilities, allowing them to move with ease even in adverse conditions like a rainstorm on a boat. Additionally, it bestows immense strength and illusory scales under the skin, enabling the user to swim with exceptional skill and making them difficult to capture. It represents a foundational step in the journey to becoming a Beyonder, tied to the core characteristics of the potion's name.",
-        "term type": "Ability",
+        "description": "The term \"Sailor\" refers to a Sequence 9 Potion formula within the Beyonder system. Its primary function is to grant the user exceptional balancing capabilities, allowing them to move with ease even in turbulent conditions like a storm at sea. Additionally, it bestows enhanced agility underwater, enabling prolonged submersion without equipment. Historically, this potion was known by the name \"Keepers of the Seas\" and is associated with the Lord of Storms.",
+        "term type": "Concept",
         "english target translation": "Sailor"
     },
     {
         "entity": "Keepers of the Seas",
         "chapter cutoff": 10,
-        "description": "The \"Keepers of the Seas\" is a term used to describe individuals who possess the Beyonder Sequence 9 ability known as \"Sailor.\" This ability grants them exceptional balancing capabilities, allowing them to move freely even on unstable surfaces like a boat during a storm. Furthermore, it imbues them with immense strength and illusory scales under their skin, enabling them to swim with the agility of a fish and making them difficult to apprehend. This suggests a connection to maritime environments and a mastery over them.",
-        "term type": "Ability",
-        "english target translation": "Sailors"
+        "description": "The \"Keepers of the Seas\" is an ancient designation for a group or organization associated with the Lord of Storms. This title implies a role of guardianship or stewardship over maritime affairs, likely involving mastery of the seas and potentially the abilities to navigate them with exceptional skill, as suggested by the mention of agile underwater movement and the \"Sailor\" potion. The name itself carries a historical and perhaps mythical connotation, indicating a long-standing presence and influence in the world.",
+        "term type": "Title",
+        "english target translation": "Keepers of the Seas"
     },
     {
         "entity": "Spectator",
         "chapter cutoff": 10,
-        "description": "In this context, \"Spectator\" refers to a specific Sequence 9 Beyonder potion within a mystical system. It denotes an individual possessing an exceptionally sharp mind and acute observational abilities, allowing them to discern hidden truths and intentions through subtle cues like emotions, conduct, and speech. The term carries a connotation of detachment and an inability to directly participate or influence events, emphasizing their role as an observer rather than an actor. This ability is highly valued, with one character expressing a desire to embody this \"feeling\" of being a spectator.",
-        "term type": "Ability",
+        "description": "In this context, \"Spectator\" refers to a specific Sequence 9 Beyonder potion that grants exceptionally sharp mental acuity and acute observational abilities. It implies a role of detached observation and judgment, akin to an audience member at a play, capable of discerning hidden thoughts and emotions through subtle cues. The term also carries a connotation of being an outsider, forever remaining an observer rather than an active participant, regardless of the circumstances. This ability is contrasted with the limitations of ordinary individuals who lack such heightened perception and introspection.",
+        "term type": "Concept",
         "english target translation": "Spectator"
     },
     {
-        "entity": "Seat of Honor",
+        "entity": "Ghost Sharks",
         "chapter cutoff": 10,
-        "description": "The \"Seat of Honor\" refers to a position of high status or importance within a social hierarchy or gathering. In the context of the provided text, it is implied that obtaining such a seat is difficult for those without connections, particularly for public servants. This suggests a system where privilege and networking are crucial for advancement, and that certain positions are reserved or highly sought after due to their prestige and influence. The term highlights the societal structures and the barriers faced by individuals lacking social capital.",
-        "term type": "Concept",
-        "english target translation": "Seat of Honor"
+        "description": "Ghost Sharks are a creature whose blood is a valuable and rare ingredient, specifically required in a quantity of at least 100 milliliters for a particular potion. The mention of their blood suggests they possess unique biological properties that are sought after in this mystical or alchemical context. Their existence and the demand for their blood imply they are part of the world's supernatural or extraordinary fauna, contributing to the mystical atmosphere of the narrative.",
+        "term type": "Creature",
+        "english target translation": "Ghost Sharks"
+    },
+    {
+        "entity": "Audrey",
+        "chapter cutoff": 10,
+        "description": "Audrey is a young lady of lofty stature, recently turned seventeen. She is characterized by her excitement, seriousness, and a somewhat naive yet enthusiastic demeanor. Audrey is a founding member of the \"Tarot Club\" and chooses \"Justice\" as her designation. She is shown to be intelligent and eager to learn, particularly about the powers and workings of the Tarot Club and its members. Her actions suggest a desire for knowledge and a willingness to engage in secretive organizations for personal gain or understanding.",
+        "term type": "Character Name",
+        "english target translation": "Audrey"
+    },
+    {
+        "entity": "Alger",
+        "chapter cutoff": 10,
+        "description": "Alger is a character within the provided context who is a Beyonder, possessing knowledge of various supernatural entities and organizations. He is a participant in a clandestine \"Gathering\" known as the Tarot Club, where he adopts the designation \"The Hanged Man,\" a name derived from a Major Arcana tarot card. Alger acts as a mentor and guide to other members, particularly Audrey, offering explanations about the nature of Beyonders, the acquisition of powers through potions, and the historical context of their world. He is portrayed as knowledgeable, somewhat mysterious, and a founding member of the Tarot Club.",
+        "term type": "Character Name",
+        "english target translation": "Alger"
     },
     {
         "entity": "Mr. Fool",
         "chapter cutoff": 10,
-        "description": "\"Mr. Fool\" is a moniker adopted by a character who is presented as a mysterious and possibly supernatural entity. This name is chosen by the character himself, indicating a deliberate self-identification. The context suggests that \"Mr. Fool\" is associated with divination, specifically through tarot cards, and possesses knowledge that extends beyond the ordinary, potentially hinting at a connection to arcane or mystical powers. The character's demeanor is described as amiable and calm, even when revealing this unusual appellation, and he seems to be testing or observing others, implying a role of guidance or manipulation.",
+        "description": "\"Mr. Fool\" is the chosen appellation for Zhou Mingrui, adopted by him to signify his mysterious, powerful, and somewhat bizarre persona. This designation is derived from the \"The Fool\" tarot card, which is revealed to symbolize his past, present, and future in a divination. It serves as a formal title within a clandestine organization known as the \"Tarot Club,\" establishing a uniform and secretive system of address for its members, and it is treated with respect and deference by other characters, such as Audrey and Alger.",
         "term type": "Title",
         "english target translation": "Mr. Fool"
     },
     {
         "entity": "Warrior & Sea Bar",
         "chapter cutoff": 10,
-        "description": "The \"Warrior & Sea Bar\" is a specific establishment mentioned in the context as a location for a clandestine exchange. It is situated on Pelican Street in the White Rose Borough of Pritz Harbor. The bar serves as a drop-off point for a specific item, the Ghost Shark's blood, and is associated with a figure named Williams, who acts as the recipient or point of contact for the transaction. The name suggests a maritime or seafaring theme, fitting for a port city, and implies a clientele or atmosphere related to warriors or those involved in rugged professions.",
+        "description": "The \"Warrior & Sea Bar\" is a specific establishment located on Pelican Street in the White Rose Borough of Pritz Harbor. It serves as a designated drop-off point for items, specifically the Ghost Shark's blood in this context. The bar is known to the \"Captain,\" indicating a level of familiarity and trust between this individual and the bar's proprietor, Williams. Its function is that of a secure intermediary for transactions within the mystical underworld, facilitating the exchange of rare ingredients for potion formulas.",
         "term type": "Location",
         "english target translation": "Warrior & Sea Bar"
     },
     {
         "entity": "Pelican Street",
         "chapter cutoff": 10,
-        "description": "Pelican Street appears to be a specific location within the narrative, likely a street or district. The context suggests it's a place where one might find various food vendors, as indicated by the calls for roasted fish, oyster soup, and muffins. The mention of \"fresh fish from the port\" also implies a connection to maritime activities or trade, possibly placing Pelican Street near a harbor or waterfront. Its inclusion alongside descriptions of job limitations and historical studies suggests it might be a setting where ordinary people, particularly those without connections or specialized historical knowledge, would seek employment or sustenance.",
+        "description": "Pelican Street is a specific street mentioned in the context, located at an intersection with Daffodil Street, forming a municipal square. Its significance lies in its geographical placement within the narrative, serving as a landmark and a point of reference for the characters' movements and the setting of the story. The mention of this street, alongside Iron Cross Street, helps to establish the urban environment where the events unfold, contributing to the overall atmosphere and grounding the narrative in a physical space.",
         "term type": "Location",
         "english target translation": "Pelican Street"
     },
     {
         "entity": "White Rose Borough",
         "chapter cutoff": 10,
-        "description": "The White Rose Borough is a location mentioned in the context, specifically in relation to the limited job opportunities for people without connections and those who studied history. It is implied to be a place where such individuals might seek employment, but the context suggests it offers few avenues for advancement, particularly for those lacking personal recommendations. The mention of this borough highlights the societal constraints and the difficulty of securing public servant positions in that era.",
+        "description": "The \"White Rose Borough\" is a location mentioned in the context, specifically where an assassination took place. It is described as the site of the White Maple Palace, where the individual in question eventually died. The mention of a \"royal district\" in relation to the villa suggests that the White Rose Borough is likely a significant or affluent area, possibly associated with nobility or governance. Its functional role in the narrative is to provide a specific setting for a pivotal event in the character's history.",
         "term type": "Location",
         "english target translation": "White Rose Borough"
     },
     {
         "entity": "Pritz Harbor",
         "chapter cutoff": 10,
-        "description": "Pritz Harbor is a location mentioned in the context as the source of fresh fish being sold. The mention of \"fresh fish from the port\" suggests it is a coastal or port city where fishing is a significant activity. Its presence implies a connection to trade and the availability of seafood, contributing to the bustling, albeit somewhat desperate, atmosphere of the street vendors.",
+        "description": "Pritz Harbor is a location mentioned in the context, specifically in relation to the Loen Kingdom's capital, Backlund. It is implied to be a port or a place associated with maritime trade, as evidenced by the mention of \"fresh fish from the port.\" The context suggests it is a functional part of the capital city, likely serving as a source of goods and a hub for economic activity.",
         "term type": "Location",
         "english target translation": "Pritz Harbor"
     },
     {
         "entity": "Williams",
         "chapter cutoff": 10,
-        "description": "\"Williams\" appears to be a surname, likely belonging to a character within the narrative. The context suggests a familial relationship, as the phrase \"Mrs. Williams\" is used, implying a married woman. The mention of \"They stayed in a two bedroom apartment together\u2026 Their family was not wealthy and its situation could even be described as somewhat wanting. At present, the family was supported solely by the elder brother who worked at an import and export company as a clerk\u2026\" strongly indicates that \"Williams\" is the surname of this family unit, with the elder brother being a key provider.",
+        "description": "The term \"Williams\" appears to be a proper noun, likely a surname, used in a conversational context. It is presented as a name that is being sought or inquired about, as indicated by the question \"Dear Klein, where\u2019s Benson?\". The surrounding text suggests a narrative involving characters named Klein and Benson, and \"Williams\" might be another character or a person associated with them. Without further context, its specific role or relationship to the other characters remains unclear, but it functions as a point of reference within the dialogue.",
         "term type": "Character Name",
         "english target translation": "Williams"
     },
     {
-        "entity": "Captain",
+        "entity": "the Captain",
         "chapter cutoff": 10,
-        "description": "The term \"Captain\" is used by Audrey to address Alger, indicating a position of authority or leadership, likely within a group or organization. It is presented as a formal title, suggesting a level of respect and perhaps a shared understanding of roles within their interactions. The context implies that Alger holds a significant position, possibly related to his knowledge of Beyonder pathways and the \"Blasphemy Slate.\"",
+        "description": "\"the Captain\" is a title or designation used to address a specific individual within the narrative. It implies a position of authority, leadership, and responsibility, likely within a group or organization, possibly a ship or a similar hierarchical structure. The term carries a sense of respect and perhaps a degree of mystery, as it's used in a formal or semi-formal manner, suggesting a recognized role rather than a casual nickname. Its usage in the context of \"The Fool\" and the grand hall suggests it's a significant figure within the established social or mystical order of the story.",
         "term type": "Title",
-        "english target translation": "Captain"
-    },
-    {
-        "entity": "Gathering",
-        "chapter cutoff": 10,
-        "description": "The term \"Gathering\" refers to a specific type of meeting or assembly, likely involving individuals with shared interests or purposes. In this context, it appears to be a formal or semi-formal event where information is exchanged and discussions take place, possibly related to the acquisition of knowledge or the pursuit of specific goals. The mention of \"divination tools\" and \"tarot cards\" suggests that these gatherings might be related to mystical or esoteric practices.",
-        "term type": "Event",
-        "english target translation": "Gathering"
+        "english target translation": "the Captain"
     },
     {
         "entity": "Justice",
         "chapter cutoff": 10,
-        "description": "The term \"Justice\" is not explicitly present in the provided context. However, the context describes a world where opportunities are scarce, particularly for those without connections seeking public service roles. History graduates face even more limited job prospects. This societal structure implies a lack of equitable distribution of opportunities, suggesting a potential absence or perversion of \"justice\" in the conventional sense of fairness and equal access. The narrative hints at a system where meritocracy is not the primary driver for advancement, leading to a grim and tense atmosphere.",
+        "description": "In this context, \"Justice\" is a chosen designation for a member of the Tarot Club, signifying a specific identity or role within the group. It is derived from the Major Arcana of tarot cards, indicating a connection to esoteric or mystical themes. The choice of \"Justice\" suggests a potential alignment with concepts of fairness, order, or retribution, and it serves as a uniform identifier for members of this secretive gathering.",
         "term type": "Concept",
         "english target translation": "Justice"
     },
     {
         "entity": "Major Arcana",
         "chapter cutoff": 10,
-        "description": "The Major Arcana refers to a specific set of twenty-two cards that Emperor Roselle is said to have created. These cards are described as paper cards symbolizing a particular unknown power and were later referenced by Roselle to create the twenty-two Major Arcana tarot cards, which are used as a gaming tool. The term is presented as a known concept within the narrative, with one character questioning its accuracy and another, Zhou Mingrui, recognizing familiar cards from this set.",
+        "description": "The Major Arcana refers to a specific set of twenty-two cards within a tarot deck, which are presented as being derived from or related to tarot cards. These cards are utilized as a gaming tool and also hold significance as designations for members of a secretive gathering known as the Tarot Club. The context suggests a belief that Emperor Roselle may have created these cards, potentially imbuing them with the power to divine the future, though this is debated and clarified as a tool for interpretation rather than direct future revelation. The cards are also associated with a \"0\" card, symbolizing a beginning or a potential transmigration senior.",
         "term type": "Concept",
         "english target translation": "Major Arcana"
     },
     {
-        "entity": "Mr. Hanged Man",
-        "chapter cutoff": 10,
-        "description": "The \"Mr. Hanged Man\" is a figure that Zhou Mingrui, the protagonist, is observing and seemingly testing. The context suggests that Zhou Mingrui is in a position of authority or judgment, as he casts his gaze upon \"The Hanged Man\" as if putting him to the test. This implies \"The Hanged Man\" is a subordinate, a subject of scrutiny, or perhaps a character within a narrative or game that Zhou Mingrui is interacting with. The specific nature of this interaction, whether literal or metaphorical, is not fully detailed, but it clearly establishes a dynamic of observation and evaluation.",
-        "term type": "Character Name",
-        "english target translation": "Mr. Hanged Man"
-    },
-    {
         "entity": "Tarot Club",
         "chapter cutoff": 10,
-        "description": "The Tarot Club is a secret organization formed by individuals who have chosen designations derived from tarot cards. Its founding members, including \"The Fool\" (Zhou Mingrui), \"The Hanged Man\" (Alger), and \"Justice\" (Audrey), have united under a common, secretive designation system. The club appears to be a platform for individuals interested in divination and the mysterious powers associated with tarot cards, possibly as a means of connecting with the spiritual world and interpreting signs.",
+        "description": "The \"Tarot Club\" is a designation for a fixed, long-term, and secretive gathering, established by its founding members, Audrey and Alger. The club's name and the members' designations are derived from the Major Arcana cards of a tarot deck, signifying a shared interest and likely a structured, symbolic approach to their activities. The club's formation is marked by the adoption of tarot-related identities, suggesting a thematic or mystical underpinning to their collective purpose.",
         "term type": "Concept",
         "english target translation": "Tarot Club"
     },
     {
+        "entity": "Mr. Hanged Man",
+        "chapter cutoff": 10,
+        "description": "\"Mr. Hanged Man\" is a designation adopted by a character named Alger within the context of a secret organization known as the Tarot Club. This designation is derived from one of the twenty-two Major Arcana tarot cards, signifying a deliberate choice to align with the symbolic meanings and archetypes associated with that card. The term functions as a codename or alias, contributing to the group's uniformity and secrecy, and is used in direct address and reference among members, particularly in relation to the leader, Mr. Fool.",
+        "term type": "Title",
+        "english target translation": "Mr. Hanged Man"
+    },
+    {
         "entity": "Emperor Roselle",
         "chapter cutoff": 10,
-        "description": "Emperor Roselle is a pivotal historical figure within the narrative, credited with significant achievements and innovations. He is depicted as a powerful leader who expanded the Intis Republic, transforming it into an Empire and crowning himself Emperor Caesar. His reign saw the Church of Craftsmanship's first public holy revelation, leading to a change in their deity from the God of Craftsmanship to the God of Steam and Machinery. Roselle is also recognized as the inventor of tarot divination and the creator of the contemporary system of paper-based cards and their playstyles, including familiar games like Upgrade and Poker. Furthermore, his expeditions established a sea route to the Southern Continent, initiating the era of colonialism. He is also associated with the Blasphemy Slate and a set of paper cards containing the mysteries of the twenty-two paths of the divine.",
+        "description": "Emperor Roselle, originally Consul Roselle Gusta, was a pivotal historical figure in the Intis Republic. He was a brilliant inventor, credited with creating the steam engine and improving sailing boats, and a powerful military leader who expanded Intis' influence across the Northern Continent. Roselle transitioned the Republic into an Empire, crowning himself Emperor, and is also known for inventing tarot divination and for his association with the Church of Steam and Machinery. His reign was marked by significant advancements and political upheaval, ultimately ending with his assassination due to betrayal by various powerful factions.",
         "term type": "Character Name",
         "english target translation": "Emperor Roselle"
-    },
-    {
-        "entity": "twenty-two paths of the divine",
-        "chapter cutoff": 10,
-        "description": "This phrase refers to a set of twenty-two distinct spiritual or mystical pathways, believed to hold profound mysteries. It is associated with Emperor Roselle and a set of paper cards, implying a system of esoteric knowledge or power. The concept evokes a sense of longing and deep interest, suggesting these paths are highly sought after and represent a significant aspect of the world's supernatural or divine order.",
-        "term type": "Concept",
-        "english target translation": "twenty-two paths of the divine"
-    },
-    {
-        "entity": "Eternal Blazing Sun",
-        "chapter cutoff": 10,
-        "description": "The Eternal Blazing Sun is a deity or religious entity within the narrative's world. It is presented as one of the major churches, implying a significant religious institution with established doctrines and followers. The context reveals that this church, along with other powerful factions, was involved in the assassination of Emperor Roselle, indicating its historical influence and potential for political or military action. This suggests a powerful and potentially antagonistic force within the established order of this fictional world.",
-        "term type": "Deity",
-        "english target translation": "Eternal Blazing Sun"
-    },
-    {
-        "entity": "God of Knowledge and Wisdom",
-        "chapter cutoff": 10,
-        "description": "The God of Knowledge and Wisdom is a deity within the context of the provided text, specifically mentioned in relation to the Churches of the Evernight Goddess, the Lord of Storms, or the God of Steam and Machinery. While not directly elaborated upon, its inclusion suggests a pantheon of gods that individuals can seek guidance or power from, particularly in the pursuit of becoming a Beyonder. The mention implies a domain related to intellectual pursuits and understanding, contrasting with the more action-oriented deities like the Lord of Storms.",
-        "term type": "Character Name",
-        "english target translation": "God of Knowledge and Wisdom"
-    },
-    {
-        "entity": "Mother Earth",
-        "chapter cutoff": 10,
-        "description": "The term \"Mother Earth\" is used in the context of a character's memories, specifically referring to the protagonist's mother. It highlights a warm, nurturing, and domestic aspect of her character, associated with her baking of bread and pastries. The mention of \"Tingen biscuits and lemon cakes\" further emphasizes this familial and comforting association, suggesting a deep-seated affection and positive recollection of her culinary skills and presence.",
-        "term type": "Character Title",
-        "english target translation": "Mother"
-    },
-    {
-        "entity": "God of War",
-        "chapter cutoff": 10,
-        "description": "The \"God of War\" is not explicitly mentioned or described within the provided context. The text discusses other deities like the Evernight Goddess, the Lord of Storms, and the God of Steam and Machinery, and introduces a character who identifies himself as \"The Fool.\" There is no information available to define or contextualize the \"God of War\" based on this excerpt.",
-        "term type": "Title",
-        "english target translation": "God of War"
-    },
-    {
-        "entity": "Mandarin",
-        "chapter cutoff": 10,
-        "description": "The term \"Mandarin\" is not present in the provided context. Therefore, a description cannot be generated.",
-        "term type": "Not Applicable",
-        "english target translation": "Not Applicable"
     }
 ]
