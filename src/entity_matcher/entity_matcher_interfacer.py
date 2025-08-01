@@ -1,27 +1,27 @@
-import os
 
-try:
+import os
+from lingua import Language, LanguageDetectorBuilder
+try:    
     from ..models.spacy.lemmatization import lemmatize_text, lemmatize_entity
 except ImportError:
     from models.spacy.lemmatization import lemmatize_text, lemmatize_entity
 
 class Entity_Matcher:
-    def __init__(self, glossary, file_paths, start_idx, semantic_matcher, target_language=None):
+    def __init__(self, glossary, file_paths, start_idx):
         self.glossary = glossary
         self.file_paths = file_paths  # Already trimmed to proper files
         self.start_idx = start_idx
-        self.semantic_matcher = semantic_matcher
-        self.target_language = target_language
+        languages = [Language.ENGLISH, Language.CHINESE, Language.JAPANESE, Language.KOREAN, Language.SPANISH, Language.FRENCH] 
+        # can add more later, what space has curently
+        detector = LanguageDetectorBuilder.from_languages(languages).build()
+        # find language
+        with open(file_paths[0], "r", encoding="UTF-8") as f:
+            text = f.read()
+        self.target_language = detector.detect_language_of(text)
 
-    def get_files(self, start_idx, end_idx):
-        """Get file paths for the specified range of indices"""
-        # Since file_paths is already trimmed, we need to adjust indexing
-        relative_start = max(0, start_idx - self.start_idx)
-        relative_end = min(len(self.file_paths) - 1, end_idx - self.start_idx)
-        return self.file_paths[relative_start:relative_end + 1]
 
     def exact_match(self, entities, start_idx, end_idx):
-        """Perform exact string matching for entities in text files"""
+        # Perform exact string matching for entities in text files
         file_paths = self.get_files(start_idx, end_idx)
         entity_chapter_presence = {}
         
@@ -43,8 +43,11 @@ class Entity_Matcher:
         return entity_chapter_presence
 
     def lemmatized_match(self, entities, start_idx, end_idx):
-        """Perform lemmatized matching for entities in text files with multi-language support"""
+        #Perform lemmatized matching for entities in text files with multi-language support
         file_paths = self.get_files(start_idx, end_idx)
+        with open(file_paths[0],"r",encoding="UTF-8") as f:
+            txt = f.read()
+
         entity_chapter_presence = {}
         
         # Initialize empty lists for all entities

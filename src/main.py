@@ -20,39 +20,47 @@ try:
     from .data_manager.file_manager import File_Manager
     from .create_glossary.find_entities import Entity_Finder
     from .rag_database.base_rag import RAG_Database
+    from .entity_matcher.entity_matcher_interfacer import Entity_Matcher
 except ImportError:
     from src.data_manager.file_manager import File_Manager
     from src.create_glossary.find_entities import Entity_Finder
     from src.rag_database.base_rag import RAG_Database
+    from src.entity_matcher.entity_matcher_interfacer import Entity_Matcher
 
 async def main():
     # Get project root dynamically
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(current_dir, '..'))
     FOLDER_SOURCE = os.path.join(project_root, "data", "raw", "lotm_files")
-    print("start")
+    print("finding file paths")
+    exit()
     # First stage gets files
     file_manager = File_Manager(FOLDER_SOURCE)
     start_idx = 0
-    end_idx = 7
+    end_idx = 1
     file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
 
     # Second stage construct RAG database (await async create)
-    print("starting")
+    print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
-    print("done")
+    
     # Third stage get entities
+    print("finding entities")
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities()
 
     # Fourth stage use RAG to find good localisations for entry
+    print("building entity entries")
     data = rag_database.build_JSON_term_entries(entities, chapter_idx=10)
 
     # Fifth stage build database
+    print("create glossary")
     file_manager.build_glossary(data)
     
     # Sixth stage replace/put markers in OG text with translated names
+    print("inserting markers")
     glossary = file_manager.get_glossary()
+    entity_matcher = Entity_Matcher(glossary, file_paths, start_idx, )
 
     entities = [entry["entity"] for entry in glossary]
     tupled_entities = [(entry["entity"],entry["description"]) for entry in glossary]

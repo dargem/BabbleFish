@@ -18,12 +18,12 @@ class SpacyLemmatizer:
     def __init__(self):
         self.models = {}
         self.model_names = {
-            'english': 'en_core_web_sm',
-            'chinese': 'zh_core_web_sm', 
-            'japanese': 'ja_core_news_sm',
-            'korean': 'ko_core_news_sm',
-            'spanish': 'es_core_news_sm',
-            'french': 'fr_core_news_sm'
+            'ENGLISH': 'en_core_web_sm',
+            'CHINESE': 'zh_core_web_sm', 
+            'JAPANESE': 'ja_core_news_sm',
+            'KOREAN': 'ko_core_news_sm',
+            'SPANISH': 'es_core_news_sm',
+            'FRENCH': 'fr_core_news_sm'
         }
         
         # Only initialize if spaCy is available
@@ -50,34 +50,7 @@ class SpacyLemmatizer:
                     print(f"Failed to load spaCy support for {language}: {e}")
                     self.models[language] = None
     
-    def detect_language(self, text: str) -> str:
-        """
-        Simple language detection based on character patterns
-        """
-        # Check for Chinese characters (CJK Unified Ideographs)
-        if re.search(r'[\u4e00-\u9fff]', text):
-            # Check if it's more likely Japanese (has hiragana/katakana)
-            if re.search(r'[\u3040-\u309f\u30a0-\u30ff]', text):
-                return 'japanese'
-            return 'chinese'
-        
-        # Check for Korean characters
-        if re.search(r'[\uac00-\ud7af]', text):
-            return 'korean'
-        
-        # Check for common Spanish indicators
-        spanish_indicators = ['ñ', 'ción', 'sión', 'que', 'para', 'con', 'por', 'esta', 'pero']
-        if any(indicator in text.lower() for indicator in spanish_indicators):
-            return 'spanish'
-        
-        # Check for common French indicators
-        french_indicators = ['ç', 'tion', 'ment', 'que', 'pour', 'avec', 'dans', 'cette', 'mais']
-        if any(indicator in text.lower() for indicator in french_indicators):
-            return 'french'
-        
-        # Default to English
-        return 'english'
-    
+
     def lemmatize_text(self, text: str, language: Optional[str] = None) -> str:
         """
         Lemmatize text using spaCy
@@ -95,12 +68,7 @@ class SpacyLemmatizer:
         # Auto-detect language if not specified
         if language is None:
             language = self.detect_language(text)
-        
-        # If spaCy is not available, use basic fallback
-        if not SPACY_AVAILABLE:
-            print(f"spaCy not available, using basic lemmatization for {language}")
-            return self._basic_lemmatize(text, language)
-        
+             
         # Get the appropriate spaCy model
         nlp = self.models.get(language)
         if nlp is None:
