@@ -20,16 +20,15 @@ class Entity_Matcher:
         self.target_language = detector.detect_language_of(text)
 
 
-    def exact_match(self, entities, start_idx, end_idx):
+    def exact_match(self, entities, start_idx):
         # Perform exact string matching for entities in text files
-        file_paths = self.get_files(start_idx, end_idx)
         entity_chapter_presence = {}
         
         # Initialize empty lists for all entities
         for entity in entities:
             entity_chapter_presence[entity] = []
         
-        for i, file_path in enumerate(file_paths):
+        for i, file_path in enumerate(self.file_paths):
             try:
                 with open(file_path, 'r', encoding="utf-8") as f:
                     txt = f.read()
@@ -44,9 +43,6 @@ class Entity_Matcher:
 
     def lemmatized_match(self, entities, start_idx, end_idx):
         #Perform lemmatized matching for entities in text files with multi-language support
-        file_paths = self.get_files(start_idx, end_idx)
-        with open(file_paths[0],"r",encoding="UTF-8") as f:
-            txt = f.read()
 
         entity_chapter_presence = {}
         
@@ -65,7 +61,7 @@ class Entity_Matcher:
                 print(f"Error lemmatizing entity '{entity}': {e}")
                 lemmatized_entities[entity] = entity.lower().strip()  # fallback to lowercase
         
-        for i, file_path in enumerate(file_paths):
+        for i, file_path in enumerate(self.file_paths):
             try:
                 with open(file_path, 'r', encoding="utf-8") as f:
                     txt = f.read()
@@ -97,7 +93,7 @@ class Entity_Matcher:
         print(f"Processing entities for chapters {start_idx} to {end_idx} with language: {self.target_language or 'auto-detect'}")
         
         # 1. Do exact match
-        exact_matches = self.exact_match(entities, start_idx, end_idx)
+        exact_matches = self.exact_match(entities, start_idx)
         
         # 2. Do lemmatized match
         lemmatized_matches = self.lemmatized_match(entities, start_idx, end_idx)
