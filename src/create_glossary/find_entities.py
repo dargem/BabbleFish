@@ -1,7 +1,7 @@
 import sys
 import os
 
-from ..models.ner.gemini_ner_model import Gemini_NER_Model
+from gemini_ner_nodel import Gemini_NER_Model
 
 class Entity_Finder:
     def __init__(self, file_paths):
