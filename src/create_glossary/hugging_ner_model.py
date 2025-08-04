@@ -1,6 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 
-class NERModel():
+class NER_Model():
     def __init__(self, model_name="dslim/bert-base-NER"):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForTokenClassification.from_pretrained(model_name)

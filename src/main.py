@@ -29,25 +29,28 @@ except ImportError:
 
 async def main():
     # Get project root dynamically
+
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(current_dir, '..'))
     FOLDER_SOURCE = os.path.join(project_root, "data", "raw", "lotm_files")
     print("finding file paths")
-    exit()
+
     # First stage gets files
     file_manager = File_Manager(FOLDER_SOURCE)
     start_idx = 0
     end_idx = 1
     file_paths = file_manager.get_files(start_idx=start_idx, end_idx=end_idx)
-
+    '''
     # Second stage construct RAG database (await async create)
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
-    
+    '''
     # Third stage get entities
     print("finding entities")
     entity_finder = Entity_Finder(file_paths)
-    entities = entity_finder.find_entities()
+    entities = entity_finder.find_entities(gemini_else_hugging=False)
+    print(entities)
+    exit()
 
     # Fourth stage use RAG to find good localisations for entry
     print("building entity entries")
@@ -75,6 +78,11 @@ async def main():
 
     # 6.3 Do a semantic match through the files using RAG
     rag_database.check_tupled_term_relevance(tupled_entities, start_idx = start_idx, end_idx = end_idx)
+
+    # Seventh stage, llm to create structured out original in form of semantics
+
+    # Eighth stage, translate using llm 
+
 
     # Further stages here...
 

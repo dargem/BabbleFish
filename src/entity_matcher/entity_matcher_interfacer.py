@@ -13,12 +13,11 @@ class Entity_Matcher:
         self.start_idx = start_idx
         languages = [Language.ENGLISH, Language.CHINESE, Language.JAPANESE, Language.KOREAN, Language.SPANISH, Language.FRENCH] 
         # can add more later, what space has curently
-        detector = LanguageDetectorBuilder.from_languages(languages).build()
+        detector = LanguageDetectorBuilder.from_languages(*languages).build()
         # find language
         with open(file_paths[0], "r", encoding="UTF-8") as f:
             text = f.read()
         self.target_language = detector.detect_language_of(text)
-
 
     def exact_match(self, entities, start_idx):
         # Perform exact string matching for entities in text files

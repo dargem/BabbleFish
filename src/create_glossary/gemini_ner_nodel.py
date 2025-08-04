@@ -13,13 +13,16 @@ FIND_NAMES_PROMPT = os.path.join(project_root, "prompts", "find_proper_names.txt
 # "gemini-2.5-pro"
 # "gemini-2.0-flash"
 class Gemini_NER_Model():
+    def __init__(self):
+        pass
+
     def get_names(self, paragraph):
         genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
-        self.model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
+        model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
         with open(FIND_NAMES_PROMPT, "r", encoding="utf-8") as f:
             prompt = f.read()
             prompt += "\n" + paragraph
-            response = self.model.generate_content(prompt)
+            response = model.generate_content(prompt)
             raw_text = response.text.strip()
 
         if raw_text.startswith("```"):
@@ -36,13 +39,13 @@ class Gemini_NER_Model():
 
         return names
     
-    def get_entities(self, paragraph):
+    def get_entities(self, text):
         genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
-        self.model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
+        model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
         with open(FIND_NAMED_ENTITIES_PROMPT, "r", encoding="utf-8") as f:
             prompt = f.read()
-            prompt += "\n" + paragraph
-            response = self.model.generate_content(prompt)
+            prompt += "\n" + text
+            response = model.generate_content(prompt)
             raw_text = response.text.strip()
 
         if raw_text.startswith("```"):

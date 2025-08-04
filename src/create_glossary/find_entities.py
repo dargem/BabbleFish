@@ -1,14 +1,15 @@
 import sys
 import os
 
-from gemini_ner_nodel import Gemini_NER_Model
+from .gemini_ner_nodel import Gemini_NER_Model
+from .hugging_ner_model import NER_Model
 
 class Entity_Finder:
     def __init__(self, file_paths):
         self.file_paths = file_paths
 
-    def find_entities(self):
-        llm_model = Gemini_NER_Model()
+    def find_entities(self, gemini_else_hugging):
+        llm_model = Gemini_NER_Model() if gemini_else_hugging else NER_Model()
         full_text = ""
 
         for path in self.file_paths:
