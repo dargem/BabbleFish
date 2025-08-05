@@ -1,1 +1,0 @@
-# Coreference resolution models

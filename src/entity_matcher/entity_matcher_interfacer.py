@@ -1,10 +1,8 @@
 
 import os
 from lingua import Language, LanguageDetectorBuilder
-try:    
-    from ..models.spacy.lemmatization import lemmatize_text, lemmatize_entity
-except ImportError:
-    from models.spacy.lemmatization import lemmatize_text, lemmatize_entity
+
+from .lemmatizer import lemmatize_text, lemmatize_entity
 
 class Entity_Matcher:
     def __init__(self, glossary, file_paths, start_idx):

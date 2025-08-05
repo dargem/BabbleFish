@@ -35,6 +35,6 @@ class Retriever:
 
         print(f"DEBUG: Retrieved {len(nodes)} nodes for query '{query}' with chapter_idx '{chapter_idx}'.")
         for i, node in enumerate(nodes):
-            print(f"  Node {i+1} - ID: {node.id_}, Chapter_idx: {node.metadata.get('chapter')}, Score: {node.score:.2f}")
+            print(f"  Node {i+1} - ID: {node.id_}, Chapter_idx: {node.metadata.get('chapter_idx')}, Score: {node.score:.2f}")
         return nodes
         #return [node.node.get_content() for node in nodes]

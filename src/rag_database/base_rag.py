@@ -14,22 +14,11 @@ load_dotenv()
 
 from llama_index.embeddings.google_genai import GoogleGenAIEmbedding
 from google.genai.types import EmbedContentConfig
-
-try:
-    from llama_index.llms.gemini import Gemini
-except ImportError as e:
-    logger.critical(f"RAG_Database: FATAL ERROR - Missing LlamaIndex integration packages for Gemini. "
-                    f"Please install: pip install llama-index-llms-gemini llama-index-embeddings-gemini. Error: {e}")
-    raise
-
-try:
-    from .ingestion import Ingestion
-    from .retriever import Retriever
-    from .termbase import TermBaseBuilder
-except ImportError:
-    from src.rag_database.ingestion import Ingestion
-    from src.rag_database.retriever import Retriever
-    from src.rag_database.termbase import TermBaseBuilder
+from llama_index.llms.gemini import Gemini
+from llama_index.core.schema import NodeRelationship
+from .ingestion import Ingestion
+from .retriever import Retriever
+from .termbase import TermBaseBuilder
 
 
 class RAG_Database:
@@ -67,7 +56,6 @@ class RAG_Database:
                 )
             )
 
-            # Test embedding sync call (if this is async, wrap accordingly)
             test_embed_str = "This is a small test string to verify the embedding model is working correctly."
             test_embed_val = embed_model.get_text_embedding(test_embed_str)
             
@@ -103,8 +91,6 @@ class RAG_Database:
             raise RuntimeError("Ingestion pipeline failed to create a valid index.")
 
         return cls(ingestion=ingestion, embed_model=embed_model, llm=llm)
-
-    # The rest of your methods remain synchronous:
 
     def build_term_entry(self, term, chapter_idx=None):
         self.llm = Gemini(
@@ -149,3 +135,65 @@ class RAG_Database:
                     dic[entity].append(start_idx+i)
             print(dic[entity])
         print(dic)
+    
+    def retrieve_chunks(self):
+        # returns a hashmap of lists, entry is chapter, each list is an ordered node
+        try:
+            # Try the modern LlamaIndex API first
+            if hasattr(self.index, 'docstore') and hasattr(self.index.docstore, 'docs'):
+                all_nodes = list(self.index.docstore.docs.values())
+            elif hasattr(self.index, 'storage_context') and hasattr(self.index.storage_context, 'docstore'):
+                all_nodes = list(self.index.storage_context.docstore.docs.values())
+            elif hasattr(self.index, '_docstore'):
+                all_nodes = list(self.index._docstore.docs.values())
+            else:
+                # Fallback: try to get nodes through the index directly
+                print("Warning: Could not access docstore directly. Attempting alternative method.")
+                # This might require a query to get nodes, which is less efficient
+                retriever = self.index.as_retriever(similarity_top_k=1000)  # Large number to get most nodes
+                query_result = retriever.retrieve("*")  # Broad query
+                all_nodes = [node.node for node in query_result] if query_result else []
+                
+        except Exception as e:
+            print(f"Error accessing index nodes: {e}")
+            print("Available index attributes:", [attr for attr in dir(self.index) if not attr.startswith('_')])
+            return {}
+
+        if not all_nodes:
+            print("Warning: No nodes found in index")
+            return {}
+
+        chapter_idx_to_nodes = {}
+        for node in all_nodes:
+            chapter_idx = node.metadata.get("chapter_idx", "unknown")
+            chapter_idx_to_nodes.setdefault(chapter_idx, []).append(node)
+
+        result = {}
+
+        for chapter_idx, nodes in chapter_idx_to_nodes.items():
+
+            node_map = {node.node_id: node for node in nodes}
+            # Get the first node in the chain, then follow it fowards to build
+            start_node = None
+            for node in nodes:
+                prev = node.relationships.get(NodeRelationship.PREVIOUS)
+                if not prev or prev.node_id not in node_map:
+                    start_node = node
+                    break
+            
+            if not start_node:
+                raise ValueError(f"some critical error, cannot find a start_node in chapter_idx {chapter_idx}")
+
+            ordered_chunk_list = []
+            current = start_node
+            # if the next node doesn't exists break early
+            while current:
+                ordered_chunk_list.append(current.text)
+                next = current.relationships.get(NodeRelationship.NEXT)
+                if not next:
+                    # no next chunk exists
+                    break
+                current = node_map.get(next.node_id)
+            result[chapter_idx] = ordered_chunk_list
+        
+        return result

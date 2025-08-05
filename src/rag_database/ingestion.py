@@ -67,9 +67,10 @@ class Ingestion:
                         output_dimensionality=768 ## can decrease later
                     )
                 ),
-                breakpoint_percentile_threshold=85, # this takes an int out of 100, default 95
+                breakpoint_percentile_threshold=85, # this takes an int out of 100, default 95, decrease to make finer
                 include_metadata=True,
                 include_prev_next_rel=True,
+                buffer_size=0
             )
             split_nodes = await asyncio.to_thread(node_parser.get_nodes_from_documents, [raw_doc])
             nodes.extend(split_nodes)

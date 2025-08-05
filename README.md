@@ -1,0 +1,1 @@
+Translation pipeline integrating RAG for glossary creation and translation memory
