@@ -16,16 +16,11 @@ project_root = os.path.abspath(os.path.join(current_dir, '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-try:
-    from .data_manager.file_manager import File_Manager
-    from .create_glossary.find_entities import Entity_Finder
-    from .rag_database.base_rag import RAG_Database
-    from .entity_matcher.entity_matcher_interfacer import Entity_Matcher
-except ImportError:
-    from src.data_manager.file_manager import File_Manager
-    from src.create_glossary.find_entities import Entity_Finder
-    from src.rag_database.base_rag import RAG_Database
-    from src.entity_matcher.entity_matcher_interfacer import Entity_Matcher
+
+from src.data_manager.file_manager import File_Manager
+from src.create_glossary.find_entities import Entity_Finder
+from src.rag_database.base_rag import RAG_Database
+from src.entity_matcher.entity_matcher_interfacer import Entity_Matcher
 
 async def main():
     # Get project root dynamically
@@ -44,7 +39,14 @@ async def main():
     # Second stage construct RAG database (await async create)
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
-    print(rag_database.retrieve_chunks())
+    chapter_keyed_list = rag_database.retrieve_chunks()
+
+    
+    for key in chapter_keyed_list:
+        for i, para in enumerate(chapter_keyed_list[key]):
+            print(f"CHUNK {i}")
+            print(para)
+    
     exit()
     # Third stage get entities
     print("finding entities")
