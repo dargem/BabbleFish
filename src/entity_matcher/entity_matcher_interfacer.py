@@ -1,10 +1,73 @@
 
 import os
+import re
 from lingua import Language, LanguageDetectorBuilder
 
 from .lemmatizer import lemmatize_text, lemmatize_entity
 
+
+
 class Entity_Matcher:
+    def __init__(self, glossary, chapter_keyed_list):
+        self.chapter_keyed_list = chapter_keyed_list
+        self.glossary = glossary
+        languages = [Language.ENGLISH, Language.CHINESE, Language.JAPANESE, Language.KOREAN, Language.SPANISH, Language.FRENCH] 
+        # can add more later, what space has curently
+        detector = LanguageDetectorBuilder.from_languages(*languages).build()
+        rand_chap = ""
+        # will just take a random one to detect, this is single language documents so doesn't matter
+        for segment in next(iter(chapter_keyed_list)):
+            rand_chap += segment
+        self.target_language = detector.detect_language_of(rand_chap)
+    
+    def get_matches(self):
+        holder = self.chapter_keyed_list
+        holder = self._close_match(holder)
+        return holder
+
+    def _close_match(glossary, chapter_keyed_list):
+        entities = [(entry["entity"], entry["english target translation"]) for entry in glossary]
+        new_chapter_keyed_list = {}
+        for chapter_idx, segments in chapter_keyed_list.items():
+            new_segments = []
+            for segment in segments:
+                # Split on whitespace, preserving spaces and newlines
+                tokens = re.split(r'(\s+)', segment)
+                new_tokens = []
+                for token in tokens:
+                    if token.isspace():
+                        new_tokens.append(token)
+                        continue
+                    # Separate word from punctuation (e.g. 'dragon.' → 'dragon' + '.')
+                    match = re.match(r'^(\w+)([^\w]*)$', token)
+                    if match:
+                        word_part, punct_part = match.groups()
+                    else:
+                        word_part, punct_part = token, ''
+
+                    tagged = False
+                    for entity, translation in entities:
+                        if word_part == entity:
+                            token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
+                            tagged = True
+                            break
+
+                    if not tagged:
+                        token = word_part + punct_part
+
+                    new_tokens.append(token)
+
+                new_segments.append(''.join(new_tokens))
+
+            new_chapter_keyed_list[chapter_idx] = new_segments
+        return new_chapter_keyed_list
+
+    def _lemmatized_match(self):
+        pass
+
+
+
+class Entity_Matcher2:
     def __init__(self, glossary, file_paths, start_idx):
         self.glossary = glossary
         self.file_paths = file_paths  # Already trimmed to proper files
