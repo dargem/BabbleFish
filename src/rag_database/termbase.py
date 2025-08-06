@@ -1,3 +1,4 @@
+from ..utils.lemmatizer import SpacyLemmatizer
 
 class TermBaseBuilder:
     def __init__(self, retriever):
@@ -79,6 +80,8 @@ class TermBaseBuilder:
 
         result = {}
         result["entity"] = entity
+        # Adding lemmatisation here in glossary building
+        result["lemmatized entity"] = SpacyLemmatizer.lemmatize_entity(entity)
         result["chapter cutoff"] = chapter_idx
         for line in resp.split("\n"):
             line = line.strip()

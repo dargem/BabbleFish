@@ -25,6 +25,8 @@ class Entity_Matcher:
 
     def _close_match(self, chapter_keyed_list):
         entities = [(entry["entity"], entry["english target translation"]) for entry in self.glossary]
+        lemmatiser = {entry["entity"]: entry["lemmatized entity"] for entry in self.glossary}
+
         new_chapter_keyed_list = {}
         for chapter_idx, segments in chapter_keyed_list.items():
             new_segments = []
@@ -49,16 +51,14 @@ class Entity_Matcher:
                             token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
                             tagged = True
                             break
-                        # exact match finds nothing, continue to a lemmatised match
                     
                     if not tagged:
                         for entity, translation in entities:
-                            if SpacyLemmatizer.lemmatize_text(word_part) == SpacyLemmatizer.lemmatize_text(entity):
-                                print(f"matched lemmatized words {word_part} with {entity} as {SpacyLemmatizer.lemmatize_text(entity)}")
+                            if SpacyLemmatizer.lemmatize_text(word_part) == lemmatiser[entity]:
+                                print(f"matched lemmatized words {word_part} with {entity} as {lemmatiser[entity]}")
                                 token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
                                 tagged = True
-                        # exact match finds nothing, continue to a lemmatised match
-                        pass
+                                break
 
                     if not tagged:
                         token = word_part + punct_part

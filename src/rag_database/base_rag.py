@@ -111,18 +111,6 @@ class RAG_Database:
             data.append(self.termbase.build_entry(entity, self.llm, chapter_idx=chapter_idx))
         return data
 
-    '''
-    def check_term_relevance(self, entities, chapter_min_inclusive, chapter_max_exclusive):
-        dic = {}
-        for entity in entities:
-            dic[entity] = []
-            for i in range(chapter_min_inclusive, chapter_max_exclusive):
-                if self.termbase.check_term_relevance(entity, chapter=i):
-                    dic[entity].append(i)
-            print(dic[entity])
-        print(dic)
-    '''
-
     def check_tupled_term_relevance(self, tupled_entities, start_idx, end_idx):
         dic = {}
         for entity_tuple in tupled_entities:
