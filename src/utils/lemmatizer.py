@@ -13,12 +13,12 @@ from spacy.lang.fr import French
 class SpacyLemmatizer:
     models = {}
     model_names = {
-        'ENGLISH': 'en_core_web_sm',
-        'CHINESE': 'zh_core_web_sm', 
-        'JAPANESE': 'ja_core_news_sm',
-        'KOREAN': 'ko_core_news_sm',
-        'SPANISH': 'es_core_news_sm',
-        'FRENCH': 'fr_core_news_sm'
+        'ENGLISH': 'en_core_web_lg',
+        'CHINESE': 'zh_core_web_lg', 
+        'JAPANESE': 'ja_core_news_lg',
+        'KOREAN': 'ko_core_news_lg',
+        'SPANISH': 'es_core_news_lg',
+        'FRENCH': 'fr_core_news_lg'
     }
     
     # Load spaCy models at class initialization
@@ -36,7 +36,8 @@ class SpacyLemmatizer:
         if not text:
             print("lemmatiser was called without text, likely error")
             return text
-        
+        #print(text)
+
         if language not in SpacyLemmatizer.model_names:
             raise ValueError(f"Language {language} not supported")
             

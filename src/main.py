@@ -40,7 +40,7 @@ async def main():
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     chapter_keyed_list = rag_database.retrieve_chunks()
-    exit()
+    
     '''
     # Third stage get entities
     print("finding entities")
@@ -48,7 +48,7 @@ async def main():
     entities = entity_finder.find_entities(gemini_else_hugging=False)
     print(entities)
     
-
+    
     # Fourth stage use RAG to find good localisations for entry
     print("building entity entries")
     data = rag_database.build_JSON_term_entries(entities, chapter_idx=10)
@@ -56,9 +56,9 @@ async def main():
     # Fifth stage build database
     print("create glossary")
     file_manager.build_glossary(data)
-    '''
+    
     # Retrieve semantically split input, indexed by chapter_idx and paragraph
-
+    '''
     # Sixth stage replace/put markers in OG text with translated names
 
     print("inserting markers")
