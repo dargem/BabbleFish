@@ -3,9 +3,7 @@ import os
 import re
 from lingua import Language, LanguageDetectorBuilder
 
-from .lemmatizer import lemmatize_text, lemmatize_entity
-
-
+from ..utils.lemmatizer import SpacyLemmatizer
 
 class Entity_Matcher:
     def __init__(self, glossary, chapter_keyed_list):
@@ -19,7 +17,6 @@ class Entity_Matcher:
         for segment in next(iter(chapter_keyed_list.values())):
             rand_chap += segment
         self.target_language = detector.detect_language_of(rand_chap)
-
     
     def get_matches(self):
         holder = self.chapter_keyed_list
@@ -52,6 +49,16 @@ class Entity_Matcher:
                             token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
                             tagged = True
                             break
+                        # exact match finds nothing, continue to a lemmatised match
+                    
+                    if not tagged:
+                        for entity, translation in entities:
+                            if SpacyLemmatizer.lemmatize_text(word_part) == SpacyLemmatizer.lemmatize_text(entity):
+                                print(f"matched lemmatized words {word_part} with {entity} as {SpacyLemmatizer.lemmatize_text(entity)}")
+                                token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
+                                tagged = True
+                        # exact match finds nothing, continue to a lemmatised match
+                        pass
 
                     if not tagged:
                         token = word_part + punct_part
@@ -115,7 +122,7 @@ class Entity_Matcher2:
         lemmatized_entities = {}
         for entity in entities:
             try:
-                lemmatized_entity = lemmatize_entity(entity, self.target_language)
+                lemmatized_entity = SpacyLemmatizer.lemmatize_entity(entity, self.target_language)
                 lemmatized_entities[entity] = lemmatized_entity
                 print(f"Lemmatized '{entity}' -> '{lemmatized_entity}' (language: {self.target_language or 'auto-detect'})")
             except Exception as e:
@@ -129,7 +136,7 @@ class Entity_Matcher2:
                     
                     # Lemmatize the text with language support
                     try:
-                        lemmatized_txt = lemmatize_text(txt, self.target_language)
+                        lemmatized_txt = SpacyLemmatizer.lemmatize_text(txt, self.target_language)
                     except Exception as e:
                         print(f"Error lemmatizing text from {file_path}: {e}")
                         lemmatized_txt = txt.lower()  # fallback to lowercase
