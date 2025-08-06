@@ -40,19 +40,14 @@ async def main():
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     chapter_keyed_list = rag_database.retrieve_chunks()
-
     
-    for key in chapter_keyed_list:
-        for i, para in enumerate(chapter_keyed_list[key]):
-            print(f"CHUNK {i}")
-            print(para)
-    
-    exit()
+    '''
     # Third stage get entities
     print("finding entities")
     entity_finder = Entity_Finder(file_paths)
     entities = entity_finder.find_entities(gemini_else_hugging=False)
     print(entities)
+    
 
     # Fourth stage use RAG to find good localisations for entry
     print("building entity entries")
@@ -61,19 +56,28 @@ async def main():
     # Fifth stage build database
     print("create glossary")
     file_manager.build_glossary(data)
-    
+    '''
     # Retrieve semantically split input, indexed by chapter_idx and paragraph
 
-
     # Sixth stage replace/put markers in OG text with translated names
+
     print("inserting markers")
     glossary = file_manager.get_glossary()
-    entity_matcher = Entity_Matcher(glossary, file_paths, start_idx, )
+    chapter_keyed_list = rag_database.retrieve_chunks() # this keys chapter_idx to a list of ordered chunks
 
+    entity_matcher = Entity_Matcher(glossary, chapter_keyed_list)
+    chapter_keyed_list = entity_matcher.get_matches()
+    for key in chapter_keyed_list:
+        for para in chapter_keyed_list[key]:
+            print(para)
+
+
+    '''
     entities = [entry["entity"] for entry in glossary]
     tupled_entities = [(entry["entity"],entry["description"]) for entry in glossary]
 
     entity_chapter_presence = { entity: [] for entity in entities } # marks chapters an entity has been found in
+
     # 6.1 Do an exact match through the files
     entity_chapter_presence_temp = file_manager.get_entity_chapter_presence(entities, start_idx, end_idx)
     for entity in entity_chapter_presence_temp:
@@ -83,7 +87,7 @@ async def main():
 
     # 6.3 Do a semantic match through the files using RAG
     rag_database.check_tupled_term_relevance(tupled_entities, start_idx = start_idx, end_idx = end_idx)
-
+    '''
     # Seventh stage, llm to create structured out original in form of semantics
 
     # Eighth stage, translate using llm 

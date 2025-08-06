@@ -16,17 +16,18 @@ class Entity_Matcher:
         detector = LanguageDetectorBuilder.from_languages(*languages).build()
         rand_chap = ""
         # will just take a random one to detect, this is single language documents so doesn't matter
-        for segment in next(iter(chapter_keyed_list)):
+        for segment in next(iter(chapter_keyed_list.values())):
             rand_chap += segment
         self.target_language = detector.detect_language_of(rand_chap)
+
     
     def get_matches(self):
         holder = self.chapter_keyed_list
         holder = self._close_match(holder)
         return holder
 
-    def _close_match(glossary, chapter_keyed_list):
-        entities = [(entry["entity"], entry["english target translation"]) for entry in glossary]
+    def _close_match(self, chapter_keyed_list):
+        entities = [(entry["entity"], entry["english target translation"]) for entry in self.glossary]
         new_chapter_keyed_list = {}
         for chapter_idx, segments in chapter_keyed_list.items():
             new_segments = []
