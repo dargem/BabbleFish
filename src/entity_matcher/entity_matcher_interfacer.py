@@ -56,9 +56,11 @@ class Entity_Matcher:
                             tagged = True
                             break
                     
+                    lemmatized_word_part = SpacyLemmatizer.lemmatize_text(word_part)
+
                     if not tagged:
                         for entity, translation in entities:
-                            if SpacyLemmatizer.lemmatize_text(word_part) == lemmatiser[entity]:
+                            if lemmatized_word_part == lemmatiser[entity]:
                                 print(f"matched lemmatized words {word_part} with {entity} as {lemmatiser[entity]}")
                                 token = f"{word_part} [{entity} translates to {translation}]{punct_part}"
                                 tagged = True
