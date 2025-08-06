@@ -45,6 +45,10 @@ class Entity_Matcher:
                     else:
                         word_part, punct_part = token, ''
 
+                    # seperated punctuation can leave empty space
+                    if not word_part:
+                        continue
+                    
                     tagged = False
                     for entity, translation in entities:
                         if word_part == entity:
