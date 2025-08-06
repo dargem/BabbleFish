@@ -40,7 +40,7 @@ async def main():
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     chapter_keyed_list = rag_database.retrieve_chunks()
-    
+    exit()
     '''
     # Third stage get entities
     print("finding entities")

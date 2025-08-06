@@ -138,26 +138,7 @@ class RAG_Database:
     
     def retrieve_chunks(self):
         # returns a hashmap of lists, entry is chapter, each list is an ordered node
-        try:
-            # Try the modern LlamaIndex API first
-            if hasattr(self.index, 'docstore') and hasattr(self.index.docstore, 'docs'):
-                all_nodes = list(self.index.docstore.docs.values())
-            elif hasattr(self.index, 'storage_context') and hasattr(self.index.storage_context, 'docstore'):
-                all_nodes = list(self.index.storage_context.docstore.docs.values())
-            elif hasattr(self.index, '_docstore'):
-                all_nodes = list(self.index._docstore.docs.values())
-            else:
-                # Fallback: try to get nodes through the index directly
-                print("Warning: Could not access docstore directly. Attempting alternative method.")
-                # This might require a query to get nodes, which is less efficient
-                retriever = self.index.as_retriever(similarity_top_k=1000)  # Large number to get most nodes
-                query_result = retriever.retrieve("*")  # Broad query
-                all_nodes = [node.node for node in query_result] if query_result else []
-                
-        except Exception as e:
-            print(f"Error accessing index nodes: {e}")
-            print("Available index attributes:", [attr for attr in dir(self.index) if not attr.startswith('_')])
-            return {}
+        all_nodes = list(self.index.docstore.docs.values())
 
         if not all_nodes:
             print("Warning: No nodes found in index")
