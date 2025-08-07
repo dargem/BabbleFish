@@ -53,60 +53,45 @@ class Entity_Matcher:
                 # First, get the clean text (without translation tags) for lemmatization
                 clean_text = re.sub(r'\[[^\]]*translates to[^\]]*\]', '', result_text)
                 
-                # Lemmatize the entire clean text for better context
+                # Lemmatize the entire clean text for better context using SpacyLemmatizer
                 try:
-                    # Get the appropriate spaCy model for the target language
-                    language_key = 'ENGLISH'  # Default to English
-                    if hasattr(self, 'target_language') and self.target_language:
-                        lang_map = {
-                            Language.ENGLISH: 'ENGLISH',
-                            Language.CHINESE: 'CHINESE', 
-                            Language.JAPANESE: 'JAPANESE',
-                            Language.KOREAN: 'KOREAN',
-                            Language.SPANISH: 'SPANISH',
-                            Language.FRENCH: 'FRENCH'
-                        }
-                        language_key = lang_map.get(self.target_language, 'ENGLISH')
+                    # Use SpacyLemmatizer to lemmatize the entire clean text for better context
+                    lemmatized_clean_text = SpacyLemmatizer.lemmatize_text(clean_text, self.target_language)
                     
-                    nlp = SpacyLemmatizer.models.get(language_key)
+                    # Get the spaCy model for token-level processing
+                    nlp = SpacyLemmatizer.models.get(SpacyLemmatizer.lingua_to_key.get(self.target_language, 'ENGLISH'))
                     if nlp is None:
-                        raise ValueError(f"No model available for language {language_key}")
+                        raise ValueError(f"No model available for language {self.target_language}")
                     
-                    # Process the clean text with spaCy to get lemmatized tokens with positions
+                    # Process the clean text with spaCy to get token positions
                     doc = nlp(clean_text)
+                    lemmatized_tokens = lemmatized_clean_text.split()
                     
-                    # Create a mapping from original word positions to lemmatized forms
+                    # Create a mapping from original tokens to their lemmatized forms
                     lemma_map = {}
+                    lemma_index = 0
                     for token in doc:
                         if not token.is_space and not token.is_punct and token.text.strip():
-                            lemma = token.lemma_ if hasattr(token, 'lemma_') and token.lemma_ else token.text.lower()
-                            lemma_map[token.i] = {
-                                'original': token.text,
-                                'lemma': lemma,
-                                'start': token.idx,
-                                'end': token.idx + len(token.text)
-                            }
+                            if lemma_index < len(lemmatized_tokens):
+                                lemma_map[token.i] = {
+                                    'original': token.text,
+                                    'lemma': lemmatized_tokens[lemma_index],
+                                    'start': token.idx,
+                                    'end': token.idx + len(token.text)
+                                }
+                                lemma_index += 1
                     
                     # Now apply lemmatized matching to the result_text
                     # Find words that haven't been tagged yet and check for lemmatized matches
-                    clean_doc = nlp(clean_text)
                     offset = 0  # Track offset due to inserted translation tags
                     
-                    for i, token in enumerate(clean_doc):
+                    for i, token in enumerate(doc):
                         if token.is_space or token.is_punct or not token.text.strip():
                             continue
                             
-                        # Calculate position in result_text (accounting for inserted tags)
-                        original_start = token.idx
-                        original_end = token.idx + len(token.text)
-                        
-                        # Find the corresponding position in result_text
-                        # This is tricky because we've inserted translation tags
-                        # Let's use a different approach: find the word in result_text
-                        
                         # Check if this token area already has translation tags
-                        search_start = max(0, original_start + offset - 50)  # Search window
-                        search_end = min(len(result_text), original_end + offset + 50)
+                        search_start = max(0, token.idx + offset - 50)  # Search window
+                        search_end = min(len(result_text), token.idx + len(token.text) + offset + 50)
                         search_area = result_text[search_start:search_end]
                         
                         # Skip if this word is already tagged
@@ -133,10 +118,9 @@ class Entity_Matcher:
                                         if remaining_text.strip().startswith('[') and 'translates to' in remaining_text:
                                             return match.group()  # Already tagged, don't replace
                                         print(f"matched lemmatized word '{token.text}' with entity '{entity}' as '{lemmatized_entity}'")
-                                        exit()
                                         return f"{match.group()} [{entity} translates to {translation}]"
                                     
-                                    # Replace only the first occurrence in the search area
+                                    # Replace only the first occurrence
                                     before_replacement = result_text
                                     result_text = re.sub(word_pattern, replace_if_not_tagged, result_text, count=1, flags=re.IGNORECASE)
                                     
