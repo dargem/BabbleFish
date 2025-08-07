@@ -40,12 +40,12 @@ async def main():
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     chapter_keyed_list = rag_database.retrieve_chunks()
-    
     '''
+    
     # Third stage get entities
     print("finding entities")
     entity_finder = Entity_Finder(file_paths)
-    entities = entity_finder.find_entities(gemini_else_hugging=False)
+    entities = entity_finder.find_entities(gemini_else_hugging=True)
     print(entities)
     
     
@@ -58,9 +58,9 @@ async def main():
     file_manager.build_glossary(data)
     
     # Retrieve semantically split input, indexed by chapter_idx and paragraph
-    '''
+    
     # Sixth stage replace/put markers in OG text with translated names
-
+    '''
     print("inserting markers")
     glossary = file_manager.get_glossary()
     chapter_keyed_list = rag_database.retrieve_chunks() # this keys chapter_idx to a list of ordered chunks

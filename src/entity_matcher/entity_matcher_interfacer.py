@@ -24,6 +24,108 @@ class Entity_Matcher:
         return holder
 
     def _close_match(self, chapter_keyed_list):
+
+        entities = [(entry["entity"], entry["english target translation"]) for entry in self.glossary]
+        lemmatizer_map = {entry["entity"]: entry["lemmatized entity"] for entry in self.glossary}
+
+        new_chapter_keyed_list = {}
+
+        for chapter_idx, segments in chapter_keyed_list.items():
+            new_segments = []
+
+            for segment in segments:
+                # First, try exact matches with longer entities first to prevent double matching
+                result_text = segment
+                
+                # Sort entities by length (descending) to match longer phrases first
+                for entity, translation in sorted(entities, key=lambda x: -len(x[0])):
+                    # Use word boundaries to ensure we match complete words
+                    pattern = r'\b' + re.escape(entity) + r'\b'
+                    
+                    # Replace all instances of this entity
+                    def replace_match(match):
+                        return f"{match.group()} [{entity} translates to {translation}]"
+                    
+                    result_text = re.sub(pattern, replace_match, result_text, flags=re.IGNORECASE)
+                
+                # Now do lemmatized matching for words that weren't already tagged
+                # But first, let's identify all already tagged positions
+                tagged_positions = set()
+                for match in re.finditer(r'\b\w+\b(?=\s*\[[^\]]*translates to[^\]]*\])', result_text):
+                    # Mark positions of words that are already tagged
+                    for pos in range(match.start(), match.end()):
+                        tagged_positions.add(pos)
+                
+                # Split into tokens while preserving whitespace and already tagged content
+                tokens = re.split(r'(\s+|\[[^\]]+\])', result_text)
+                new_tokens = []
+                current_pos = 0
+                
+                for token in tokens:
+                    # Skip whitespace or already tagged content
+                    if not token or token.isspace() or (token.startswith('[') and token.endswith(']')):
+                        new_tokens.append(token)
+                        current_pos += len(token)
+                        continue
+                    
+                    # Extract word part and punctuation
+                    match = re.match(r'^(\w+)([^\w]*)$', token)
+                    if match:
+                        word_part, punct_part = match.groups()
+                        
+                        # Check if this word position is already tagged
+                        word_start = current_pos
+                        word_end = current_pos + len(word_part)
+                        is_already_tagged = any(pos in tagged_positions for pos in range(word_start, word_end))
+                        
+                        if is_already_tagged:
+                            new_tokens.append(token)
+                            current_pos += len(token)
+                            continue
+                    else:
+                        # If no match, just append the token as is
+                        new_tokens.append(token)
+                        current_pos += len(token)
+                        continue
+                    
+                    # Skip if word_part is empty
+                    if not word_part:
+                        new_tokens.append(token)
+                        current_pos += len(token)
+                        continue
+                    
+                    # Try lemmatized matching
+                    try:
+                        lemmatized_word = SpacyLemmatizer.lemmatize_text(word_part, 'ENGLISH')
+                        
+                        tagged = False
+                        for entity, translation in entities:
+                            lemmatized_entity = lemmatizer_map.get(entity, "")
+                            if lemmatized_word == lemmatized_entity:
+                                #print(f"matched lemmatized words {word_part} with {entity} as {lemmatized_entity}")
+                                token = f"{word_part} [lemmatized match, {entity} translates to {translation}]{punct_part}"
+                                tagged = True
+                                break
+                        
+                        if not tagged:
+                            token = word_part + punct_part
+                            
+                    except Exception as e:
+                        # If lemmatization fails, just use the original token
+                        print(f"Lemmatization failed for '{word_part}': {e}")
+                        token = word_part + punct_part
+                    
+                    new_tokens.append(token)
+                    current_pos += len(token)
+                
+                new_segments.append(''.join(new_tokens))
+
+            new_chapter_keyed_list[chapter_idx] = new_segments
+
+        return new_chapter_keyed_list
+
+    '''
+    def _close_match(self, chapter_keyed_list):
         entities = [(entry["entity"], entry["english target translation"]) for entry in self.glossary]
         lemmatiser = {entry["entity"]: entry["lemmatized entity"] for entry in self.glossary}
 
@@ -75,114 +177,4 @@ class Entity_Matcher:
 
             new_chapter_keyed_list[chapter_idx] = new_segments
         return new_chapter_keyed_list
-
-    def _lemmatized_match(self):
-        pass
-
-
-
-class Entity_Matcher2:
-    def __init__(self, glossary, file_paths, start_idx):
-        self.glossary = glossary
-        self.file_paths = file_paths  # Already trimmed to proper files
-        self.start_idx = start_idx
-        languages = [Language.ENGLISH, Language.CHINESE, Language.JAPANESE, Language.KOREAN, Language.SPANISH, Language.FRENCH] 
-        # can add more later, what space has curently
-        detector = LanguageDetectorBuilder.from_languages(*languages).build()
-        # find language
-        with open(file_paths[0], "r", encoding="UTF-8") as f:
-            text = f.read()
-        self.target_language = detector.detect_language_of(text)
-
-    def exact_match(self, entities, start_idx):
-        # Perform exact string matching for entities in text files
-        entity_chapter_presence = {}
-        
-        # Initialize empty lists for all entities
-        for entity in entities:
-            entity_chapter_presence[entity] = []
-        
-        for i, file_path in enumerate(self.file_paths):
-            try:
-                with open(file_path, 'r', encoding="utf-8") as f:
-                    txt = f.read()
-                    for entity in entities:
-                        if entity in txt:
-                            chapter_idx = start_idx + i
-                            entity_chapter_presence[entity].append(chapter_idx)
-            except (FileNotFoundError, PermissionError) as e:
-                print(f"Critical error in exact_match: {e}")
-        
-        return entity_chapter_presence
-
-    def lemmatized_match(self, entities, start_idx, end_idx):
-        #Perform lemmatized matching for entities in text files with multi-language support
-
-        entity_chapter_presence = {}
-        
-        # Initialize empty lists for all entities
-        for entity in entities:
-            entity_chapter_presence[entity] = []
-        
-        # Lemmatize entities with language support
-        lemmatized_entities = {}
-        for entity in entities:
-            try:
-                lemmatized_entity = SpacyLemmatizer.lemmatize_entity(entity, self.target_language)
-                lemmatized_entities[entity] = lemmatized_entity
-                print(f"Lemmatized '{entity}' -> '{lemmatized_entity}' (language: {self.target_language or 'auto-detect'})")
-            except Exception as e:
-                print(f"Error lemmatizing entity '{entity}': {e}")
-                lemmatized_entities[entity] = entity.lower().strip()  # fallback to lowercase
-        
-        for i, file_path in enumerate(self.file_paths):
-            try:
-                with open(file_path, 'r', encoding="utf-8") as f:
-                    txt = f.read()
-                    
-                    # Lemmatize the text with language support
-                    try:
-                        lemmatized_txt = SpacyLemmatizer.lemmatize_text(txt, self.target_language)
-                    except Exception as e:
-                        print(f"Error lemmatizing text from {file_path}: {e}")
-                        lemmatized_txt = txt.lower()  # fallback to lowercase
-                    
-                    for entity in entities:
-                        lemmatized_entity = lemmatized_entities[entity]
-                        if lemmatized_entity and lemmatized_entity in lemmatized_txt:
-                            chapter_idx = start_idx + i
-                            entity_chapter_presence[entity].append(chapter_idx)
-            except (FileNotFoundError, PermissionError) as e:
-                print(f"Critical error in lemmatized_match: {e}")
-        
-        return entity_chapter_presence
-
-    def get_entity_chapter_presence(self, entities, start_idx, end_idx):
-        """Combined method that performs both exact and lemmatized matching"""
-        # Initialize empty lists for all entities
-        entity_chapter_presence = {}
-        for entity in entities:
-            entity_chapter_presence[entity] = []
-        
-        print(f"Processing entities for chapters {start_idx} to {end_idx} with language: {self.target_language or 'auto-detect'}")
-        
-        # 1. Do exact match
-        exact_matches = self.exact_match(entities, start_idx)
-        
-        # 2. Do lemmatized match
-        lemmatized_matches = self.lemmatized_match(entities, start_idx, end_idx)
-        
-        # Combine results (remove duplicates)
-        for entity in entities:
-            combined_chapters = list(set(
-                exact_matches[entity] + lemmatized_matches[entity]
-            ))
-            entity_chapter_presence[entity] = sorted(combined_chapters)
-            
-            # Debug output
-            exact_count = len(exact_matches[entity])
-            lemma_count = len(lemmatized_matches[entity])
-            total_count = len(entity_chapter_presence[entity])
-            print(f"Entity '{entity}': {exact_count} exact matches, {lemma_count} lemmatized matches, {total_count} total unique chapters")
-        
-        return entity_chapter_presence
+        '''
