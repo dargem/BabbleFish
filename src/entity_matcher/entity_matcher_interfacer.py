@@ -24,6 +24,7 @@ class Entity_Matcher:
         return holder
 
     def _close_match(self, chapter_keyed_list):
+        import spacy
 
         entities = [(entry["entity"], entry["english target translation"]) for entry in self.glossary]
         lemmatizer_map = {entry["entity"]: entry["lemmatized entity"] for entry in self.glossary}
@@ -48,77 +49,108 @@ class Entity_Matcher:
                     
                     result_text = re.sub(pattern, replace_match, result_text, flags=re.IGNORECASE)
                 
-                # Now do lemmatized matching for words that weren't already tagged
-                # But first, let's identify all already tagged positions
-                tagged_positions = set()
-                for match in re.finditer(r'\b\w+\b(?=\s*\[[^\]]*translates to[^\]]*\])', result_text):
-                    # Mark positions of words that are already tagged
-                    for pos in range(match.start(), match.end()):
-                        tagged_positions.add(pos)
+                # Now do lemmatized matching using full context
+                # First, get the clean text (without translation tags) for lemmatization
+                clean_text = re.sub(r'\[[^\]]*translates to[^\]]*\]', '', result_text)
                 
-                # Split into tokens while preserving whitespace and already tagged content
-                tokens = re.split(r'(\s+|\[[^\]]+\])', result_text)
-                new_tokens = []
-                current_pos = 0
-                
-                for token in tokens:
-                    # Skip whitespace or already tagged content
-                    if not token or token.isspace() or (token.startswith('[') and token.endswith(']')):
-                        new_tokens.append(token)
-                        current_pos += len(token)
-                        continue
+                # Lemmatize the entire clean text for better context
+                try:
+                    # Get the appropriate spaCy model for the target language
+                    language_key = 'ENGLISH'  # Default to English
+                    if hasattr(self, 'target_language') and self.target_language:
+                        lang_map = {
+                            Language.ENGLISH: 'ENGLISH',
+                            Language.CHINESE: 'CHINESE', 
+                            Language.JAPANESE: 'JAPANESE',
+                            Language.KOREAN: 'KOREAN',
+                            Language.SPANISH: 'SPANISH',
+                            Language.FRENCH: 'FRENCH'
+                        }
+                        language_key = lang_map.get(self.target_language, 'ENGLISH')
                     
-                    # Extract word part and punctuation
-                    match = re.match(r'^(\w+)([^\w]*)$', token)
-                    if match:
-                        word_part, punct_part = match.groups()
-                        
-                        # Check if this word position is already tagged
-                        word_start = current_pos
-                        word_end = current_pos + len(word_part)
-                        is_already_tagged = any(pos in tagged_positions for pos in range(word_start, word_end))
-                        
-                        if is_already_tagged:
-                            new_tokens.append(token)
-                            current_pos += len(token)
+                    nlp = SpacyLemmatizer.models.get(language_key)
+                    if nlp is None:
+                        raise ValueError(f"No model available for language {language_key}")
+                    
+                    # Process the clean text with spaCy to get lemmatized tokens with positions
+                    doc = nlp(clean_text)
+                    
+                    # Create a mapping from original word positions to lemmatized forms
+                    lemma_map = {}
+                    for token in doc:
+                        if not token.is_space and not token.is_punct and token.text.strip():
+                            lemma = token.lemma_ if hasattr(token, 'lemma_') and token.lemma_ else token.text.lower()
+                            lemma_map[token.i] = {
+                                'original': token.text,
+                                'lemma': lemma,
+                                'start': token.idx,
+                                'end': token.idx + len(token.text)
+                            }
+                    
+                    # Now apply lemmatized matching to the result_text
+                    # Find words that haven't been tagged yet and check for lemmatized matches
+                    clean_doc = nlp(clean_text)
+                    offset = 0  # Track offset due to inserted translation tags
+                    
+                    for i, token in enumerate(clean_doc):
+                        if token.is_space or token.is_punct or not token.text.strip():
                             continue
-                    else:
-                        # If no match, just append the token as is
-                        new_tokens.append(token)
-                        current_pos += len(token)
-                        continue
-                    
-                    # Skip if word_part is empty
-                    if not word_part:
-                        new_tokens.append(token)
-                        current_pos += len(token)
-                        continue
-                    
-                    # Try lemmatized matching
-                    try:
-                        lemmatized_word = SpacyLemmatizer.lemmatize_text(word_part, 'ENGLISH')
-                        
-                        tagged = False
-                        for entity, translation in entities:
-                            lemmatized_entity = lemmatizer_map.get(entity, "")
-                            if lemmatized_word == lemmatized_entity:
-                                #print(f"matched lemmatized words {word_part} with {entity} as {lemmatized_entity}")
-                                token = f"{word_part} [lemmatized match, {entity} translates to {translation}]{punct_part}"
-                                tagged = True
-                                break
-                        
-                        if not tagged:
-                            token = word_part + punct_part
                             
-                    except Exception as e:
-                        # If lemmatization fails, just use the original token
-                        print(f"Lemmatization failed for '{word_part}': {e}")
-                        token = word_part + punct_part
+                        # Calculate position in result_text (accounting for inserted tags)
+                        original_start = token.idx
+                        original_end = token.idx + len(token.text)
+                        
+                        # Find the corresponding position in result_text
+                        # This is tricky because we've inserted translation tags
+                        # Let's use a different approach: find the word in result_text
+                        
+                        # Check if this token area already has translation tags
+                        search_start = max(0, original_start + offset - 50)  # Search window
+                        search_end = min(len(result_text), original_end + offset + 50)
+                        search_area = result_text[search_start:search_end]
+                        
+                        # Skip if this word is already tagged
+                        word_pattern = r'\b' + re.escape(token.text) + r'\b(?=\s*\[[^\]]*translates to[^\]]*\])'
+                        if re.search(word_pattern, search_area, re.IGNORECASE):
+                            continue
+                        
+                        # Get lemmatized form and check for matches
+                        if i in lemma_map:
+                            lemma = lemma_map[i]['lemma']
+                            
+                            for entity, translation in entities:
+                                lemmatized_entity = lemmatizer_map.get(entity, "")
+                                if lemma == lemmatized_entity and lemmatized_entity:
+                                    # Find and replace this specific word occurrence
+                                    word_pattern = r'\b' + re.escape(token.text) + r'\b'
+                                    # Only replace if not already tagged
+                                    def replace_if_not_tagged(match):
+                                        # Check if this match is already tagged
+                                        start_pos = match.start()
+                                        end_pos = match.end()
+                                        # Look ahead for translation tag
+                                        remaining_text = result_text[end_pos:]
+                                        if remaining_text.strip().startswith('[') and 'translates to' in remaining_text:
+                                            return match.group()  # Already tagged, don't replace
+                                        print(f"matched lemmatized word '{token.text}' with entity '{entity}' as '{lemmatized_entity}'")
+                                        exit()
+                                        return f"{match.group()} [{entity} translates to {translation}]"
+                                    
+                                    # Replace only the first occurrence in the search area
+                                    before_replacement = result_text
+                                    result_text = re.sub(word_pattern, replace_if_not_tagged, result_text, count=1, flags=re.IGNORECASE)
+                                    
+                                    # Update offset if replacement occurred
+                                    if result_text != before_replacement:
+                                        offset += len(result_text) - len(before_replacement)
+                                        break  # Only match one entity per word
                     
-                    new_tokens.append(token)
-                    current_pos += len(token)
+                except Exception as e:
+                    print(f"Full-context lemmatization failed for segment: {e}")
+                    # Fall back to original word-by-word approach if needed
+                    pass
                 
-                new_segments.append(''.join(new_tokens))
+                new_segments.append(result_text)
 
             new_chapter_keyed_list[chapter_idx] = new_segments
 
