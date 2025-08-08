@@ -50,9 +50,8 @@ class RAG_Database:
                 model_name = Model_Utility_Class.RAG_EMBEDDING_MODEL, 
                 api_key=google_api_key,
                 embedding_config=EmbedContentConfig(
-                    # think about task type later
-                    # embedding for semantic similarity and retrieval should be different (potentially embeddings take a while though)
-                    output_dimensionality=768 ## can decrease later
+                    output_dimensionality=768, ## can decrease later
+                    task_type = "SEMANTIC_SIMILARITY"
                 )
             )
 

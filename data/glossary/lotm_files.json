@@ -3,7 +3,7 @@
         "entity": "Crimson",
         "lemmatized entity": "crimson",
         "chapter cutoff": 10,
-        "description": "In this context, \"crimson\" is used to describe a pervasive, deep red hue that significantly impacts the visual perception of the environment. It is associated with the light filtering through a window, creating a \"veil\" over objects, and also with the \"crimson moon\" hanging in the sky. This color imbues the scene with an ominous, unsettling, and perhaps supernatural atmosphere, contributing to the protagonist's shock and horror. It suggests a departure from the ordinary and hints at a world with different, possibly dangerous, natural phenomena.",
+        "description": "In this context, \"crimson\" is used to describe a pervasive, deep red hue that colors the environment, particularly the light from the moon and the appearance of objects. It's not merely a color but also suggests a sense of unease, mystery, and perhaps danger, as it's associated with a bloody handprint and a grotesque wound. The term \"crimson veil\" implies a filtering or obscuring quality to this color, adding to the surreal and disorienting atmosphere. It functions to establish a specific mood and visual theme for the scene, hinting at supernatural or unsettling elements.",
         "term type": "Concept",
         "english target translation": "Crimson"
     },
@@ -11,7 +11,7 @@
         "entity": "Lord of the Mysteries",
         "lemmatized entity": "Lord of the Mysteries",
         "chapter cutoff": 10,
-        "description": "\"Lord of the Mysteries\" is a title that the protagonist, Zhou Mingrui (who later identifies himself as Klein Moretti), encounters in his new reality. The term is associated with a deep, incomprehensible power or entity, hinted at by the \"crimson veil-like moonlight\" and the protagonist's overwhelming headache and disorientation. It suggests a significant, possibly divine or cosmic, presence that influences the world and the protagonist's consciousness, implying a vast and mysterious hierarchy or domain of power. The context suggests this title is central to the overarching narrative and the protagonist's journey of understanding his new existence.",
+        "description": "The \"Lord of the Mysteries\" is a title or designation that the protagonist, Zhou Mingrui (who seems to have transmigrated into the body of Klein Moretti), is associated with or is becoming. The context implies it's a significant, possibly powerful, or even divine entity within the narrative's world. The term carries an air of mystery and perhaps a sense of destiny or a grand, overarching purpose for the protagonist. Its exact nature and implications are not fully revealed in this excerpt, but it clearly marks a pivotal aspect of the protagonist's new identity or future.",
         "term type": "Title",
         "english target translation": "Lord of the Mysteries"
     },
@@ -19,17 +19,9 @@
         "entity": "Zhou Mingrui",
         "lemmatized entity": "Zhou Mingrui",
         "chapter cutoff": 10,
-        "description": "Zhou Mingrui is the protagonist of the provided text. Initially experiencing intense physical pain and confusion, he gradually realizes he has transmigrated into a new body and a different world. He is a history graduate with knowledge of ancient languages, specifically the Feysac and Hermes languages. His current situation involves a mysterious study, a crimson moon, and a sense of impending danger, suggesting he is at the beginning of an extraordinary and potentially perilous journey.",
+        "description": "Zhou Mingrui is the protagonist of the story. Initially, he experiences intense physical pain and confusion, believing he is still dreaming. He discovers himself in an unfamiliar room with strange objects, including a revolver and a notebook with peculiar writing. Through a process of observation and the influx of new memories, he realizes he has transmigrated into a new body and a different world. His background as a reader of web novels allows him to recognize the transmigration trope, and he attempts to remain calm and adapt to his new reality.",
         "term type": "Character Name",
         "english target translation": "Zhou Mingrui"
-    },
-    {
-        "entity": "Earth",
-        "lemmatized entity": "earth",
-        "chapter cutoff": 10,
-        "description": "The term \"Earth\" is not explicitly present in the provided context. However, the descriptions of the environment, such as the \"wooden bed,\" \"cabinet,\" \"brown door,\" and \"study desk made of burly wood,\" all imply the use of natural materials derived from the Earth. The mention of \"coal stoves\" also points to a resource extracted from the Earth. The overall setting suggests a world where natural resources are utilized for everyday life and infrastructure, even in a situation described as \"somewhat wanting.\"",
-        "term type": "Concept",
-        "english target translation": "Earth"
     },
     {
         "entity": "Klein Moretti",
@@ -43,7 +35,7 @@
         "entity": "Northern Continent",
         "lemmatized entity": "Northern Continent",
         "chapter cutoff": 10,
-        "description": "The Northern Continent is a major geographical and political entity within the world described in the context. It is home to the Loen Kingdom, which in turn contains the county of Awwa and the city of Tingen. This continent appears to be the primary setting for the protagonist, Klein Moretti, and his family. The context also implies a historical relationship or conflict with a \"Southern Continent,\" suggesting a larger global or regional political landscape.",
+        "description": "The Northern Continent is a major geographical and political entity within the world described in the context. It is home to the Loen Kingdom, which in turn contains the county of Awwa and the city of Tingen. The context implies a distinct cultural and historical landscape for this continent, as evidenced by the mention of ancient languages like Feysac and Hermes, and the existence of a colonial conflict with a \"Southern Continent.\" It serves as the primary setting for the protagonist, Klein Moretti, and his family's current circumstances.",
         "term type": "Location",
         "english target translation": "Northern Continent"
     },
@@ -51,7 +43,7 @@
         "entity": "Loen Kingdom",
         "lemmatized entity": "Loen Kingdom",
         "chapter cutoff": 10,
-        "description": "The Loen Kingdom is a political entity situated within the Northern Continent. It is further subdivided into counties, with Awwa County being one such administrative division. The City of Tingen is located within this kingdom, serving as a specific locale for the character Klein Moretti. The kingdom's context suggests it is part of a larger geopolitical landscape that includes other continents, as evidenced by Klein's father's service in the Imperial Army during a colonial conflict with the Southern Continent.",
+        "description": "The Loen Kingdom is a political entity situated on the Northern Continent. It is a significant geographical and administrative division within this region, as indicated by its subdivision into counties and cities, such as Awwa County and the City of Tingen. The kingdom's existence implies a structured governmental system and a defined territory, serving as the primary geopolitical setting for the character Klein Moretti's origins and family background. Its presence establishes the broader world in which Klein's life unfolds, influencing his social standing and opportunities.",
         "term type": "Location",
         "english target translation": "Loen Kingdom"
     },
@@ -59,7 +51,7 @@
         "entity": "Awwa County",
         "lemmatized entity": "Awwa County",
         "chapter cutoff": 10,
-        "description": "Awwa County is a specific administrative division within the Loen Kingdom, located on the Northern Continent. It serves as a geographical identifier for the city of Tingen, where the character Klein Moretti resides. The mention of Awwa County situates Klein's origins within a particular region, contributing to the grounding of the narrative in a defined geographical and political landscape. Its inclusion helps establish the character's background and the setting of the story.",
+        "description": "Awwa County is a specific administrative division within the Loen Kingdom, located on the Northern Continent. It serves as a geographical identifier for the city of Tingen, where the character Klein Moretti resides. Its inclusion in the context establishes Klein's precise origin and the socio-economic backdrop of his family, suggesting a region that is not particularly affluent, given the description of their living situation.",
         "term type": "Location",
         "english target translation": "Awwa County"
     },
@@ -67,7 +59,7 @@
         "entity": "City of Tingen",
         "lemmatized entity": "City of Tingen",
         "chapter cutoff": 10,
-        "description": "The City of Tingen is the specific urban location within Awwa County, Loen Kingdom, on the Northern Continent where the character Klein Moretti resides. It serves as the immediate setting for Klein's current circumstances, highlighting his relatively modest background. The mention of Tingen implies a specific geographical and administrative entity within the fictional world, grounding Klein's personal story within a larger societal structure.",
+        "description": "The City of Tingen is a specific geographical location within the Awwa County of the Loen Kingdom, situated on the Northern Continent. It serves as the primary setting for the character Klein Moretti's life and family circumstances. The city's environment, as described through Klein's perspective, appears to be modest and not affluent, reflecting the family's \"somewhat wanting\" financial situation. Its existence grounds Klein's personal history and the narrative's initial setting.",
         "term type": "Location",
         "english target translation": "City of Tingen"
     },
@@ -75,7 +67,7 @@
         "entity": "Department of History",
         "lemmatized entity": "Department of history",
         "chapter cutoff": 10,
-        "description": "The Department of History is an academic division within Khoy University responsible for the study and teaching of historical subjects. As a recent graduate from this department, the individual possesses specialized knowledge, including proficiency in ancient languages like Feysac and Hermes, which are relevant to historical research and textual analysis. This academic background signifies a formal education in the humanities and a foundation for understanding historical contexts and linguistic evolution.",
+        "description": "The Department of History is an academic division within Khoy University, responsible for the study and teaching of historical subjects. As a recent graduate from this department, the individual possesses specialized knowledge, including proficiency in ancient languages like Feysac and Hermes, which are relevant to historical research and textual analysis. This academic background signifies a formal education in understanding past events, cultures, and languages, contributing to the character's intellectual capabilities and potential for engaging with historical mysteries or artifacts.",
         "term type": "Academic Department",
         "english target translation": "Department of History"
     },
@@ -91,7 +83,7 @@
         "entity": "Imperial Army",
         "lemmatized entity": "Imperial Army",
         "chapter cutoff": 10,
-        "description": "The \"Imperial Army\" refers to the military force of a past or present empire, likely a powerful and established one given the context of a \"colonial conflict.\" Its mention in relation to Klein's father, who sacrificed himself during such a conflict, imbues it with a sense of duty, sacrifice, and potentially a history of expansion or dominance. The term suggests a structured military organization with a significant role in the world's political and historical landscape, even if it is now defunct or transformed.",
+        "description": "The \"Imperial Army\" refers to the military force of a past or present empire, likely a powerful and established one given the context of a \"colonial conflict.\" Its mention in relation to Klein's father, who sacrificed himself during such a conflict, imbues it with a sense of historical weight, duty, and potentially, a legacy of service and loss. The term suggests a structured, organized military organization with a history of engagement in territorial expansion or control.",
         "term type": "Organization",
         "english target translation": "Imperial Army"
     },
@@ -99,7 +91,7 @@
         "entity": "Southern Continent",
         "lemmatized entity": "southern continent",
         "chapter cutoff": 10,
-        "description": "The \"Southern Continent\" refers to a geographical region distinct from the Northern Continent, where the character Klein Moretti resides. It is presented as a place with which the Northern Continent has had historical conflict, specifically mentioning a colonial conflict in which Klein's father sacrificed himself. This implies a history of interaction, possibly involving military engagement and territorial disputes, between the two continents. The mention of this conflict serves to establish a backdrop of past struggles and potentially ongoing geopolitical dynamics.",
+        "description": "The \"Southern Continent\" refers to a geographical region distinct from the Northern Continent, where the character Klein Moretti resides. It is presented as a place where colonial conflicts occurred, resulting in the sacrifice of Klein's father. This implies a history of geopolitical tension and military engagement between the Northern and Southern Continents, suggesting a power dynamic and potential historical animosity. Its existence serves to establish the broader world-building and the origins of Klein's family history.",
         "term type": "Location",
         "english target translation": "Southern Continent"
     },
@@ -107,15 +99,23 @@
         "entity": "Evernight Goddess",
         "lemmatized entity": "Evernight Goddess",
         "chapter cutoff": 10,
-        "description": "The Evernight Goddess is a deity worshipped by Klein's mother. Her devotion suggests a religious or spiritual aspect to the family's life, even if their material circumstances were wanting. The mention of her passing away the year Klein entered university implies a significant personal event for Klein, potentially influencing his emotional state or life path. The specific nature of her worship or the goddess's domain is not detailed, but her presence indicates a belief system within the narrative.",
+        "description": "The Evernight Goddess is a deity worshipped by Klein's mother. Her devotion suggests a significant religious or spiritual aspect to Klein's family background, even if not explicitly detailed further. The mention of her passing in the same year Klein entered university implies a potential connection or a significant life event occurring concurrently with his academic pursuits. The goddess's name itself, \"Evernight,\" evokes themes of darkness, mystery, or perhaps a nocturnal domain, hinting at the potential nature of her worship or influence.",
         "term type": "Character Name",
         "english target translation": "Evernight Goddess"
+    },
+    {
+        "entity": "Earth",
+        "lemmatized entity": "earth",
+        "chapter cutoff": 10,
+        "description": "In this context, \"Earth\" refers to the physical planet or world that the characters inhabit. It is presented as a tangible reality, the setting for their lives and struggles. The mention of \"Northern Continent's Loen Kingdom\" and \"City of Tingen\" grounds this \"Earth\" in a specific, albeit fictional, geographical and political landscape. The term signifies the material existence and the environment within which the characters' experiences unfold, contrasting with any potential spiritual or metaphysical realms.",
+        "term type": "Location",
+        "english target translation": "Earth"
     },
     {
         "entity": "Feysac language",
         "lemmatized entity": "Feysac language",
         "chapter cutoff": 10,
-        "description": "The Feysac language is presented as an ancient and foundational language, holding the distinction of being the origin of all languages spoken on the Northern Continent. Its significance lies in its historical depth and its role as a linguistic ancestor, implying a rich cultural and historical heritage associated with it. Klein's knowledge of this language suggests a specialized academic background and an interest in historical linguistics.",
+        "description": "The Feysac language is presented as an ancient and foundational language, believed to be the origin of all languages spoken on the Northern Continent. Its significance lies in its historical depth and its role as a linguistic root. Klein's knowledge of this language, alongside the Hermes language, highlights his academic background and suggests a world where ancient languages hold considerable importance, potentially for understanding history, rituals, or even unlocking hidden knowledge.",
         "term type": "Concept",
         "english target translation": "Feysac language"
     },
@@ -123,7 +123,7 @@
         "entity": "Hermes language",
         "lemmatized entity": "Hermes language",
         "chapter cutoff": 10,
-        "description": "The Hermes language is an ancient and significant language, considered by some to be the origin of all languages on the Northern Continent. It is frequently encountered in ancient mausoleums and texts pertaining to sacrificial and praying rituals. Its appearance in a notebook, transforming from alien to familiar and readable text, suggests a profound and potentially supernatural connection, evoking a sense of horror and unease in the reader.",
+        "description": "The Hermes language is an ancient script that appears in historical texts, particularly those related to sacrificial and praying rituals, and is also found in ancient mausoleums. It is considered by some to be the origin of all languages on the Northern Continent. The context suggests it possesses a profound, almost supernatural quality, as text written in it can transform from alien to familiar and readable, evoking a sense of dread and horror in the reader, implying a connection to powerful or unsettling forces.",
         "term type": "Concept",
         "english target translation": "Hermes language"
     }

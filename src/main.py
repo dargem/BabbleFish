@@ -40,7 +40,6 @@ async def main():
     print("creating database")
     rag_database = await RAG_Database.create(file_paths, start_idx=start_idx)
     chapter_keyed_list = rag_database.retrieve_chunks()
-    '''
     
     # Third stage get entities
     print("finding entities")
@@ -71,7 +70,7 @@ async def main():
         for para in chapter_keyed_list[key]:
             print(para)
 
-
+    '''
     '''
     entities = [entry["entity"] for entry in glossary]
     tupled_entities = [(entry["entity"],entry["description"]) for entry in glossary]

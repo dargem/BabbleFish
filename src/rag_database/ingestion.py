@@ -62,9 +62,8 @@ class Ingestion:
                     model_name = Model_Utility_Class.RAG_EMBEDDING_MODEL, 
                     api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.RAG_EMBEDDING_MODEL),
                     embedding_config=EmbedContentConfig(
-                        # think about task type later
-                        # embedding for semantic similarity and retrieval should be different (potentially embeddings take a while though)
-                        output_dimensionality=768 ## can decrease later
+                        output_dimensionality=768, ## can decrease later
+                        task_type = "SEMANTIC_SIMILARITY"
                     )
                 ),
                 breakpoint_percentile_threshold=85, # this takes an int out of 100, default 95, decrease to make finer
