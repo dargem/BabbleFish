@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import re
 import os
-from ..utils.model_settings import Model_Utility_Class
+from ...utils.model_settings import Model_Utility_Class
 
 # Get project root dynamically
 current_dir = os.path.dirname(os.path.abspath(__file__))

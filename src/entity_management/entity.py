@@ -12,7 +12,6 @@ class Entity():
 
     def load_save(self,name,lemmatized_name,chapter_cutoff,description,term_type,mention_chapter_idx,english_target_translation):
         # load a save file, can be changed to intake json/hashmap later
-        
         self.name = name
         self.lemmatized_name = lemmatized_name
         self.chapter_cutoff = chapter_cutoff
@@ -20,9 +19,3 @@ class Entity():
         self.term_type = term_type
         self.mention_chapter_idx = mention_chapter_idx
         self.english_target_translation = english_target_translation
-
-    def get_name(self):
-        return self.name
-    
-    def get_name_tuple(self):
-        return (self.name,self.lemmatized_name)

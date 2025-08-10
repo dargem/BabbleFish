@@ -18,9 +18,9 @@ if project_root not in sys.path:
 
 
 from src.data_manager.file_manager import File_Manager
-from src.create_glossary.find_entities import Entity_Finder
+from src.entity_management.find_entities import Entity_Finder
 from src.rag_database.base_rag import RAG_Database
-from src.entity_matcher.entity_matcher_interfacer import Entity_Matcher
+from src.entity_management.entity_matcher_interfacer import Entity_Matcher
 
 async def main():
     # Get project root dynamically
@@ -28,6 +28,11 @@ async def main():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(current_dir, '..'))
     FOLDER_SOURCE = os.path.join(project_root, "data", "raw", "lotm_files")
+
+
+
+
+
     print("finding file paths")
 
     # First stage gets files
@@ -44,10 +49,12 @@ async def main():
     # Third stage get entities
     print("finding entities")
     entity_finder = Entity_Finder(file_paths)
-    entities = entity_finder.find_entities(gemini_else_hugging=True)
+    entities = entity_finder.find_entities(use_extra_gemini_ner=True)
     print(entities)
     
+    # engage in entity reunification
     
+
     # Fourth stage use RAG to find good localisations for entry
     print("building entity entries")
     data = rag_database.build_JSON_term_entries(entities, chapter_idx=10)
