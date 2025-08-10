@@ -59,7 +59,7 @@ async def main():
     # Retrieve semantically split input, indexed by chapter_idx and paragraph
     
     # Sixth stage replace/put markers in OG text with translated names
-    '''
+    
     print("inserting markers")
     glossary = file_manager.get_glossary()
     chapter_keyed_list = rag_database.retrieve_chunks() # this keys chapter_idx to a list of ordered chunks
@@ -70,7 +70,7 @@ async def main():
         for para in chapter_keyed_list[key]:
             print(para)
 
-    '''
+    
     '''
     entities = [entry["entity"] for entry in glossary]
     tupled_entities = [(entry["entity"],entry["description"]) for entry in glossary]
