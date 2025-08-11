@@ -58,7 +58,7 @@ class Model_Utility_Class:
     RAG_RETRIEVER_MODEL = "gemini-2.5-flash-lite-preview-06-17"
 
     # For finding what terms to enter termbase
-    GEMINI_NER_MODEL = "gemini-2.5-pro"
+    GEMINI_NER_MODEL = "gemini-2.5-flash"
 
     # For translation
     GEMINI_TRANSLATION_MODEL = "gemini-2.5-pro"

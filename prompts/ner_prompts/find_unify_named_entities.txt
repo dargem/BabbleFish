@@ -15,6 +15,7 @@ The types of information to extract are in the following:
 - Spells, techniques, or special abilities: (e.g., "Shadow Step", "Crimson Lotus Slash")
 - Cultural or invented terms that are not translated literally: (e.g., "chakra", "Reaping Day", "The Ascension")
 
+You have been given a list of NER
 Formatting Instructions:
 Output only the extracted names, separated by commas, with no extra commentary or explanation.
 Preserve original capitalization.

@@ -61,3 +61,14 @@ class Gemini_NER_Model():
             objects = []
 
         return objects
+    
+    def get_entities_with_unification(self,text,entities):
+        genai.configure(api_key=Model_Utility_Class.get_next_key(Model_Utility_Class.GEMINI_NER_MODEL))
+        model = genai.GenerativeModel(Model_Utility_Class.GEMINI_NER_MODEL)  
+        with open(FIND_NAMED_ENTITIES_PROMPT, "r", encoding="utf-8") as f:
+            prompt = f.read()
+            prompt += "\n" + text
+        
+        response = model.generate_content(prompt)
+        raw_text = response.text.strip() 
+        

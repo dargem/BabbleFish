@@ -8,6 +8,7 @@
 .venv/
 venv/
 .env
+.gitallowed
 # User-specific files
 *.rsuser
 *.suo

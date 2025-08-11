@@ -12,7 +12,7 @@ from spacy.lang.fr import French
 from lingua import Language
 
 class SpacyLemmatizer:
-    models = {}
+    models = {}  # Cache for loaded models
     model_names = {
         'ENGLISH': 'en_core_web_lg',
         'CHINESE': 'zh_core_web_lg', 
@@ -32,14 +32,21 @@ class SpacyLemmatizer:
         Language.FRENCH: 'FRENCH'
     }
     
-    # Load spaCy models at class initialization
-    for language_key, model_name in model_names.items():
-        try:
-            # Try to load the full trained model
-            models[language_key] = spacy.load(model_name)
-            print(f"Loaded spaCy model: {model_name}")
-        except OSError:
-            raise OSError(f"spaCy model '{model_name}' not found. Install with: python -m spacy download {model_name}")
+    @classmethod
+    def _load_model(cls, language_key: str):
+        """Lazy load spaCy model only when needed"""
+        if language_key not in cls.models:
+            model_name = cls.model_names.get(language_key)
+            if not model_name:
+                raise ValueError(f"No model name defined for language: {language_key}")
+            
+            try:
+                cls.models[language_key] = spacy.load(model_name)
+                print(f"Loaded spaCy model: {model_name}")
+            except OSError:
+                raise OSError(f"spaCy model '{model_name}' not found. Install with: python -m spacy download {model_name}")
+        
+        return cls.models[language_key]
     
     @staticmethod
     def lemmatize_text(text: str, language: Union[str, Language]):
@@ -57,9 +64,8 @@ class SpacyLemmatizer:
         if language_key not in SpacyLemmatizer.model_names:
             raise ValueError(f"Language {language_key} not supported")
 
-        nlp = SpacyLemmatizer.models.get(language_key)
-        if nlp is None:
-            raise ValueError(f"No model available for language {language_key}")
+        # Load model only when needed
+        nlp = SpacyLemmatizer._load_model(language_key)
     
         # Process the text with spaCy
         doc = nlp(text)
@@ -97,13 +103,10 @@ class SpacyLemmatizer:
             cjk_keys = ['CHINESE', 'JAPANESE', 'KOREAN']
             is_cjk = language_key in cjk_keys
 
-        spacy_model = SpacyLemmatizer.models.get(language_key)
+        spacy_model = SpacyLemmatizer._load_model(language_key)
         matches = []
 
         if is_cjk:
-            if spacy_model is None:
-                raise ValueError(f"spaCy model required for CJK matching, but no model available for {language_key}")
-            
             # Use spaCy tokenization for CJK languages
             doc = spacy_model(text)
             for token in doc:

@@ -63,21 +63,3 @@ class NER_Model():
             for ent in entities:
                 entity_set.add(ent['word'])
         return entity_set
-
-
-if __name__ == "__main__":
-    ner_pipe = pipeline("ner", model="dslim/bert-base-NER", aggregation_strategy="simple")
-
-    sample_text = (
-        "Sixteen years had Miss Taylor been in Mr. Woodhouse’s family, less as a "
-        "governess than a friend, very fond of both daughters, but particularly "
-        "of Emma. Between _them_ it was more the intimacy of sisters. Even "
-        "before Miss Taylor had ceased to hold the nominal office of governess, "
-        "the mildness of her temper had hardly allowed her to impose any "
-        "restraint; and the shadow of authority being now long passed away, they "
-        "had been living together as friend and friend very mutually attached, "
-        "and Emma doing just what she liked; highly esteeming Miss Taylor’s "
-        "judgment, but directed chiefly by her own."
-    )
-    ner_model = NERModel()
-    print(ner_model.get_entities(sample_text))
