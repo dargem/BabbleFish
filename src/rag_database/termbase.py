@@ -1,4 +1,4 @@
-from ..utils.lemmatizer import SpacyLemmatizer
+from ..data_manager.lemmatizer import SpacyLemmatizer
 
 class TermBaseBuilder:
     def __init__(self, retriever):

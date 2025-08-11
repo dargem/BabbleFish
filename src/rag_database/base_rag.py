@@ -21,7 +21,7 @@ from .retriever import Retriever
 from .termbase import TermBaseBuilder
 
 
-class RAG_Database:
+class RAGDatabase:
     def __init__(self, ingestion, embed_model, llm):
         self.ingestion = ingestion
         self.embed_model = embed_model

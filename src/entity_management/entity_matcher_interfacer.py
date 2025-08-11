@@ -3,7 +3,7 @@ import os
 import re
 from lingua import Language, LanguageDetectorBuilder
 
-from ..utils.lemmatizer import SpacyLemmatizer
+from ..data_manager.lemmatizer import SpacyLemmatizer
 
 class Entity_Matcher:
     def __init__(self, glossary, chapter_keyed_list):

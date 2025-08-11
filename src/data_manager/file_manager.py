@@ -1,76 +1,103 @@
 import os
 import json
+import re
 
-class File_Manager():
-    def __init__(self, directory_path):
-        self.DIRECTORY_PATH = directory_path
+class FileManager():
+    def __init__(self, directory_path, start_idx):
         # Get project root dynamically
         current_dir = os.path.dirname(os.path.abspath(__file__))
         self.project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
         
-        # constructs list of files
-        file_list=[]
+        # Constructs list of files
+        file_list = self._find_files(directory_path)
+        
+        # Sort files by chapter number
+        sorted_files = self._sort_files_by_chapter(file_list)
+
+        # Create chapter indexed dictionary
+        self.chapter_dic = self._create_chapter_dic(sorted_files, start_idx)
+
+        # Find language
+        self.language = self._detect_language()
+
+        # Lemmatise using found language
+        self.lemmatized_chapter_dic = self._create_lemmatized_chapter_dic()
+    
+    def _find_files(self,directory_path):
+        '''
+        Find the files from the given directory
+        '''
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+        
+        file_list = []
         try:
             for filename in os.listdir(directory_path):
                 if filename.endswith(".txt"):
-                    file_list.append(os.path.join(directory_path,filename))
+                    file_list.append(os.path.join(directory_path, filename))
         except (FileNotFoundError, PermissionError) as e:
             print(f"Critical error: {e}")
-        self.txt_files = sorted(file_list) 
-        # change this later, needs sorting by grabbing chapter num, keep note of possible numbers in the name screwing it up
+        return file_list
+
+    def _sort_files_by_chapter(self, file_list):
+        """
+        Sort files by chapter number extracted from filename.
+        """
+        def extract_chapter_number(file_path):
+            filename = os.path.basename(file_path)
+            
+            # Pattern 1: Extract numbers from filename (e.g., lotm1.txt -> 1)
+            numbers = re.findall(r'\d+', filename)
+            if numbers:
+                # Take the first number found, assuming it's the chapter number
+                return int(numbers[0])
+            
+            # Pattern 2: If no numbers found, sort alphabetically
+            return float('inf')  # Put files without numbers at the end
+        
+        try:
+            sorted_files = sorted(file_list, key=extract_chapter_number)
+            print(f"Sorted {len(sorted_files)} files by chapter number")
+            return sorted_files
+        except Exception as e:
+            print(f"Warning: Failed to sort files by chapter, using alphabetical sort: {e}")
+            return sorted(file_list)
+
+    def _create_chapter_dic(self, sorted_files, start_idx):
+        '''
+        chapters indexed by chapter index
+        '''
+        chapter_dic = {}
+        for i, file in enumerate(sorted_files):
+            with open(file,'r',encoding='UTF-8') as f:
+                self.chapter_dic[start_idx+i] = f.read()
+        return chapter_dic
     
-    def get_files(self, start_idx, end_idx):
-        if start_idx < 0 or end_idx > len(self.txt_files):
-            raise ValueError("Invalid range")
-        return self.txt_files[start_idx:end_idx]
+    def _detect_language(self):
+        '''
+        Builds a language detector and detects from that list
+        '''
+        from lingua import Language, LanguageDetectorBuilder
 
-    def build_glossary(self, data):
-        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
-        file_name = os.path.join(self.project_root, "data", "glossary", f"{new_folder}.json")
-        try:
-            with open(file_name, 'x') as f:
-                json.dump(data,f,indent=4)
-            print(f"File '{file_name}' created successfully.")
-        except FileExistsError:
-            print(f"File '{file_name}' already exists. Writing over")
-            with open(file_name, 'w') as f:
-                json.dump(data,f,indent=4)
-        except Exception as e:
-            print(f"An error occurred: {e}")
+        languages = [
+            Language.ENGLISH, 
+            Language.CHINESE, 
+            Language.JAPANESE, 
+            Language.KOREAN, 
+            Language.SPANISH, 
+            Language.FRENCH
+        ]
 
-    def get_glossary(self):
-        new_folder = self.DIRECTORY_PATH.split("/")[-1] # takes folder name
-        file_name = os.path.join(self.project_root, "data", "glossary", f"{new_folder}.json")
-        try:
-            with open(file_name, "r") as f:
-                data = json.load(f)
-            return data
-        except FileNotFoundError:
-            print(f"File '{file_name}' not found")
-        except Exception as e:
-            print(f"An error occurred: {e}")
+        detector = LanguageDetectorBuilder.from_languages(*languages).build()
 
-    def preprocess_text(self, entities, file_paths):
-        # reads txts, inserts entities inside
-        for file_path in file_paths:
-            with open(file_path,"r") as f:
-                txt = f.read()
+        chapter = next(iter(self.chapter_dic.values()))
 
-    def get_entity_chapter_presence(self, entities, start_idx, end_idx):
-        file_paths = self.get_files(start_idx, end_idx)
-        entity_chapter_presence = {}
-        
-        # Create empty lists for all entity's
-        for entity in entities:
-            entity_chapter_presence[entity] = []
-        
-        for i, file_path in enumerate(file_paths):
-            try:
-                with open(file_path,'r', encoding="utf-8") as f:
-                    txt = f.read()
-                    for entity in entities:
-                        if entity in txt:
-                            entity_chapter_presence[entity].append(start_idx+i)
-            except(FileNotFoundError, PermissionError) as e:
-                print(f"Critical error: {e}")
-        return entity_chapter_presence
+        return detector.detect_language_of(chapter)
+
+    def _create_lemmatized_chapter_dic(self):
+        from lemmatizer import SpacyLemmatizer
+
+        lemmatized_chapter_dic = {}
+        for key in self.chapter_dic:
+            lemmatized_chapter_dic[key] = SpacyLemmatizer.lemmatize_text(self.chapter_dic[key])
+        return lemmatized_chapter_dic

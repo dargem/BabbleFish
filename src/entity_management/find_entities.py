@@ -4,7 +4,7 @@ import os
 from .models.gemini_ner_nodel import Gemini_NER_Model
 from .models.hugging_ner_model import NER_Model
 
-class Entity_Finder:
+class EntityFinder:
     '''
     Returns a hashmap of entities, keyed to the chapter
     Has the option of using gemini for further NER searching and some entity unification
