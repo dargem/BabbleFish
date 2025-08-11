@@ -20,9 +20,9 @@ if project_root not in sys.path:
 
 
 from src.data_manager.file_manager import FileManager
-from src.entity_management.find_entities import EntityFinder
+from src.entity_management.find_entities import OccurrenceFinder
 from src.rag_database.base_rag import RAGDatabase
-from src.entity_management.manager import EntityManager
+from src.entity_management.entity_manager import EntityManager
 
 
 @dataclass
@@ -52,7 +52,7 @@ class TranslationPipeline:
         self.config = config
         self.file_manager: Optional[FileManager] = None
         self.rag_database: Optional[RAGDatabase] = None
-        self.entity_finder: Optional[EntityFinder] = None
+        self.entity_finder: Optional[OccurrenceFinder] = None
         self.entity_matcher: Optional[EntityManager] = None
         
         # Pipeline state
@@ -304,8 +304,8 @@ async def legacy_main():
     
     # Third stage get entities
     print("finding entities")
-    entity_finder = EntityFinder(file_paths)
-    entities = entity_finder.find_entities(use_extra_gemini_ner=True)
+    entity_finder = OccurrenceFinder(file_paths)
+    entities = entity_finder.find_occurrence(use_extra_gemini_ner=True)
     print(entities)
     
     # engage in entity reunification
