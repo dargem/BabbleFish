@@ -23,6 +23,7 @@ class EntityManager():
         # entity unifier
 
 
+
     def _find_entities(self, text_dic):
         '''
         Finds occurrences and turns them into a hashmap of entity objects keyed by name
@@ -35,7 +36,7 @@ class EntityManager():
             for occurrence in occurrences:
                 if occurrence not in entity_dic:
                     # newly found occurrence is an entity
-                    entity_dic[occurrence] = Entity(chapter_idx)
+                    entity_dic[occurrence] = Entity(entity_dic[occurrence], chapter_idx)
                 else:
                     entity_dic[occurrence].add_occurrence(chapter_idx)
             if chapter_idx > largest_idx:
@@ -49,3 +50,4 @@ class EntityManager():
                 for entity 
                 in entity_dic 
                 if NERFilter.isRemovable(entity, language, extensive_filter=False)}
+    

@@ -1,6 +1,7 @@
 class Entity():
     ''' An individual entity, not unified with aliases '''
-    def __init__(self, chapter_idx):
+    def __init__(self, name, chapter_idx):
+        self.name = name
         self.occurrences_by_chapter = {}
         self.add_occurrence(chapter_idx)
 
