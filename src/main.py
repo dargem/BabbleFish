@@ -117,11 +117,9 @@ class TranslationPipeline:
         - lemmatised_chapter_dic (lemmatised chapters hashed by chapter index)
         - language (lingua language enum for detected language)
         Outputs:
-        - entities (list of unified entity objects)
+        - unified entities (list of unified entity objects)
         '''
         entity_manager = EntityManager(self.chapter_dic, self.lemmatized_chapter_dic, self.language, self.config.use_extra_gemini_ner)
-
-
 
 
     async def _stage_2_initialize_rag(self) -> None:
@@ -227,10 +225,6 @@ class TranslationPipeline:
         
         logger.info(f"Results saved to {output_path}")
     
-
-
-
-
 
 async def main():
     """
