@@ -1,2 +1,2 @@
-Translation pipeline integrating RAG for glossary creation and translation memory. WIP
+Translation pipeline integrating graph RAG, glossaries and translation memory. WIP
 Inspired by graphiti and renard, aims to use less LLM calls than graphiti for better speed and cost through, purpose built for fiction
