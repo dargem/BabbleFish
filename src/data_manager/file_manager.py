@@ -1,10 +1,12 @@
 import os
 import json
 import re
-from collections import defaultdic
+from collections import defaultdict
+import logging
 
 class FileManager():
     def __init__(self, directory_path, start_idx):
+        self.logger = logging.getLogger(__name__)
         # Get project root dynamically
         current_dir = os.path.dirname(os.path.abspath(__file__))
         self.project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
@@ -25,7 +27,7 @@ class FileManager():
         self.lemmatized_chapter_dic = self._create_lemmatized_chapter_dic()
 
         # Chunk by paragraphs and use coreference resolution if available
-        self.resolved_chunked_chapter_dic = self._chunk_chapter_dic()
+        self.resolved_chunked_chapter_dic = self._resolve_chunk_chapter_dic()
     
     def _find_files(self,directory_path):
         '''
@@ -77,13 +79,22 @@ class FileManager():
                 self.chapter_dic[start_idx+i] = f.read()
         return chapter_dic
     
-    def _resolve_chunk_text(self):
+    def _resolve_chunk_chapter_dic(self):
         '''
         Coreference resolution if available + chunking
         '''
         chunked_chapter_dic = self._chunk_chapter_dic(self.chapter_dic)
+        from coreference_resolver import CoreferenceResolver
+        if CoreferenceResolver.model_available(self.language):
+            resolved_chunked_chapter_dic = self._chunk_chapter_dic(self.chapter_dic)
+            pass
+        else:
+            self.logger.warning(
+                f"No coreference resolution available for {self.language} language proceeding as usual without. May result in worse triplet extraction"
+            )
+            # system is still compatable without coreference resolution
+            return chunked_chapter_dic
         
-
     def _chunk_chapter_dic(self,chapter_dic):
         return {key:value.split("\n\n") for key,value in chapter_dic.items()}
 
