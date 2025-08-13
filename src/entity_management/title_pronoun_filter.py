@@ -30,7 +30,7 @@ class NERFilter():
         extensive_name_map[row["Language"]].add(row["Word"])
 
     @staticmethod
-    def isRemovable(word, language=None, extensive_filter=False):
+    def isRemovable(word, language, extensive_filter):
         used_map =(
             NERFilter.base_name_map
             if extensive_filter 

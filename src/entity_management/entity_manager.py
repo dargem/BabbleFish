@@ -1,7 +1,7 @@
 from find_entities import OccurrenceFinder
 from title_pronoun_filter import NERFilter
 from .entity_types.entity import Entity
-
+# option to use LingMess for more accuracy, from fastcoref
 
 class EntityManager():
     '''
@@ -9,7 +9,7 @@ class EntityManager():
     Should support loading from json and dynamically updating entities as new chapters are processed
     Entity is an object of a class, contains occurrences of the entity
     '''
-    def __init__(self, chapter_dic, lemmatized_chapter_dic, language, use_extra_gemini_ner):
+    def __init__(self, chapter_dic, lemmatized_chapter_dic, language, use_extra_gemini_ner, extensive_filter = False):
         self.occurrence_finder = OccurrenceFinder()
 
         # Find entities through running NER over base and lemmatised 
@@ -17,8 +17,10 @@ class EntityManager():
         lemmatized_entities_dic = self._find_entities(text_dic=lemmatized_chapter_dic)
 
         # Renove pronouns and titles which are mistakes
-        base_entities_dic = self._remove_pronouns_titles(base_entities_dic, language)
-        lemmatized_entities_dic = self._remove_pronouns_titles(lemmatized_entities_dic, language)
+        base_entities_dic = self._remove_pronouns_titles(base_entities_dic, language, extensive_filter)
+        lemmatized_entities_dic = self._remove_pronouns_titles(lemmatized_entities_dic, language, extensive_filter)
+
+        # Coreference resolution steps
 
         # entity unifier
 
@@ -45,9 +47,9 @@ class EntityManager():
             value.update_cutoff(chapter_idx)
         return entity_dic
     
-    def _remove_pronouns_titles(self, entity_dic, language):
+    def _remove_pronouns_titles(self, entity_dic, language, extensive_filter):
         return {entity: entity_dic[entity] 
                 for entity 
                 in entity_dic 
-                if NERFilter.isRemovable(entity, language, extensive_filter=False)}
+                if NERFilter.isRemovable(entity, language, extensive_filter)}
     

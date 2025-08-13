@@ -30,8 +30,6 @@ class PipelineConfig:
     """Configuration for the translation pipeline."""
     source_folder: str
     start_idx: int = 0
-    end_idx: int = 1
-    chapter_idx: int = 10
     use_extra_gemini_ner: bool = True
     
     @classmethod
@@ -44,8 +42,7 @@ class PipelineConfig:
 
 class TranslationPipeline:
     """
-    A well-structured translation pipeline that processes text files through
-    entity extraction, glossary building, and text processing stages.
+    translation pipeline that creates translations aided through graph RAG.
     """
     
     def __init__(self, config: PipelineConfig):
@@ -75,11 +72,20 @@ class TranslationPipeline:
             
             # Execute pipeline stages in order
             await self._stage_1_manage_files()
+            await self._stage_2_extract_entities()
+            await self._stage_3_relation_extraction()
+            # below are to add
+            await self._stage_4_glossary_creation()
+            await self._stage_5_graph_creation()
+            await self._stage_6_text_enhancement()
+
+            '''
             await self._stage_2_initialize_rag()
             await self._stage_3_extract_entities()
             await self._stage_4_build_glossary()
             await self._stage_5_create_entity_matches()
-            
+            '''
+
             logger.info("Translation pipeline completed successfully")
             return self.chapter_keyed_chunks
             
@@ -88,6 +94,7 @@ class TranslationPipeline:
             raise
     
     async def _stage_1_manage_files(self) -> None:
+        #TODO epub extraction
         """
         Requires:
         - source_folder (directory contains input files)
@@ -95,6 +102,7 @@ class TranslationPipeline:
         - chapter_dic (chapters hashed by chapter index)
         - lemmatised_chapter_dic (lemmatised chapters hashed by chapter index)
         - language (lingua language enum for detected language)
+        - resolved_chunked_chapter_dic
         """
         logger.info("Stage 1: Discovering files, indexing and lemmatising text")
         
@@ -103,6 +111,9 @@ class TranslationPipeline:
         self.chapter_dic = file_manager.chapter_dic
         self.lemmatized_chapter_dic = file_manager.lemmatized_chapter_dic
         self.language = file_manager.language
+        self.resolved_chunked_chapter_dic = file_manager.resolved_chunked_chapter_dic
+
+        
 
         if not self.chapter_dic:
             raise RuntimeError("chapter_dic non existent, likely no chapters inputted")
@@ -120,6 +131,22 @@ class TranslationPipeline:
         - unified entities (list of unified entity objects)
         '''
         entity_manager = EntityManager(self.chapter_dic, self.lemmatized_chapter_dic, self.language, self.config.use_extra_gemini_ner)
+
+    async def _stage_3_relation_extraction(self) -> None:
+        '''
+        Requires:
+        - resolved_chunked_chapter_dic (ordered list of paragraphs hashed by chapter index, potentially resolved)
+        - language (lingua language enum for detected language)
+        - unified entities (list of unified entity objects)
+        Outputs: 
+        - structured triplets (list of triplets, filtered so must refer to entities)
+        - entity co-occurrence
+        '''
+        pass
+
+
+
+
 
 
     async def _stage_2_initialize_rag(self) -> None:
@@ -264,7 +291,6 @@ async def main():
         print(f"Entities extracted: {state['entities_extracted']}")
         print(f"Glossary entries: {state['glossary_entries']}")
         print(f"Chapters processed: {state['chapters_processed']}")
-        
         return results
         
     except Exception as e:
