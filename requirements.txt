@@ -1,6 +1,6 @@
 # Core NLP and Language Processing
 spacy>=3.7.0
-lingua-language-detector>=2.0.0
+lingua>=2.0.0
 fastcoref>=2.1.6
 # Machine Learning and Transformers
 transformers>=4.30.0

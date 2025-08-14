@@ -6,6 +6,8 @@
 # data files
 /models/sentiment_classifier/cardiffnlp/twitter-roberta-base-sentiment/model.safetensors
 .venv/
+.venv_corpipe
+crac2024-corpipe/corpipe24-corefud1.2-240906
 venv/
 .env
 .gitallowed

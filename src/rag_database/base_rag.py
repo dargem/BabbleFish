@@ -20,7 +20,6 @@ from .ingestion import Ingestion
 from .retriever import Retriever
 from .termbase import TermBaseBuilder
 
-
 class RAGDatabase:
     def __init__(self, ingestion, embed_model, llm):
         self.ingestion = ingestion

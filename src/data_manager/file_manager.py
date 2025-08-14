@@ -1,8 +1,14 @@
 import os
 import json
 import re
+import sys
 from collections import defaultdict
 import logging
+
+# Add the utils directory to the path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+utils_dir = os.path.join(current_dir, '..', 'utils')
+sys.path.append(utils_dir)
 
 class FileManager():
     def __init__(self, directory_path, start_idx):
@@ -76,24 +82,38 @@ class FileManager():
         chapter_dic = {}
         for i, file in enumerate(sorted_files):
             with open(file,'r',encoding='UTF-8') as f:
-                self.chapter_dic[start_idx+i] = f.read()
+                chapter_dic[start_idx+i] = f.read()
         return chapter_dic
     
     def _resolve_chunk_chapter_dic(self):
         '''
         Coreference resolution if available + chunking
         '''
-        chunked_chapter_dic = self._chunk_chapter_dic(self.chapter_dic)
-        from coreference_resolver import CoreferenceResolver
+        from .coreference_resolver import CoreferenceResolver
+        
         if CoreferenceResolver.model_available(self.language):
-            resolved_chunked_chapter_dic = self._chunk_chapter_dic(self.chapter_dic)
-            pass
+            self.logger.info(f"Coreference resolution available for {self.language}, applying resolution...")
+            
+            # Apply coreference resolution to each chapter
+            resolved_chapter_dic = {}
+            for key, chapter_text in self.chapter_dic.items():
+                try:
+                    resolved_text = CoreferenceResolver.resolve_coreferences(chapter_text, self.language)
+                    resolved_chapter_dic[key] = resolved_text
+                    self.logger.debug(f"Applied coreference resolution to chapter {key}")
+                except Exception as e:
+                    self.logger.warning(f"Coreference resolution failed for chapter {key}: {e}")
+                    resolved_chapter_dic[key] = chapter_text  # Use original if resolution fails
+            
+            # Chunk the resolved text
+            return self._chunk_chapter_dic(resolved_chapter_dic)
+            
         else:
             self.logger.warning(
-                f"No coreference resolution available for {self.language} language proceeding as usual without. May result in worse triplet extraction"
+                f"No coreference resolution available for {self.language} language, proceeding without. May result in worse triplet extraction"
             )
-            # system is still compatable without coreference resolution
-            return chunked_chapter_dic
+            # System is still compatible without coreference resolution
+            return self._chunk_chapter_dic(self.chapter_dic)
         
     def _chunk_chapter_dic(self,chapter_dic):
         return {key:value.split("\n\n") for key,value in chapter_dic.items()}
@@ -120,9 +140,18 @@ class FileManager():
         return detector.detect_language_of(chapter)
 
     def _create_lemmatized_chapter_dic(self):
-        from lemmatizer import SpacyLemmatizer
+        try:
+            from .lemmatizer import SpacyLemmatizer
+        except ImportError:
+            # Fallback if lemmatizer is not available
+            self.logger.warning("SpacyLemmatizer not available, using original text")
+            return self.chapter_dic.copy()
 
         lemmatized_chapter_dic = {}
         for key in self.chapter_dic:
-            lemmatized_chapter_dic[key] = SpacyLemmatizer.lemmatize_text(self.chapter_dic[key])
+            try:
+                lemmatized_chapter_dic[key] = SpacyLemmatizer.lemmatize_text(self.chapter_dic[key])
+            except Exception as e:
+                self.logger.warning(f"Lemmatization failed for chapter {key}: {e}")
+                lemmatized_chapter_dic[key] = self.chapter_dic[key]  # Use original text
         return lemmatized_chapter_dic
