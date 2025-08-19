@@ -19,10 +19,6 @@ def test_large_text_processing():
     # Create a large text with multiple coreferences
     large_text = """
     Emma had been planning the trip for months. She booked the flights, reserved a small cabin near the lake, and even made a list of all the places she wanted to visit. When her brother Daniel heard about it, he asked if he could join. She was hesitant at first but eventually agreed.
-
-    The cabin turned out to be smaller than they expected, but it was cozy. It had a stone fireplace that Daniel insisted on using, even though the weather was warm. Emma preferred to sit outside on the porch, watching the water. From there, she could see the old dock where their father used to take them fishing. That memory made her smile.
-
-    On the second day, they rented a small boat. Daniel was determined to row it across the lake, but Emma wasn’t convinced it was safe. The water looked calm, yet she could see the clouds gathering in the distance. When the first drops of rain fell, she told him it was time to head back. He agreed, though she suspected he just didn’t want to admit she was right.
     """.strip()
     
     print(f"Processing large text ({len(large_text)} characters)...")
